@@ -8,9 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css"/>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link href="index.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-          integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.7.2/css/all.css">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </head>
 <body class="bg-gray-900 text-gray-100 antialiased leading-normal tracking-wide">
@@ -18,7 +16,7 @@
 <!-- Header/Navigation Bar -->
 <header class="py-4 px-6 md:px-12 flex justify-between items-center bg-gray-800 shadow-lg rounded-b-lg">
     <!-- Logo/Organization Name -->
-    <a href="#" class="text-3xl font-bold text-blue-400 hover:text-blue-300 transition-colors duration-300">
+    <a href="#" class="text-2xl font-bold text-blue-400 hover:text-blue-300 transition-colors duration-300">
         OpenRockets
     </a>
 
@@ -70,9 +68,7 @@
             class="hero-section text-center py-20 md:py-32 rounded-xl shadow-2xl relative overflow-hidden animated-fade-in mb-20">
         <!-- Rocket SVG for visual appeal -->
         <div class="absolute top-0 left-0 w-full h-full flex justify-center items-center opacity-10">
-            <svg viewBox="0 0 24 24" fill="currentColor" class="w-48 h-48 text-blue-300 transform -rotate-45">
-                <path d="M12 2L6 12h3v10h6V12h3L12 2zm0 3.3L15.7 10H8.3L12 5.3z"/>
-            </svg>
+            <i class="fa-solid fa-rocket-launch fa-flip-horizontal text-blue-400" style="font-size: 15rem;"></i>
         </div>
         <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight animated-fade-in">
             Launch Your Ideas with <span class="text-blue-400">OpenRockets</span>
@@ -102,12 +98,32 @@
                 </p>
             </div>
             <div class="flex justify-center items-center">
-                <!-- Placeholder SVG for illustration -->
-                <svg viewBox="0 0 24 24" fill="currentColor" class="w-64 h-64 text-purple-400 opacity-70">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
-                </svg>
+                <i class="fa-solid fa-rocket-launch fa-10x"></i>
             </div>
         </div>
+    </section>
+
+    <section id="projects" class="py-16 md:py-24 animated-slide-in-right">
+        <h2 class="text-4xl md:text-5xl font-bold text-white text-center mb-8">Our Projects</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
+            <div class="bg-gray-700 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                <h3 class="text-xl font-semibold text-blue-400 mb-4">OpenRockets Website</h3>
+                <p class="text-gray-300 mb-4">The official website for OpenRockets open-source community. Empowering the next generation of space enthusiasts through open-source rocketry, education, and collaboration.</p>
+                <a href="https://openrockets.me" target="_blank" class="text-blue-400 hover:text-blue-300 transition-colors duration-300">Learn More</a>
+            </div>
+            <div class="bg-gray-700 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                <h3 class="text-xl font-semibold text-blue-400 mb-4">The Web Developer's Error Solutions Handbook</h3>
+                <p class="text-gray-300 mb-4"> A comprehensive, community-driven knowledge base for diagnosing and resolving common web development errors.
+                    Accelerate your learning and productivity with clear, concise, and actionable solutions to persistent coding challenges! </p>
+                <a href="https://github.com/OpenRockets/web-dev-error-solutions" target="_blank" class="text-blue-400 hover:text-blue-300 transition-colors duration-300">Learn More</a>
+            </div>
+            <div class="bg-gray-700 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                <h3 class="text-xl font-semibold text-blue-400 mb-4">TUD MaxTools for Adobe Illustrator</h3>
+                <p class="text-gray-300 mb-4">TUD MaxTools is a powerful ExtendScript for Adobe Illustrator designed to significantly enhance your productivity when working with multi-artboard documents.</p>
+                <a href="https://github.com/OpenRockets/TUD_MaxTools-for-Adobe-Illustrator" target="_blank" class="text-blue-400 hover:text-blue-300 transition-colors duration-300">Learn More</a>
+            </div>
+        </div>
+
     </section>
 
 

@@ -27,14 +27,13 @@ body, html {
     opacity: 1;
 }
 
-/* Custom styles for subtle animations and background patterns */
 .gradient-bg {
     background-image: radial-gradient(at 50% 100%, #171923, #1a202c 70%);
 }
 
 .hero-section {
-    background-image: radial-gradient(circle at top right, #3182ce 0%, transparent 50%),
-    radial-gradient(circle at bottom left, #805ad5 0%, transparent 50%);
+    background-image: radial-gradient(circle at top right, #3182ce 0%, transparent 45%),
+    radial-gradient(circle at bottom left, #805ad5 0%, transparent 45%);
     background-size: 80% 80%; /* Adjust size of gradients */
     background-repeat: no-repeat;
     background-position: top right, bottom left;
