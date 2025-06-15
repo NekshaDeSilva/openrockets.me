@@ -1,8 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Cal+Sans&display=swap');
 body, html {
-    font-family: 'Inter', sans-serif;
-    background-color: #1a202c; /* Dark background */
+    font-family: "Cal Sans", sans-serif;
+    background-color: #000000; /* Dark background */
     color: #e2e8f0; /* Light text */
     scroll-behavior: smooth;
+    font-size: 90%
 }
 
 
@@ -32,8 +34,8 @@ body, html {
 }
 
 .hero-section {
-    background-image: radial-gradient(circle at top right, #3182ce 0%, transparent 45%),
-    radial-gradient(circle at bottom left, #805ad5 0%, transparent 45%);
+    background-image: radial-gradient(circle at top right, #3a3a3a 0%, transparent 45%),
+    radial-gradient(circle at bottom left, #000000 0%, transparent 45%);
     background-size: 80% 80%; /* Adjust size of gradients */
     background-repeat: no-repeat;
     background-position: top right, bottom left;
