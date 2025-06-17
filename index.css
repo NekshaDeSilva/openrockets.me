@@ -93,3 +93,44 @@ body, html {
         transform: translateX(0);
     }
 }
+
+/* Join Page Form Styles */
+form input[type="text"],
+form input[type="email"] {
+    background: #18181b;
+    color: #e2e8f0;
+    border: 1px solid #2d3748;
+    border-radius: 0.75rem;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    transition: border 0.2s, box-shadow 0.2s;
+}
+
+form input[type="text"]:focus,
+form input[type="email"]:focus {
+    border-color: #38e8ff;
+    outline: none;
+    box-shadow: 0 0 0 2px #38e8ff33;
+}
+
+/* Join Button (reuse or enhance) */
+.join-btn {
+    padding: 1rem 2.5rem;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 2rem;
+    background: linear-gradient(90deg, #4f8cff 0%, #38e8ff 100%);
+    color: #fff;
+    font-weight: 600;
+    box-shadow: 0 4px 24px rgba(79, 140, 255, 0.15);
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s, background 0.2s;
+    letter-spacing: 0.03em;
+}
+
+.join-btn:hover, .join-btn:focus {
+    transform: translateY(-2px) scale(1.04);
+    box-shadow: 0 8px 32px rgba(56, 232, 255, 0.18);
+    background: linear-gradient(90deg, #38e8ff 0%, #4f8cff 100%);
+    outline: none;
+}
