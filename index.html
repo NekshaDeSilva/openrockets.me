@@ -3,182 +3,349 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OpenRockets Open-source Software Foundation</title>
-   <meta name="description" content="OpenRockets Open-source Software Foundation was created by Neksha DeSilva., with cooperation of other team members. It's mainly on GitHub. Learn, Share Colloborate, Together.">
-  <meta name="keywords" content="Neksha DeSilva, OpenRockets, Open-source, nekshavs">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css"/>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link href="index.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.7.2/css/all.css">
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <title>OpenRockets - Open Source Programming Community</title>
+    <meta name="description" content="OpenRockets is a dynamic open-source community at the intersection of C++, JavaScript, Python, Artificial Intelligence, and Machine Learning.">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
-<body  class="bg-gray-900 text-gray-100 antialiased leading-normal tracking-wide">
-
-<!-- Header/Navigation Bar -->
-<header class="py-4 px-6 md:px-12 flex justify-between items-center bg-gray-800 shadow-lg rounded-b-lg">
-    <!-- Logo/Organization Name -->
-    <img src="./v/openrockets.png" style="width: 6rem;">
-
-    <!-- Navigation Links -->
-    <nav class="hidden md:flex space-x-6">
-        <a href="#about" class="text-gray-300 hover:text-blue-400 transition-colors duration-300 text-lg font-medium">About</a>
-        <a href="#projects"
-           class="text-gray-300 hover:text-blue-400 transition-colors duration-300 text-lg font-medium">Projects</a>
-        <a href="#community"
-           class="text-gray-300 hover:text-blue-400 transition-colors duration-300 text-lg font-medium">Community</a>
-    </nav>
-
-    <!-- Social Media Links (GitHub & Discord) -->
-    <div class="flex items-center space-x-4">
-        <a href="https://github.com/openrockets" target="_blank" rel="noopener noreferrer"
-           class="text-gray-400 hover:text-blue-500 transition-colors duration-300 text-2xl"
-           aria-label="GitHub">
-            <i class="fab fa-github"></i>
-        </a>
-        <a href="https://discord.gg/dk4ptZXD" target="_blank" rel="noopener noreferrer"
-           class="text-gray-400 hover:text-blue-500 transition-colors duration-300 text-2xl"
-           aria-label="Discord">
-            <i class="fab fa-discord"></i>
-        </a>
-            <label class="swap swap-rotate md:hidden text-gray-400 hover:text-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md p-2 transition-colors duration-300"
-                   aria-label="Toggle navigation" id="menu-button">
-                <input type="checkbox" />
-                <i class="fas fa-bars text-xl swap-off" onclick="toggle_menu()"></i>
-                <i class="fas fa-xmark text-xl swap-on" onclick="toggle_menu()"></i>
-            </label>
-    </div>
-</header>
-
-<!-- Mobile Navigation Menu (Hidden by default) -->
-<div id="mobile-menu" class="bg-gray-800 shadow-md rounded-b-lg py-4 px-6">
-    <nav class="flex flex-col space-y-4 text-center">
-        <a href="#about"
-           class="text-gray-300 hover:text-blue-400 transition-colors duration-300 text-lg font-medium py-2 border-b border-gray-700">About</a>
-        <a href="#projects"
-           class="text-gray-300 hover:text-blue-400 transition-colors duration-300 text-lg font-medium py-2 border-b border-gray-700">Projects</a>
-        <a href="#community"
-           class="text-gray-300 hover:text-blue-400 transition-colors duration-300 text-lg font-medium py-2">Community</a>
-    </nav>
-</div>
-
-<main class="container mx-auto px-6 py-12 md:py-20 max-w-7xl">
-    <!-- Hero Section -->
-    <section
-            class="hero-section text-center py-20 md:py-32 rounded-xl shadow-2xl relative overflow-hidden animated-fade-in mb-20">
-        <!-- Rocket SVG for visual appeal -->
-        <div class="absolute top-0 left-0 w-full h-full flex justify-center items-center opacity-10">
-            <i class="fa-solid fa-rocket-launch fa-flip-horizontal text-blue-400" style="font-size: 15rem;"></i>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <div class="logo">
+                    <i class="fas fa-rocket fa-2x"></i>
+                </div>
+                <span class="brand-text">OpenRockets</span>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#mission" class="nav-link">Mission</a>
+                <a href="#community" class="nav-link">Community</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
-        <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight animated-fade-in">
-            We Contribute.
-        </h1>
-        <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto animated-fade-in"
-           style="animation-delay: 0.5s;">
-            
-        </p>
-        <a href="#projects" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 px-8 rounded-full shadow-lg
-                                     transform hover:scale-105 transition-all duration-300 ease-in-out animated-fade-in"
-           style="animation-delay: 0.8s;">
-            Explore
-        </a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background">
+            <div class="stars"></div>
+            <div class="floating-elements">
+                <div class="rocket-icon rocket-1">
+                    <i class="fas fa-rocket fa-3x"></i>
+                </div>
+                <div class="rocket-icon rocket-2">
+                    <i class="fas fa-rocket fa-2x"></i>
+                </div>
+                <div class="rocket-icon rocket-3">
+                    <i class="fas fa-rocket fa-4x"></i>
+                </div>
+            </div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="gradient-text">OpenRockets</span>
+            </h1>
+            <p class="hero-subtitle">We Contribute.</p>
+            <div class="hero-buttons">
+                <a href="#mission" class="btn btn-primary">Our Mission</a>
+                <a href="https://github.com/openrockets" class="btn btn-secondary" target="_blank">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    GitHub
+                </a>
+            </div>
+        </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-16 md:py-24 animated-slide-in-left">
-        <div class="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">Our Mission</h2>
-                <p class="text-lg text-gray-300 leading-relaxed mb-6">
-                    official@openrockets.me
-                <p class="text-lg text-gray-300 leading-relaxed">
-                    OpenRockets is a dynamic open-source community at the intersection of C++, JavaScript, Python, Artificial Intelligence, and Machine Learning. We bring passionate coders together to collaborate, innovate, and grow through hands-on experiences and innovations.
-                </p>
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">About OpenRockets</h2>
+                <p class="section-subtitle">Dynamic open-source programming community</p>
             </div>
-            <div class="flex justify-center items-center">
-                <i class="fa-solid fa-rocket-launch fa-10x"></i>
+            <div class="about-content">
+                <div class="about-text">
+                    <p class="lead">OpenRockets is a dynamic open-source community at the intersection of C++, JavaScript, Python, Artificial Intelligence, and Machine Learning. We bring passionate coders together to collaborate, innovate, and grow through hands-on experiences.</p>
+                    <p>Through collaborative projects, educational resources, and a vibrant community, we aim to make programming accessible to everyone, from beginners to experienced developers. Our mission is to foster the next generation of innovative programmers and tech enthusiasts.</p>
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">Open Source</span>
+                            <span class="stat-label">MIT License</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">Non-Profit</span>
+                            <span class="stat-label">Foundation</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">Global</span>
+                            <span class="stat-label">Community</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-visual">
+                    <div class="rocket-diagram">
+                        <div class="rocket-parts">
+                            <div class="nose-cone"></div>
+                            <div class="body-tube"></div>
+                            <div class="fins"></div>
+                            <div class="engine"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="projects" class="py-16 md:py-24 animated-slide-in-right">
-        <h2 class="text-4xl md:text-5xl font-bold text-white text-center mb-8">Our Projects</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
-            <div class="bg-gray-700 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-                <h3 class="text-xl font-semibold text-blue-400 mb-4">OpenRockets Website</h3>
-                <p class="text-gray-300 mb-4">The official website for OpenRockets open-source community. Empowering the next generation of space enthusiasts through open-source rocketry, education, and collaboration.</p>
-                <a href="https://openrockets.me" target="_blank" class="text-blue-400 hover:text-blue-300 transition-colors duration-300">Learn More</a>
+    <!-- Mission Section -->
+    <section id="mission" class="mission">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Mission</h2>
+                <p class="section-subtitle">Building the future of technology together</p>
             </div>
-            <div class="bg-gray-700 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-                <h3 class="text-xl font-semibold text-blue-400 mb-4">The Web Developer's Error Solutions Handbook</h3>
-                <p class="text-gray-300 mb-4"> A comprehensive, community-driven knowledge base for diagnosing and resolving common web development errors.
-                    Accelerate your learning and productivity with clear, concise, and actionable solutions to persistent coding challenges! </p>
-                <a href="https://github.com/OpenRockets/web-dev-error-solutions" target="_blank" class="text-blue-400 hover:text-blue-300 transition-colors duration-300">Learn More</a>
-            </div>
-            <div class="bg-gray-700 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-                <h3 class="text-xl font-semibold text-blue-400 mb-4">TUD MaxTools for Adobe Illustrator</h3>
-                <p class="text-gray-300 mb-4">TUD MaxTools is a powerful ExtendScript for Adobe Illustrator designed to significantly enhance your productivity when working with multi-artboard documents.</p>
-                <a href="https://github.com/OpenRockets/TUD_MaxTools-for-Adobe-Illustrator" target="_blank" class="text-blue-400 hover:text-blue-300 transition-colors duration-300">Learn More</a>
+            <div class="mission-grid">
+                <div class="mission-card">
+                    <div class="card-icon">
+                        <svg width="48" height="48" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                        </svg>
+                    </div>
+                    <h3>Education</h3>
+                    <p>Providing comprehensive educational resources to help people learn programming, from basic principles to advanced concepts in C++, JavaScript, Python, AI, and ML.</p>
+                </div>
+                <div class="mission-card">
+                    <div class="card-icon">
+                        <svg width="48" height="48" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                        </svg>
+                    </div>
+                    <h3>Collaboration</h3>
+                    <p>Fostering a global community where developers, students, and tech professionals can collaborate on innovative programming and technology projects.</p>
+                </div>
+                <div class="mission-card">
+                    <div class="card-icon">
+                        <svg width="48" height="48" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+                        </svg>
+                    </div>
+                    <h3>Open Source</h3>
+                    <p>Developing and sharing open-source tools, software, and libraries that make programming more accessible and enable innovation across the tech community.</p>
+                </div>
             </div>
         </div>
-
     </section>
 
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Featured Projects</h2>
+                <p class="section-subtitle">Explore our open-source initiatives</p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Web Developer's Error Solutions Handbook</h3>
+                        <span class="project-status">Active</span>
+                    </div>
+                    <p>A comprehensive, community-driven knowledge base for diagnosing and resolving common web development errors. Accelerate your learning and productivity with clear, concise, and actionable solutions.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Documentation</span>
+                        <span class="tech-tag">Web Dev</span>
+                        <span class="tech-tag">Community</span>
+                    </div>
+                    <a href="https://github.com/OpenRockets/web-dev-error-solutions" class="project-link" target="_blank">View Project →</a>
+                </div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>TUD MaxTools for Adobe Illustrator</h3>
+                        <span class="project-status">Active</span>
+                    </div>
+                    <p>TUD MaxTools is a powerful ExtendScript for Adobe Illustrator designed to significantly enhance your productivity when working with multi-artboard documents.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">ExtendScript</span>
+                        <span class="tech-tag">Adobe Illustrator</span>
+                        <span class="tech-tag">Productivity</span>
+                    </div>
+                    <a href="https://github.com/OpenRockets/TUD_MaxTools-for-Adobe-Illustrator" class="project-link" target="_blank">View Project →</a>
+                </div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>OpenRockets Website</h3>
+                        <span class="project-status">Live</span>
+                    </div>
+                    <p>The official website for OpenRockets open-source programming community. A dynamic community bringing passionate coders together to collaborate, innovate, and grow through hands-on experiences. Developed by <a href="https://github.com/Geek-Cheth" target="_blank" style="color: var(--primary-light);">@Geek-Cheth</a>.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">HTML</span>
+                        <span class="tech-tag">CSS</span>
+                        <span class="tech-tag">JavaScript</span>
+                    </div>
+                    <a href="https://openrockets.me" class="project-link" target="_blank">View Project →</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Community Section -->
-    <section id="community" class="py-16 md:py-24 text-center animated-fade-in">
-        <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">Join Our Community</h2>
-
-        <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
-            <a href="https://github.com/openrockets" target="_blank" rel="noopener noreferrer"
-               class="inline-flex items-center bg-gray-700 hover:bg-gray-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md
-                          transform hover:scale-105 transition-all duration-300 ease-in-out">
-                <i class="fab fa-github mr-3 text-xl"></i> Contribute on GitHub
-            </a>
-            <a href="https://discord.gg/dk4ptZXD" target="_blank" rel="noopener noreferrer"
-               class="inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg shadow-md
-                          transform hover:scale-105 transition-all duration-300 ease-in-out">
-                <i class="fab fa-discord mr-3 text-xl"></i> Join Our Discord
-            </a>
+    <section id="community" class="community">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Join Our Community</h2>
+                <p class="section-subtitle">Connect with fellow developers and tech enthusiasts worldwide</p>
+            </div>
+            <div class="community-content">
+                <div class="community-text">
+                    <h3>Be Part of Something Bigger</h3>
+                    <p>Join thousands of passionate developers, programmers, and tech enthusiasts who are dedicated to open-source innovation. Whether you're a beginner or an expert, there's a place for you in our community.</p>
+                    <ul class="community-benefits">
+                        <li>Access to exclusive programming resources</li>
+                        <li>Collaborative coding project opportunities</li>
+                        <li>Technical support and mentorship</li>
+                        <li>Regular coding workshops and tech events</li>
+                    </ul>
+                </div>
+                <div class="community-links">
+                    <a href="https://discord.gg/dk4ptZXD" class="community-card" target="_blank">
+                        <div class="community-icon discord">
+                            <svg width="32" height="32" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419-.0189 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1568 2.4189Z"/>
+                            </svg>
+                        </div>
+                        <div class="community-info">
+                            <h4>Discord Server</h4>
+                            <p>Join our real-time chat community</p>
+                        </div>
+                    </a>
+                    <a href="https://github.com/openrockets" class="community-card" target="_blank">
+                        <div class="community-icon github">
+                            <svg width="32" height="32" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </div>
+                        <div class="community-info">
+                            <h4>GitHub Organization</h4>
+                            <p>Contribute to our open-source projects</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
-</main>
 
-<!-- Footer -->
-<footer class="py-8 bg-gray-800 text-gray-400 text-center rounded-t-lg shadow-inner">
-    <div class="container mx-auto px-6">
-        <p class="mb-4">&copy; <span id="current-year"></span> OpenRockets Open-source Software Foundation. All rights reserved.</p>
-        <div class="flex justify-center space-x-6 mb-4">
-            <a href="https://github.com/openrockets" target="_blank" rel="noopener noreferrer"
-               class="text-gray-400 hover:text-blue-500 transition-colors duration-300 text-2xl"
-               aria-label="GitHub">
-                <i class="fab fa-github"></i>
-            </a>
-            <a href="https://discord.gg/dk4ptZXD" target="_blank" rel="noopener noreferrer"
-               class="text-gray-400 hover:text-blue-500 transition-colors duration-300 text-2xl"
-               aria-label="Discord">
-                <i class="fab fa-discord"></i>
-            </a>
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-subtitle">Ready to start your coding journey with us?</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>OpenRockets</h3>
+                    <p>A dynamic open-source programming community dedicated to bringing passionate coders together to collaborate, innovate, and grow through hands-on experiences.</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <strong>Website:</strong>
+                            <a href="https://openrockets.me">openrockets.me</a>
+                        </div>
+                        <div class="contact-item">
+                            <strong>License:</strong>
+                            <span>MIT License</span>
+                        </div>
+                        <div class="contact-item">
+                            <strong>Structure:</strong>
+                            <span>Non-profit Foundation</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <select name="interest" required>
+                                <option value="">Select Your Interest</option>
+                                <option value="education">Educational Resources</option>
+                                <option value="collaboration">Project Collaboration</option>
+                                <option value="contribution">Open Source Contribution</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
         </div>
-        <nav class="flex flex-wrap justify-center space-x-4">
-            <a href="#about" class="hover:text-blue-400 transition-colors duration-300 text-sm">About</a>
-            <a href="#projects" class="hover:text-blue-400 transition-colors duration-300 text-sm">Projects</a>
-            <a href="#community" class="hover:text-blue-400 transition-colors duration-300 text-sm">Community</a>
-            <a href="#" class="hover:text-blue-400 transition-colors duration-300 text-sm">Privacy Policy</a>
-        </nav>
-    </div>
-</footer>
+    </section>
 
-<script>
-    document.getElementById('current-year').textContent = new Date().getFullYear();
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <i class="fas fa-rocket fa-2x"></i>
+                    </div>
+                    <div>
+                        <h4>OpenRockets</h4>
+                        <p>We Contribute.</p>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-section">
+                        <h5>Community</h5>
+                        <ul>
+                            <li><a href="#about">About Us</a></li>
+                            <li><a href="#mission">Mission</a></li>
+                            <li><a href="https://openrockets.me">Website</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h5>Connect</h5>
+                        <ul>
+                            <li><a href="https://github.com/openrockets">GitHub</a></li>
+                            <li><a href="https://discord.gg/dk4ptZXD">Discord</a></li>
+                            <li><a href="#projects">Projects</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h5>Legal</h5>
+                        <ul>
+                            <li><span>MIT License</span></li>
+                            <li><span>Non-profit Organization</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 OpenRockets Foundation. Licensed under MIT License.</p>
+            </div>
+        </div>
+    </footer>
 
-    function toggle_menu() {
-        $('#mobile-menu').toggleClass('show');
-    }
-    $(window).on('scroll', function() {
-        $('#mobile-menu').removeClass('show');
-        $('#menu-button input').prop('checked', false);
-    });
-</script>
+    <script src="scripts/main.js"></script>
 </body>
 </html>
