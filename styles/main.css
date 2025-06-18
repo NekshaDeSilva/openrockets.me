@@ -568,3 +568,6 @@ select option {
     background: var(--primary-color);
     color: var(--white);
 }
+.downsvg-header-ltsc{
+    width: 9em;
+}
