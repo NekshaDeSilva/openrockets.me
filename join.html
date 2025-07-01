@@ -3,148 +3,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Join | OpenRockets Open-source Software Foundation</title>
-    <meta name="description" content="Join the OpenRockets Open-source Software Foundation community. Collaborate, learn, and contribute to open-source projects.">
+    <title>Join OpenRockets Community</title>
+    <link rel="icon" type="image/png" href="./form/logo.png">
+    <link rel="stylesheet" href="./form/css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="css/inter.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.7.2/css/all.css">
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
-<body class="bg-gray-900 text-gray-100 antialiased leading-normal tracking-wide">
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="main-title">OpenRockets</h1>
+            <p class="subtitle">Join Our Community of Innovators</p>
+        </header>
 
-<!-- Header/Navigation Bar -->
-<header class="py-4 px-6 md:px-12 flex justify-between items-center bg-gray-800 shadow-lg rounded-b-lg">
-    <img src="./v/openrockets.png" style="width: 6rem;">
-    <nav class="hidden md:flex space-x-6">
-        <a href="index.html#about" class="text-gray-300 hover:text-blue-400 transition-colors duration-300 text-lg font-medium">About</a>
-        <a href="index.html#projects" class="text-gray-300 hover:text-blue-400 transition-colors duration-300 text-lg font-medium">Projects</a>
-        <a href="index.html#community" class="text-gray-300 hover:text-blue-400 transition-colors duration-300 text-lg font-medium">Community</a>
-        <a href="join.html" class="text-blue-400 font-semibold text-lg underline">Join</a>
-    </nav>
-    <div class="flex items-center space-x-4">
-        <a href="https://github.com/openrockets" target="_blank" rel="noopener noreferrer"
-           class="text-gray-400 hover:text-blue-500 transition-colors duration-300 text-2xl"
-           aria-label="GitHub">
-            <i class="fab fa-github"></i>
-        </a>
-        <a href="https://discord.gg/dk4ptZXD" target="_blank" rel="noopener noreferrer"
-           class="text-gray-400 hover:text-blue-500 transition-colors duration-300 text-2xl"
-           aria-label="Discord">
-            <i class="fab fa-discord"></i>
-        </a>
-        <label class="swap swap-rotate md:hidden text-gray-400 hover:text-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md p-2 transition-colors duration-300"
-               aria-label="Toggle navigation" id="menu-button">
-            <input type="checkbox" />
-            <i class="fas fa-bars text-xl swap-off" onclick="toggle_menu()"></i>
-            <i class="fas fa-xmark text-xl swap-on" onclick="toggle_menu()"></i>
-        </label>
+        <div class="benefits-note">
+            <p>By joining our organization, you will access exclusive features such as the <a href="https://nekshadesilva.github.io/openthread/" target="_blank" class="openthreads-link">OpenThreads</a> code-sharing platform and gain full access to our <a href="https://github.com/OpenRockets" target="_blank" class="github-link">GitHub organization</a>.</p>
+        </div>
+
+        <!-- Form Container -->
+        <main class="form-container">
+            <form id="openrockets-form" class="application-form">
+                <!-- Name Field -->
+                <div class="form-group">
+                    <label for="name" class="form-label">Full Name *</label>
+                    <input 
+                        type="text" 
+                        id="name" 
+                        name="name" 
+                        class="form-input" 
+                        required 
+                        placeholder="Enter your full name"
+                    >
+                    <div class="error-message" id="name-error"></div>
+                </div>
+
+                <!-- Email Field -->
+                <div class="form-group">
+                    <label for="email" class="form-label">Email Address *</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        class="form-input" 
+                        required 
+                        placeholder="your.email@example.com"
+                    >
+                    <div class="error-message" id="email-error"></div>
+                </div>
+
+                <!-- GitHub URL Field -->
+                <div class="form-group">
+                    <label for="githubUrl" class="form-label">GitHub Profile *</label>
+                    <input 
+                        type="url" 
+                        id="githubUrl" 
+                        name="githubUrl" 
+                        class="form-input" 
+                        required 
+                        placeholder="https://github.com/yourusername"
+                        pattern="https://github\.com/.*"
+                    >
+                    <div class="error-message" id="github-error"></div>
+                </div>
+
+                <!-- Skills Tag Input -->
+                <div class="form-group">
+                    <label for="skills" class="form-label">Skills & Technologies *</label>
+                    <div class="tag-input-container">
+                        <div class="tags-display" id="tags-display"></div>
+                        <input 
+                            type="text" 
+                            id="skills-input" 
+                            class="tag-input" 
+                            placeholder="Type a skill and press Enter..."
+                        >
+                    </div>
+                    <div class="skills-suggestions">
+                        <span class="suggestion-label">Popular skills:</span>
+                        <button type="button" class="skill-suggestion" data-skill="JavaScript">JavaScript</button>
+                        <button type="button" class="skill-suggestion" data-skill="Python">Python</button>
+                        <button type="button" class="skill-suggestion" data-skill="React">React</button>
+                        <button type="button" class="skill-suggestion" data-skill="Node.js">Node.js</button>
+                        <button type="button" class="skill-suggestion" data-skill="TypeScript">TypeScript</button>
+                        <button type="button" class="skill-suggestion" data-skill="Firebase">Firebase</button>
+                    </div>
+                    <div class="error-message" id="skills-error"></div>
+                </div>
+
+                <!-- Reason Field -->
+                <div class="form-group">
+                    <label for="reason" class="form-label">Why do you want to join OpenRockets? *</label>
+                    <textarea 
+                        id="reason" 
+                        name="reason" 
+                        class="form-textarea" 
+                        required 
+                        placeholder="Tell us about your passion for programming, open source development, collaboration, or what excites you about joining our developer community..."
+                        rows="5"
+                    ></textarea>
+                    <div class="error-message" id="reason-error"></div>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="submit-btn" id="submit-btn">
+                    <span class="btn-text">Submit Application</span>
+                    <div class="loading-spinner" id="loading-spinner"></div>
+                </button>
+            </form>
+        </main>
+
+        <!-- Success Message -->
+        <div class="success-overlay" id="success-overlay">
+            <div class="success-modal">
+                <div class="success-icon">✓</div>
+                <h2 class="success-title">Thanks for joining</h2>
+                <p class="success-message">
+                    Welcome to OpenRockets! You now have access to our exclusive features and GitHub organization.
+                </p>
+                <div class="action-buttons">
+                    <a href="https://github.com/OpenRockets" target="_blank" class="action-btn github-btn">
+                        <span>Follow GitHub Organization</span>
+                    </a>
+                    <a href="#" target="_blank" class="action-btn review-btn" id="review-btn">
+                        <span>Leave a Review</span>
+                    </a>
+                </div>
+                <button type="button" class="secondary-btn" id="submit-another">Submit Another Application</button>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <p>&copy; 2025 OpenRockets. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="https://nekshadesilva.github.io/openthread/" target="_blank" class="footer-link">
+                        <img src="https://nekshadesilva.github.io/openthread/assets/openthread_logo_bash-trans.png" alt="OpenThreads" class="footer-logo">
+                        <span>OpenThreads</span>
+                    </a>
+                    <a href="https://github.com/OpenRockets" target="_blank" class="footer-link">
+                        <svg class="footer-logo github-logo" viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                        </svg>
+                        <span>GitHub</span>
+                    </a>
+                </div>
+            </div>
+        </footer>
     </div>
-</header>
 
-<!-- Mobile Navigation Menu -->
-<div id="mobile-menu" class="bg-gray-800 shadow-md rounded-b-lg py-4 px-6">
-    <nav class="flex flex-col space-y-4 text-center">
-        <a href="index.html#about" class="text-gray-300 hover:text-blue-400 transition-colors duration-300 text-lg font-medium py-2 border-b border-gray-700">About</a>
-        <a href="index.html#projects" class="text-gray-300 hover:text-blue-400 transition-colors duration-300 text-lg font-medium py-2 border-b border-gray-700">Projects</a>
-        <a href="index.html#community" class="text-gray-300 hover:text-blue-400 transition-colors duration-300 text-lg font-medium py-2">Community</a>
-        <a href="join.html" class="text-blue-400 font-semibold text-lg underline py-2">Join</a>
-    </nav>
-</div>
-
-<main class="container mx-auto px-6 py-12 md:py-20 max-w-2xl">
-    <!-- Join Hero Section -->
-    <section class="hero-section text-center py-16 md:py-24 rounded-xl shadow-2xl relative overflow-hidden animated-fade-in mb-12">
-        <div class="absolute top-0 left-0 w-full h-full flex justify-center items-center opacity-10 pointer-events-none">
-            <i class="fa-solid fa-user-plus text-blue-400" style="font-size: 12rem;"></i>
-        </div>
-        <h1 class="text-5xl md:text-6xl font-extrabold text-white mb-6 leading-tight animated-fade-in">
-            Join Our Community
-        </h1>
-        <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-2xl mx-auto animated-fade-in" style="animation-delay: 0.5s;">
-            Become a part of OpenRockets. Collaborate, learn, and contribute to open-source projects with passionate developers worldwide.
-        </p>
-    </section>
-
-    <!-- Join Form Section -->
-    <section class="bg-gray-800 rounded-xl shadow-lg p-8 mb-12 animated-slide-in-left">
-        <h2 class="text-3xl font-bold text-white mb-6 text-center">Sign Up</h2>
-        <form class="space-y-6" autocomplete="off">
-            <div>
-                <label for="name" class="block text-gray-300 mb-2">Full Name</label>
-                <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-lg bg-gray-900 text-white border border-gray-700 focus:border-blue-500 focus:outline-none transition">
-            </div>
-            <div>
-                <label for="email" class="block text-gray-300 mb-2">Email Address</label>
-                <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-lg bg-gray-900 text-white border border-gray-700 focus:border-blue-500 focus:outline-none transition">
-            </div>
-            <div>
-                <label for="interests" class="block text-gray-300 mb-2">Your Interests</label>
-                <input type="text" id="interests" name="interests" placeholder="e.g. C++, AI, Web, Docs" class="w-full px-4 py-3 rounded-lg bg-gray-900 text-white border border-gray-700 focus:border-blue-500 focus:outline-none transition">
-            </div>
-            <button type="submit" class="join-btn w-full mt-4">Join Now</button>
-        </form>
-        <p class="text-gray-400 text-sm mt-4 text-center">We respect your privacy. No spam, ever.</p>
-    </section>
-
-    <!-- Other Ways to Join -->
-    <section class="text-center animated-slide-in-right">
-        <h3 class="text-2xl font-semibold text-white mb-4">Or join us on</h3>
-        <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
-            <a href="https://github.com/openrockets" target="_blank" rel="noopener noreferrer"
-               class="inline-flex items-center bg-gray-700 hover:bg-gray-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md
-                          transform hover:scale-105 transition-all duration-300 ease-in-out">
-                <i class="fab fa-github mr-3 text-xl"></i> GitHub
-            </a>
-            <a href="https://discord.gg/dk4ptZXD" target="_blank" rel="noopener noreferrer"
-               class="inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg shadow-md
-                          transform hover:scale-105 transition-all duration-300 ease-in-out">
-                <i class="fab fa-discord mr-3 text-xl"></i> Discord
-            </a>
-        </div>
-    </section>
-</main>
-
-<!-- Footer -->
-<footer class="py-8 bg-gray-800 text-gray-400 text-center rounded-t-lg shadow-inner">
-    <div class="container mx-auto px-6">
-        <p class="mb-4">&copy; <span id="current-year"></span> OpenRockets Open-source Software Foundation. All rights reserved.</p>
-        <div class="flex justify-center space-x-6 mb-4">
-            <a href="https://github.com/openrockets" target="_blank" rel="noopener noreferrer"
-               class="text-gray-400 hover:text-blue-500 transition-colors duration-300 text-2xl"
-               aria-label="GitHub">
-                <i class="fab fa-github"></i>
-            </a>
-            <a href="https://discord.gg/dk4ptZXD" target="_blank" rel="noopener noreferrer"
-               class="text-gray-400 hover:text-blue-500 transition-colors duration-300 text-2xl"
-               aria-label="Discord">
-                <i class="fab fa-discord"></i>
-            </a>
-        </div>
-        <nav class="flex flex-wrap justify-center space-x-4">
-            <a href="index.html#about" class="hover:text-blue-400 transition-colors duration-300 text-sm">About</a>
-            <a href="index.html#projects" class="hover:text-blue-400 transition-colors duration-300 text-sm">Projects</a>
-            <a href="index.html#community" class="hover:text-blue-400 transition-colors duration-300 text-sm">Community</a>
-            <a href="join.html" class="hover:text-blue-400 transition-colors duration-300 text-sm underline">Join</a>
-            <a href="#" class="hover:text-blue-400 transition-colors duration-300 text-sm">Privacy Policy</a>
-        </nav>
-    </div>
-</footer>
-
-<script>
-    document.getElementById('current-year').textContent = new Date().getFullYear();
-    function toggle_menu() {
-        $('#mobile-menu').toggleClass('show');
-    }
-    $(window).on('scroll', function() {
-        $('#mobile-menu').removeClass('show');
-        $('#menu-button input').prop('checked', false);
-    });
-    // Optional: Prevent default form submission for demo
-    $('form').on('submit', function(e) {
-        e.preventDefault();
-        alert('Thank you for joining! We will contact you soon.');
-        this.reset();
-    });
-</script>
+    <!-- EmailJS Script -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    
+    <!-- Firebase Scripts -->
+    <script type="module" src="./form/js/firebase-config.js"></script>
+    <script type="module" src="./form/js/emailjs-config.js"></script>
+    <script type="module" src="./form/js/tag-input.js"></script>
+    <script type="module" src="./form/js/form-handler.js"></script>
 </body>
 </html>
