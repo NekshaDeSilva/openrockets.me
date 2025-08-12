@@ -1,0 +1,48 @@
+# Node.js dependencies
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+.env.*
+
+# Secret files
+*.key
+*.pem
+*.crt
+
+# IDE specific files
+.vscode/
+*.code-workspace
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Build output
+dist/
+build/
+
+# Temporary files
+*.tmp
+*.temp
+
+# Other
+*.bak
+*.swp
+*.swo
+*.orig
+*.rej
+*.un~
+*.sublime-workspace
+*.sublime-project
+
+# Ignore specific files in this project
+form/js/emailjs-config.js
+form/js/firebase-config.js
