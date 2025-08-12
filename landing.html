@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenRockets LMS - Learn. Code. Grow.</title>
+    <meta name="description" content="Modern Learning Management System for programming education with interactive classes and community collaboration.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles/lms-main.css">
+</head>
+<body>
+    <div class="landing-container">
+        <!-- Navigation -->
+        <nav class="landing-nav">
+            <div class="nav-content">
+                <div class="nav-brand">
+                    <img src="./v/openrockets.png" alt="OpenRockets" class="logo">
+                    <span class="brand-text">OpenRockets LMS</span>
+                </div>
+                <div class="nav-links">
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#features" class="nav-link">Features</a>
+                    <a href="#pricing" class="nav-link">Pricing</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                    <button class="btn-secondary auth-btn" onclick="showLoginModal()">Sign In</button>
+                    <button class="btn-primary auth-btn" onclick="showRegisterModal()">Get Started</button>
+                    <div class="user-menu" style="display: none;">
+                        <div class="user-profile">
+                            <img src="" alt="Profile" class="profile-image">
+                            <span class="user-name"></span>
+                        </div>
+                        <div class="user-dropdown">
+                            <a href="/dashboard">Dashboard</a>
+                            <a href="#" onclick="showProfileModal()">Profile</a>
+                            <a href="#" onclick="logout()">Logout</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Welcome to the Future of Programming Education</h1>
+                    <p>A comprehensive Learning Management System designed for programming education. Connect with expert lecturers, join interactive classes, and grow your coding skills in a collaborative environment.</p>
+                    <div class="hero-actions">
+                        <button class="btn-primary large" onclick="showRegisterModal()">Start Learning Today</button>
+                        <a href="#demo" class="btn-outline large">Watch Demo</a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <span class="stat-number">10K+</span>
+                            <span class="stat-label">Active Students</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">500+</span>
+                            <span class="stat-label">Expert Lecturers</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">1K+</span>
+                            <span class="stat-label">Programming Courses</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="floating-elements">
+                        <div class="floating-card calendar-preview">
+                            <div class="card-header">
+                                <i class="fas fa-calendar"></i>
+                                <span>Upcoming Classes</span>
+                            </div>
+                            <div class="class-item">
+                                <div class="class-time">09:00 AM</div>
+                                <div class="class-info">
+                                    <div class="class-title">Advanced JavaScript</div>
+                                    <div class="class-instructor">Dr. Sarah Chen</div>
+                                </div>
+                            </div>
+                            <div class="class-item">
+                                <div class="class-time">02:00 PM</div>
+                                <div class="class-info">
+                                    <div class="class-title">Python for AI</div>
+                                    <div class="class-instructor">Prof. Alex Kumar</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="floating-card community-preview">
+                            <div class="card-header">
+                                <i class="fas fa-users"></i>
+                                <span>Community</span>
+                            </div>
+                            <div class="community-post">
+                                <div class="post-author">
+                                    <div class="avatar">JD</div>
+                                    <span>John Doe</span>
+                                </div>
+                                <div class="post-content">Just completed the React course! 🚀</div>
+                            </div>
+                        </div>
+
+                        <div class="floating-card progress-preview">
+                            <div class="card-header">
+                                <i class="fas fa-chart-line"></i>
+                                <span>Your Progress</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 75%;"></div>
+                            </div>
+                            <div class="progress-text">JavaScript Fundamentals - 75%</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Animated Background Elements -->
+                    <div class="bg-elements">
+                        <div class="bg-circle circle-1"></div>
+                        <div class="bg-circle circle-2"></div>
+                        <div class="bg-circle circle-3"></div>
+                        <div class="code-lines">
+                            <div class="code-line"></div>
+                            <div class="code-line"></div>
+                            <div class="code-line"></div>
+                            <div class="code-line"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="features">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Powerful Features for Modern Learning</h2>
+                    <p>Everything you need to learn, teach, and collaborate in programming education.</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h3>Smart Calendar</h3>
+                        <p>Microsoft Teams-inspired calendar system for scheduling and joining programming classes seamlessly.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <h3>Interactive Classes</h3>
+                        <p>Join live coding sessions, workshops, and lectures with screen sharing and real-time collaboration.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Vibrant Community</h3>
+                        <p>Connect with fellow learners, share projects, ask questions, and collaborate on coding challenges.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3>Code Editor</h3>
+                        <p>Built-in code editor with syntax highlighting, real-time collaboration, and instant feedback.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Progress Tracking</h3>
+                        <p>Track your learning journey with detailed analytics, achievements, and personalized recommendations.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>Expert Instructors</h3>
+                        <p>Learn from industry professionals and experienced educators in various programming languages.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Programming Languages Section -->
+        <section class="languages">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Master Popular Programming Languages</h2>
+                    <p>Comprehensive courses in the most in-demand programming languages and technologies.</p>
+                </div>
+                <div class="languages-grid">
+                    <div class="language-card">
+                        <div class="language-icon javascript">
+                            <i class="fab fa-js-square"></i>
+                        </div>
+                        <h3>JavaScript</h3>
+                        <p>Frontend and backend development</p>
+                    </div>
+                    <div class="language-card">
+                        <div class="language-icon python">
+                            <i class="fab fa-python"></i>
+                        </div>
+                        <h3>Python</h3>
+                        <p>Data science and AI development</p>
+                    </div>
+                    <div class="language-card">
+                        <div class="language-icon cpp">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3>C++</h3>
+                        <p>Systems programming and algorithms</p>
+                    </div>
+                    <div class="language-card">
+                        <div class="language-icon react">
+                            <i class="fab fa-react"></i>
+                        </div>
+                        <h3>React</h3>
+                        <p>Modern web application development</p>
+                    </div>
+                    <div class="language-card">
+                        <div class="language-icon node">
+                            <i class="fab fa-node-js"></i>
+                        </div>
+                        <h3>Node.js</h3>
+                        <p>Server-side JavaScript development</p>
+                    </div>
+                    <div class="language-card">
+                        <div class="language-icon ai">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>AI/ML</h3>
+                        <p>Artificial Intelligence and Machine Learning</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>Ready to Start Your Programming Journey?</h2>
+                    <p>Join thousands of students and instructors in our vibrant learning community.</p>
+                    <div class="cta-actions">
+                        <a href="register.html" class="btn-primary large">Sign Up Now</a>
+                        <a href="dashboard.html" class="btn-outline large">Explore Dashboard</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-brand">
+                        <img src="./v/openrockets.png" alt="OpenRockets" class="footer-logo">
+                        <p>Empowering the next generation of programmers through innovative education.</p>
+                    </div>
+                    <div class="footer-links">
+                        <div class="footer-section">
+                            <h4>Platform</h4>
+                            <ul>
+                                <li><a href="dashboard.html">Dashboard</a></li>
+                                <li><a href="community.html">Community</a></li>
+                                <li><a href="courses.html">Courses</a></li>
+                                <li><a href="calendar.html">Calendar</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-section">
+                            <h4>Resources</h4>
+                            <ul>
+                                <li><a href="about.html">About</a></li>
+                                <li><a href="#help">Help Center</a></li>
+                                <li><a href="#docs">Documentation</a></li>
+                                <li><a href="#api">API</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-section">
+                            <h4>Connect</h4>
+                            <ul>
+                                <li><a href="https://github.com/openrockets">GitHub</a></li>
+                                <li><a href="https://discord.gg/openrockets">Discord</a></li>
+                                <li><a href="#twitter">Twitter</a></li>
+                                <li><a href="#linkedin">LinkedIn</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2025 OpenRockets LMS. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="scripts/api.js"></script>
+    <script src="scripts/auth.js"></script>
+    <script src="scripts/landing.js"></script>
+</body>
+</html>
