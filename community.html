@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community - OpenRockets LMS</title>
+    <meta name="description" content="Join the vibrant OpenRockets programming community - connect with 10K+ students and expert instructors, share coding projects, participate in discussions, collaborate on challenges, get help with JavaScript, Python, C++, AI, and Machine Learning. Build lasting professional relationships in our inclusive developer community.">
+    <link rel="icon" type="image/png" href="i/assets/static/openthread_logo_bash-trans-removebg-preview (1).png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles/dashboard.css">
+    <link rel="stylesheet" href="styles/community.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <img src="./v/openrockets.png" alt="OpenRockets" class="sidebar-logo">
+            <span class="sidebar-title">OpenRockets LMS</span>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item">
+                <i class="fas fa-home"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="calendar.html" class="nav-item">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Calendar</span>
+            </a>
+            <a href="courses.html" class="nav-item">
+                <i class="fas fa-graduation-cap"></i>
+                <span>My Courses</span>
+            </a>
+            <a href="community.html" class="nav-item active">
+                <i class="fas fa-users"></i>
+                <span>Community</span>
+            </a>
+            <a href="assignments.html" class="nav-item">
+                <i class="fas fa-clipboard-list"></i>
+                <span>Assignments</span>
+            </a>
+            <a href="grades.html" class="nav-item">
+                <i class="fas fa-chart-line"></i>
+                <span>Grades</span>
+            </a>
+            <a href="messages.html" class="nav-item">
+                <i class="fas fa-comments"></i>
+                <span>Messages</span>
+                <span class="badge">3</span>
+            </a>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <div class="user-profile">
+                <div class="user-avatar">JD</div>
+                <div class="user-info">
+                    <div class="user-name">John Doe</div>
+                    <div class="user-role">Student</div>
+                </div>
+                <button class="user-menu-btn" title="User menu">
+                    <i class="fas fa-ellipsis-v"></i>
+                </button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Bar -->
+        <header class="top-bar">
+            <div class="top-bar-left">
+                <button class="sidebar-toggle" title="Toggle sidebar">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h1 class="page-title">Community</h1>
+            </div>
+            <div class="top-bar-right">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search posts, people, or topics...">
+                </div>
+                <button class="notification-btn" title="Notifications">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-dot"></span>
+                </button>
+                <div class="user-menu">
+                    <div class="user-avatar small">JD</div>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- Community Content -->
+        <div class="community-container">
+            <div class="community-layout">
+                <!-- Left Sidebar - Community Navigation -->
+                <aside class="community-sidebar">
+                    <div class="community-nav">
+                        <div class="nav-section">
+                            <h3>Feeds</h3>
+                            <ul class="nav-list">
+                                <li><a href="#" class="nav-link active"><i class="fas fa-home"></i> Home Feed</a></li>
+                                <li><a href="#" class="nav-link"><i class="fas fa-fire"></i> Trending</a></li>
+                                <li><a href="#" class="nav-link"><i class="fas fa-clock"></i> Recent</a></li>
+                                <li><a href="#" class="nav-link"><i class="fas fa-bookmark"></i> Saved Posts</a></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="nav-section">
+                            <h3>Categories</h3>
+                            <ul class="nav-list">
+                                <li><a href="#" class="nav-link"><i class="fab fa-js-square"></i> JavaScript</a></li>
+                                <li><a href="#" class="nav-link"><i class="fab fa-python"></i> Python</a></li>
+                                <li><a href="#" class="nav-link"><i class="fas fa-code"></i> C++</a></li>
+                                <li><a href="#" class="nav-link"><i class="fab fa-react"></i> React</a></li>
+                                <li><a href="#" class="nav-link"><i class="fab fa-node-js"></i> Node.js</a></li>
+                                <li><a href="#" class="nav-link"><i class="fas fa-brain"></i> AI/ML</a></li>
+                                <li><a href="#" class="nav-link"><i class="fas fa-question-circle"></i> Help & Support</a></li>
+                                <li><a href="#" class="nav-link"><i class="fas fa-lightbulb"></i> Project Ideas</a></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="nav-section">
+                            <h3>Study Groups</h3>
+                            <ul class="nav-list">
+                                <li><a href="#" class="nav-link"><i class="fas fa-users"></i> JavaScript Study Group</a></li>
+                                <li><a href="#" class="nav-link"><i class="fas fa-users"></i> Python Beginners</a></li>
+                                <li><a href="#" class="nav-link"><i class="fas fa-users"></i> React Developers</a></li>
+                                <li><a href="#" class="nav-link"><i class="fas fa-plus"></i> Create Group</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Main Feed -->
+                <div class="community-main">
+                    <!-- Create Post -->
+                    <div class="create-post-card">
+                        <div class="create-post-header">
+                            <div class="user-avatar">JD</div>
+                            <button class="create-post-btn" id="createPostBtn">What's on your mind, John?</button>
+                        </div>
+                        <div class="create-post-actions">
+                            <button class="action-btn" data-type="image">
+                                <i class="fas fa-image"></i>
+                                <span>Photo</span>
+                            </button>
+                            <button class="action-btn" data-type="code">
+                                <i class="fas fa-code"></i>
+                                <span>Code</span>
+                            </button>
+                            <button class="action-btn" data-type="poll">
+                                <i class="fas fa-poll"></i>
+                                <span>Poll</span>
+                            </button>
+                            <button class="action-btn" data-type="event">
+                                <i class="fas fa-calendar"></i>
+                                <span>Event</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Posts Feed -->
+                    <div class="posts-feed">
+                        <!-- Featured Post -->
+                        <article class="post featured-post">
+                            <div class="post-header">
+                                <div class="post-author">
+                                    <div class="user-avatar">SC</div>
+                                    <div class="author-info">
+                                        <div class="author-name">Dr. Sarah Chen <span class="verified-badge"><i class="fas fa-check-circle"></i></span></div>
+                                        <div class="post-meta">
+                                            <span class="post-time">2 hours ago</span>
+                                            <span class="post-category">JavaScript</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="post-menu" title="Post options">
+                                    <i class="fas fa-ellipsis-h"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="post-content">
+                                <h3>🚀 New JavaScript ES2024 Features You Should Know</h3>
+                                <p>I've just finished putting together a comprehensive guide on the latest JavaScript features that landed in ES2024. Some really exciting additions that will change how we write modern JavaScript!</p>
+                                
+                                <div class="post-highlights">
+                                    <div class="highlight-item">
+                                        <i class="fas fa-arrow-right"></i>
+                                        <span>Array.prototype.with() method</span>
+                                    </div>
+                                    <div class="highlight-item">
+                                        <i class="fas fa-arrow-right"></i>
+                                        <span>Temporal API improvements</span>
+                                    </div>
+                                    <div class="highlight-item">
+                                        <i class="fas fa-arrow-right"></i>
+                                        <span>RegExp v flag</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="code-preview">
+                                    <pre><code>// New Array.with() method
+const arr = [1, 2, 3, 4, 5];
+const newArr = arr.with(2, 'updated');
+console.log(newArr); // [1, 2, 'updated', 4, 5]</code></pre>
+                                </div>
+                            </div>
+                            
+                            <div class="post-footer">
+                                <div class="post-stats">
+                                    <span class="stat-item">
+                                        <i class="fas fa-heart"></i>
+                                        <span>127 likes</span>
+                                    </span>
+                                    <span class="stat-item">
+                                        <i class="fas fa-comment"></i>
+                                        <span>23 comments</span>
+                                    </span>
+                                    <span class="stat-item">
+                                        <i class="fas fa-share"></i>
+                                        <span>15 shares</span>
+                                    </span>
+                                </div>
+                                
+                                <div class="post-actions">
+                                    <button class="action-btn liked">
+                                        <i class="fas fa-heart"></i>
+                                        <span>Like</span>
+                                    </button>
+                                    <button class="action-btn">
+                                        <i class="fas fa-comment"></i>
+                                        <span>Comment</span>
+                                    </button>
+                                    <button class="action-btn">
+                                        <i class="fas fa-bookmark"></i>
+                                        <span>Save</span>
+                                    </button>
+                                    <button class="action-btn">
+                                        <i class="fas fa-share"></i>
+                                        <span>Share</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Regular Posts -->
+                        <article class="post">
+                            <div class="post-header">
+                                <div class="post-author">
+                                    <div class="user-avatar">AS</div>
+                                    <div class="author-info">
+                                        <div class="author-name">Alice Smith</div>
+                                        <div class="post-meta">
+                                            <span class="post-time">4 hours ago</span>
+                                            <span class="post-category">React</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="post-menu" title="Post options">
+                                    <i class="fas fa-ellipsis-h"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="post-content">
+                                <p>Just finished my first React project! 🎉 Built a task management app with drag & drop functionality using React DnD. The learning curve was steep but so worth it!</p>
+                                
+                                <div class="post-image">
+                                    <img src="https://via.placeholder.com/600x300/6264a7/ffffff?text=React+Task+Manager+Screenshot" alt="React Task Manager App">
+                                </div>
+                                
+                                <div class="post-tags">
+                                    <span class="tag">#React</span>
+                                    <span class="tag">#JavaScript</span>
+                                    <span class="tag">#DragAndDrop</span>
+                                    <span class="tag">#FirstProject</span>
+                                </div>
+                            </div>
+                            
+                            <div class="post-footer">
+                                <div class="post-stats">
+                                    <span class="stat-item">
+                                        <i class="fas fa-heart"></i>
+                                        <span>45 likes</span>
+                                    </span>
+                                    <span class="stat-item">
+                                        <i class="fas fa-comment"></i>
+                                        <span>12 comments</span>
+                                    </span>
+                                </div>
+                                
+                                <div class="post-actions">
+                                    <button class="action-btn">
+                                        <i class="fas fa-heart"></i>
+                                        <span>Like</span>
+                                    </button>
+                                    <button class="action-btn">
+                                        <i class="fas fa-comment"></i>
+                                        <span>Comment</span>
+                                    </button>
+                                    <button class="action-btn">
+                                        <i class="fas fa-bookmark"></i>
+                                        <span>Save</span>
+                                    </button>
+                                    <button class="action-btn">
+                                        <i class="fas fa-share"></i>
+                                        <span>Share</span>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <!-- Comments Section -->
+                            <div class="comments-section">
+                                <div class="comment">
+                                    <div class="comment-author">
+                                        <div class="user-avatar mini">MJ</div>
+                                        <div class="comment-info">
+                                            <span class="comment-author-name">Mike Johnson</span>
+                                            <span class="comment-time">2 hours ago</span>
+                                        </div>
+                                    </div>
+                                    <div class="comment-content">
+                                        <p>This looks amazing! I'm working on a similar project. How did you handle the state management for the drag and drop?</p>
+                                    </div>
+                                    <div class="comment-actions">
+                                        <button class="comment-action">
+                                            <i class="fas fa-heart"></i>
+                                            <span>5</span>
+                                        </button>
+                                        <button class="comment-action">Reply</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="comment">
+                                    <div class="comment-author">
+                                        <div class="user-avatar mini">AS</div>
+                                        <div class="comment-info">
+                                            <span class="comment-author-name">Alice Smith</span>
+                                            <span class="comment-time">1 hour ago</span>
+                                        </div>
+                                    </div>
+                                    <div class="comment-content">
+                                        <p>@Mike Johnson I used React Context for global state and local state for drag operations. Happy to share the code structure if you're interested!</p>
+                                    </div>
+                                    <div class="comment-actions">
+                                        <button class="comment-action">
+                                            <i class="fas fa-heart"></i>
+                                            <span>3</span>
+                                        </button>
+                                        <button class="comment-action">Reply</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="add-comment">
+                                    <div class="user-avatar mini">JD</div>
+                                    <input type="text" placeholder="Write a comment..." class="comment-input">
+                                    <button class="send-comment" disabled>
+                                        <i class="fas fa-paper-plane"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="post">
+                            <div class="post-header">
+                                <div class="post-author">
+                                    <div class="user-avatar">MJ</div>
+                                    <div class="author-info">
+                                        <div class="author-name">Mike Johnson</div>
+                                        <div class="post-meta">
+                                            <span class="post-time">6 hours ago</span>
+                                            <span class="post-category">Study Group</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="post-menu" title="Post options">
+                                    <i class="fas fa-ellipsis-h"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="post-content">
+                                <h4>📚 Weekend JavaScript Study Group - Join Us!</h4>
+                                <p>Hey everyone! We're organizing a JavaScript study group this weekend to work through some advanced concepts together. Topics include:</p>
+                                
+                                <ul class="content-list">
+                                    <li>Closures and Scope</li>
+                                    <li>Async/Await patterns</li>
+                                    <li>ES6+ features deep dive</li>
+                                    <li>Practice coding challenges</li>
+                                </ul>
+                                
+                                <div class="event-details">
+                                    <div class="event-info">
+                                        <i class="fas fa-calendar"></i>
+                                        <span>Saturday, January 11 - 2:00 PM EST</span>
+                                    </div>
+                                    <div class="event-info">
+                                        <i class="fas fa-clock"></i>
+                                        <span>Duration: 2-3 hours</span>
+                                    </div>
+                                    <div class="event-info">
+                                        <i class="fas fa-video"></i>
+                                        <span>Virtual meeting via Zoom</span>
+                                    </div>
+                                </div>
+                                
+                                <button class="join-event-btn">
+                                    <i class="fas fa-user-plus"></i>
+                                    <span>Join Study Group</span>
+                                </button>
+                            </div>
+                            
+                            <div class="post-footer">
+                                <div class="post-stats">
+                                    <span class="stat-item">
+                                        <i class="fas fa-heart"></i>
+                                        <span>28 interested</span>
+                                    </span>
+                                    <span class="stat-item">
+                                        <i class="fas fa-users"></i>
+                                        <span>15 joined</span>
+                                    </span>
+                                </div>
+                                
+                                <div class="post-actions">
+                                    <button class="action-btn">
+                                        <i class="fas fa-heart"></i>
+                                        <span>Interested</span>
+                                    </button>
+                                    <button class="action-btn">
+                                        <i class="fas fa-comment"></i>
+                                        <span>Comment</span>
+                                    </button>
+                                    <button class="action-btn">
+                                        <i class="fas fa-bookmark"></i>
+                                        <span>Save</span>
+                                    </button>
+                                    <button class="action-btn">
+                                        <i class="fas fa-share"></i>
+                                        <span>Share</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="post">
+                            <div class="post-header">
+                                <div class="post-author">
+                                    <div class="user-avatar">LD</div>
+                                    <div class="author-info">
+                                        <div class="author-name">Luna Davis</div>
+                                        <div class="post-meta">
+                                            <span class="post-time">1 day ago</span>
+                                            <span class="post-category">Python</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="post-menu" title="Post options">
+                                    <i class="fas fa-ellipsis-h"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="post-content">
+                                <h4>🐍 Python tip: List comprehensions vs Generator expressions</h4>
+                                <p>Quick comparison for beginners wondering about the difference:</p>
+                                
+                                <div class="code-comparison">
+                                    <div class="code-block">
+                                        <div class="code-title">List Comprehension</div>
+                                        <pre><code># Creates a list in memory
+squares = [x**2 for x in range(1000)]
+print(type(squares))  # <class 'list'></code></pre>
+                                    </div>
+                                    
+                                    <div class="code-block">
+                                        <div class="code-title">Generator Expression</div>
+                                        <pre><code># Creates a generator object
+squares = (x**2 for x in range(1000))
+print(type(squares))  # <class 'generator'></code></pre>
+                                    </div>
+                                </div>
+                                
+                                <p>Use generators for large datasets to save memory! 🧠</p>
+                            </div>
+                            
+                            <div class="post-footer">
+                                <div class="post-stats">
+                                    <span class="stat-item">
+                                        <i class="fas fa-heart"></i>
+                                        <span>67 likes</span>
+                                    </span>
+                                    <span class="stat-item">
+                                        <i class="fas fa-comment"></i>
+                                        <span>8 comments</span>
+                                    </span>
+                                </div>
+                                
+                                <div class="post-actions">
+                                    <button class="action-btn">
+                                        <i class="fas fa-heart"></i>
+                                        <span>Like</span>
+                                    </button>
+                                    <button class="action-btn">
+                                        <i class="fas fa-comment"></i>
+                                        <span>Comment</span>
+                                    </button>
+                                    <button class="action-btn">
+                                        <i class="fas fa-bookmark"></i>
+                                        <span>Save</span>
+                                    </button>
+                                    <button class="action-btn">
+                                        <i class="fas fa-share"></i>
+                                        <span>Share</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                    
+                    <!-- Load More -->
+                    <div class="load-more">
+                        <button class="load-more-btn">
+                            <i class="fas fa-plus"></i>
+                            <span>Load More Posts</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right Sidebar -->
+                <aside class="community-right-sidebar">
+                    <!-- Trending Topics -->
+                    <div class="sidebar-card">
+                        <h3 class="card-title">Trending Topics</h3>
+                        <div class="trending-topics">
+                            <div class="trending-item">
+                                <div class="trending-rank">#1</div>
+                                <div class="trending-info">
+                                    <div class="trending-topic">JavaScript ES2024</div>
+                                    <div class="trending-posts">127 posts</div>
+                                </div>
+                            </div>
+                            <div class="trending-item">
+                                <div class="trending-rank">#2</div>
+                                <div class="trending-info">
+                                    <div class="trending-topic">React Hooks</div>
+                                    <div class="trending-posts">89 posts</div>
+                                </div>
+                            </div>
+                            <div class="trending-item">
+                                <div class="trending-rank">#3</div>
+                                <div class="trending-info">
+                                    <div class="trending-topic">Python AI</div>
+                                    <div class="trending-posts">76 posts</div>
+                                </div>
+                            </div>
+                            <div class="trending-item">
+                                <div class="trending-rank">#4</div>
+                                <div class="trending-info">
+                                    <div class="trending-topic">Web Development</div>
+                                    <div class="trending-posts">65 posts</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Active Users -->
+                    <div class="sidebar-card">
+                        <h3 class="card-title">Active Now</h3>
+                        <div class="active-users">
+                            <div class="active-user">
+                                <div class="user-avatar online">SC</div>
+                                <div class="user-info">
+                                    <div class="user-name">Dr. Sarah Chen</div>
+                                    <div class="user-status">Teaching JavaScript</div>
+                                </div>
+                            </div>
+                            <div class="active-user">
+                                <div class="user-avatar online">MJ</div>
+                                <div class="user-info">
+                                    <div class="user-name">Mike Johnson</div>
+                                    <div class="user-status">In Python course</div>
+                                </div>
+                            </div>
+                            <div class="active-user">
+                                <div class="user-avatar online">AS</div>
+                                <div class="user-info">
+                                    <div class="user-name">Alice Smith</div>
+                                    <div class="user-status">Working on React</div>
+                                </div>
+                            </div>
+                            <div class="active-user">
+                                <div class="user-avatar online">LD</div>
+                                <div class="user-info">
+                                    <div class="user-name">Luna Davis</div>
+                                    <div class="user-status">Available to help</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Study Groups -->
+                    <div class="sidebar-card">
+                        <h3 class="card-title">Your Study Groups</h3>
+                        <div class="study-groups">
+                            <div class="study-group">
+                                <div class="group-info">
+                                    <div class="group-name">JavaScript Masters</div>
+                                    <div class="group-members">24 members</div>
+                                </div>
+                                <div class="group-activity">5 new posts</div>
+                            </div>
+                            <div class="study-group">
+                                <div class="group-info">
+                                    <div class="group-name">React Beginners</div>
+                                    <div class="group-members">156 members</div>
+                                </div>
+                                <div class="group-activity">12 new posts</div>
+                            </div>
+                            <div class="study-group">
+                                <div class="group-info">
+                                    <div class="group-name">Python AI Hub</div>
+                                    <div class="group-members">89 members</div>
+                                </div>
+                                <div class="group-activity">3 new posts</div>
+                            </div>
+                        </div>
+                        <button class="see-all-btn">See All Groups</button>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <!-- Create Post Modal -->
+    <div class="modal" id="createPostModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Create New Post</h3>
+                <button class="modal-close" id="closeModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="post-form">
+                    <div class="form-group">
+                        <label for="postCategory">Category</label>
+                        <select id="postCategory" class="form-control">
+                            <option value="">Select a category</option>
+                            <option value="javascript">JavaScript</option>
+                            <option value="python">Python</option>
+                            <option value="cpp">C++</option>
+                            <option value="react">React</option>
+                            <option value="nodejs">Node.js</option>
+                            <option value="ai">AI/ML</option>
+                            <option value="help">Help & Support</option>
+                            <option value="general">General Discussion</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="postTitle">Title (optional)</label>
+                        <input type="text" id="postTitle" class="form-control" placeholder="Give your post a title...">
+                    </div>
+                    <div class="form-group">
+                        <label for="postContent">Content</label>
+                        <textarea id="postContent" class="form-control" rows="8" placeholder="What's on your mind? Share your thoughts, ask questions, or help others..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="postTags">Tags</label>
+                        <input type="text" id="postTags" class="form-control" placeholder="Add tags separated by spaces (e.g., #javascript #beginners #help)">
+                    </div>
+                    <div class="post-options">
+                        <button class="option-btn" data-option="code">
+                            <i class="fas fa-code"></i>
+                            <span>Add Code Block</span>
+                        </button>
+                        <button class="option-btn" data-option="image">
+                            <i class="fas fa-image"></i>
+                            <span>Add Image</span>
+                        </button>
+                        <button class="option-btn" data-option="poll">
+                            <i class="fas fa-poll"></i>
+                            <span>Create Poll</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" id="cancelPost">Cancel</button>
+                <button class="btn-primary" id="publishPost">Publish Post</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/dashboard.js"></script>
+    <script src="scripts/api.js"></script>
+    <script src="scripts/auth.js"></script>
+    <script src="scripts/community.js"></script>
+    <script src="scripts/community-integration.js"></script>
+</body>
+</html>

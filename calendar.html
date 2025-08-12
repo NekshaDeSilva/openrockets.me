@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar - OpenRockets LMS</title>
+    <meta name="description" content="Manage your programming education schedule with OpenRockets smart calendar system - view upcoming coding classes, workshops, and events. Schedule JavaScript, Python, C++, AI, and Machine Learning sessions with expert instructors. Microsoft Teams-inspired calendar for seamless class management and learning organization.">
+    <link rel="icon" type="image/png" href="i/assets/static/openthread_logo_bash-trans-removebg-preview (1).png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles/dashboard.css">
+    <link rel="stylesheet" href="styles/calendar.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <img src="./v/openrockets.png" alt="OpenRockets" class="sidebar-logo">
+            <span class="sidebar-title">OpenRockets LMS</span>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item">
+                <i class="fas fa-home"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="calendar.html" class="nav-item active">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Calendar</span>
+            </a>
+            <a href="courses.html" class="nav-item">
+                <i class="fas fa-graduation-cap"></i>
+                <span>My Courses</span>
+            </a>
+            <a href="community.html" class="nav-item">
+                <i class="fas fa-users"></i>
+                <span>Community</span>
+            </a>
+            <a href="assignments.html" class="nav-item">
+                <i class="fas fa-clipboard-list"></i>
+                <span>Assignments</span>
+            </a>
+            <a href="grades.html" class="nav-item">
+                <i class="fas fa-chart-line"></i>
+                <span>Grades</span>
+            </a>
+            <a href="messages.html" class="nav-item">
+                <i class="fas fa-comments"></i>
+                <span>Messages</span>
+                <span class="badge">3</span>
+            </a>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <div class="user-profile">
+                <div class="user-avatar">JD</div>
+                <div class="user-info">
+                    <div class="user-name">John Doe</div>
+                    <div class="user-role">Student</div>
+                </div>
+                <button class="user-menu-btn" title="User menu">
+                    <i class="fas fa-ellipsis-v"></i>
+                </button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Bar -->
+        <header class="top-bar">
+            <div class="top-bar-left">
+                <button class="sidebar-toggle" title="Toggle sidebar">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h1 class="page-title">Calendar</h1>
+            </div>
+            <div class="top-bar-right">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search events, classes, or meetings...">
+                </div>
+                <button class="notification-btn" title="Notifications">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-dot"></span>
+                </button>
+                <div class="user-menu">
+                    <div class="user-avatar small">JD</div>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- Calendar Content -->
+        <div class="calendar-container">
+            <!-- Calendar Header -->
+            <div class="calendar-header">
+                <div class="calendar-navigation">
+                    <button class="nav-btn" id="prevMonth">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="current-month-year">
+                        <h2 id="currentMonth">January 2025</h2>
+                    </div>
+                    <button class="nav-btn" id="nextMonth">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                
+                <div class="calendar-controls">
+                    <div class="view-selector">
+                        <button class="view-btn" data-view="day">Day</button>
+                        <button class="view-btn active" data-view="week">Week</button>
+                        <button class="view-btn" data-view="month">Month</button>
+                    </div>
+                    <button class="new-event-btn">
+                        <i class="fas fa-plus"></i>
+                        <span>New Event</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Calendar Layout -->
+            <div class="calendar-layout">
+                <!-- Calendar Sidebar -->
+                <aside class="calendar-sidebar">
+                    <div class="mini-calendar">
+                        <div class="mini-calendar-header">
+                            <button class="mini-nav-btn" id="miniPrev">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <span class="mini-month">January 2025</span>
+                            <button class="mini-nav-btn" id="miniNext">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                        <div class="mini-calendar-grid">
+                            <div class="mini-day-header">S</div>
+                            <div class="mini-day-header">M</div>
+                            <div class="mini-day-header">T</div>
+                            <div class="mini-day-header">W</div>
+                            <div class="mini-day-header">T</div>
+                            <div class="mini-day-header">F</div>
+                            <div class="mini-day-header">S</div>
+                            
+                            <!-- Previous month days -->
+                            <div class="mini-day prev-month">29</div>
+                            <div class="mini-day prev-month">30</div>
+                            <div class="mini-day prev-month">31</div>
+                            
+                            <!-- Current month days -->
+                            <div class="mini-day">1</div>
+                            <div class="mini-day">2</div>
+                            <div class="mini-day">3</div>
+                            <div class="mini-day">4</div>
+                            <div class="mini-day">5</div>
+                            <div class="mini-day today">6</div>
+                            <div class="mini-day">7</div>
+                            <div class="mini-day">8</div>
+                            <div class="mini-day">9</div>
+                            <div class="mini-day">10</div>
+                            <div class="mini-day">11</div>
+                            <div class="mini-day">12</div>
+                            <div class="mini-day">13</div>
+                            <div class="mini-day">14</div>
+                            <div class="mini-day">15</div>
+                            <div class="mini-day">16</div>
+                            <div class="mini-day">17</div>
+                            <div class="mini-day">18</div>
+                            <div class="mini-day">19</div>
+                            <div class="mini-day">20</div>
+                            <div class="mini-day">21</div>
+                            <div class="mini-day">22</div>
+                            <div class="mini-day">23</div>
+                            <div class="mini-day">24</div>
+                            <div class="mini-day">25</div>
+                            <div class="mini-day">26</div>
+                            <div class="mini-day">27</div>
+                            <div class="mini-day">28</div>
+                            <div class="mini-day">29</div>
+                            <div class="mini-day">30</div>
+                            <div class="mini-day">31</div>
+                            
+                            <!-- Next month days -->
+                            <div class="mini-day next-month">1</div>
+                            <div class="mini-day next-month">2</div>
+                        </div>
+                    </div>
+
+                    <div class="calendar-filters">
+                        <h3>My Calendars</h3>
+                        <div class="filter-list">
+                            <label class="filter-item">
+                                <input type="checkbox" checked>
+                                <span class="checkbox-custom javascript"></span>
+                                <span>JavaScript Classes</span>
+                            </label>
+                            <label class="filter-item">
+                                <input type="checkbox" checked>
+                                <span class="checkbox-custom python"></span>
+                                <span>Python Courses</span>
+                            </label>
+                            <label class="filter-item">
+                                <input type="checkbox" checked>
+                                <span class="checkbox-custom react"></span>
+                                <span>React Sessions</span>
+                            </label>
+                            <label class="filter-item">
+                                <input type="checkbox" checked>
+                                <span class="checkbox-custom assignments"></span>
+                                <span>Assignments</span>
+                            </label>
+                            <label class="filter-item">
+                                <input type="checkbox" checked>
+                                <span class="checkbox-custom personal"></span>
+                                <span>Personal Events</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="upcoming-events">
+                        <h3>Upcoming Events</h3>
+                        <div class="event-list">
+                            <div class="upcoming-event">
+                                <div class="event-time">09:00 AM</div>
+                                <div class="event-details">
+                                    <div class="event-title">JavaScript Advanced Concepts</div>
+                                    <div class="event-instructor">Dr. Sarah Chen</div>
+                                </div>
+                                <div class="event-indicator javascript"></div>
+                            </div>
+                            <div class="upcoming-event">
+                                <div class="event-time">02:00 PM</div>
+                                <div class="event-details">
+                                    <div class="event-title">Python ML Workshop</div>
+                                    <div class="event-instructor">Prof. Alex Kumar</div>
+                                </div>
+                                <div class="event-indicator python"></div>
+                            </div>
+                            <div class="upcoming-event">
+                                <div class="event-time">05:30 PM</div>
+                                <div class="event-details">
+                                    <div class="event-title">React Code Review</div>
+                                    <div class="event-instructor">Team Session</div>
+                                </div>
+                                <div class="event-indicator react"></div>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Main Calendar View -->
+                <div class="calendar-main">
+                    <!-- Week View -->
+                    <div class="calendar-view week-view active">
+                        <div class="week-header">
+                            <div class="time-column-header"></div>
+                            <div class="day-header">
+                                <div class="day-name">Sun</div>
+                                <div class="day-number">5</div>
+                            </div>
+                            <div class="day-header">
+                                <div class="day-name">Mon</div>
+                                <div class="day-number today">6</div>
+                            </div>
+                            <div class="day-header">
+                                <div class="day-name">Tue</div>
+                                <div class="day-number">7</div>
+                            </div>
+                            <div class="day-header">
+                                <div class="day-name">Wed</div>
+                                <div class="day-number">8</div>
+                            </div>
+                            <div class="day-header">
+                                <div class="day-name">Thu</div>
+                                <div class="day-number">9</div>
+                            </div>
+                            <div class="day-header">
+                                <div class="day-name">Fri</div>
+                                <div class="day-number">10</div>
+                            </div>
+                            <div class="day-header">
+                                <div class="day-name">Sat</div>
+                                <div class="day-number">11</div>
+                            </div>
+                        </div>
+                        
+                        <div class="week-body">
+                            <div class="time-column">
+                                <div class="time-slot">08:00</div>
+                                <div class="time-slot">09:00</div>
+                                <div class="time-slot">10:00</div>
+                                <div class="time-slot">11:00</div>
+                                <div class="time-slot">12:00</div>
+                                <div class="time-slot">13:00</div>
+                                <div class="time-slot">14:00</div>
+                                <div class="time-slot">15:00</div>
+                                <div class="time-slot">16:00</div>
+                                <div class="time-slot">17:00</div>
+                                <div class="time-slot">18:00</div>
+                                <div class="time-slot">19:00</div>
+                                <div class="time-slot">20:00</div>
+                            </div>
+                            
+                            <div class="calendar-grid">
+                                <!-- Sunday -->
+                                <div class="day-column">
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                </div>
+                                
+                                <!-- Monday -->
+                                <div class="day-column today-column">
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot">
+                                        <div class="event-block javascript" data-duration="2">
+                                            <div class="event-content">
+                                                <div class="event-title">JavaScript Advanced Concepts</div>
+                                                <div class="event-time">09:00 - 11:00</div>
+                                                <div class="event-instructor">Dr. Sarah Chen</div>
+                                                <div class="event-actions">
+                                                    <button class="join-btn">Join Now</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot">
+                                        <div class="event-block python" data-duration="1.5">
+                                            <div class="event-content">
+                                                <div class="event-title">Python ML Workshop</div>
+                                                <div class="event-time">14:00 - 15:30</div>
+                                                <div class="event-instructor">Prof. Alex Kumar</div>
+                                                <div class="event-actions">
+                                                    <button class="join-btn disabled">Starts in 4h</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot">
+                                        <div class="event-block react" data-duration="1">
+                                            <div class="event-content">
+                                                <div class="event-title">React Code Review</div>
+                                                <div class="event-time">17:30 - 18:30</div>
+                                                <div class="event-instructor">Team Session</div>
+                                                <div class="event-actions">
+                                                    <button class="join-btn disabled">Starts in 7h</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                </div>
+                                
+                                <!-- Tuesday -->
+                                <div class="day-column">
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot">
+                                        <div class="event-block assignments" data-duration="1">
+                                            <div class="event-content">
+                                                <div class="event-title">Assignment Due</div>
+                                                <div class="event-time">10:00</div>
+                                                <div class="event-instructor">JavaScript Project</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot">
+                                        <div class="event-block python" data-duration="2">
+                                            <div class="event-content">
+                                                <div class="event-title">Python Data Structures</div>
+                                                <div class="event-time">15:00 - 17:00</div>
+                                                <div class="event-instructor">Dr. Lisa Wang</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                </div>
+                                
+                                <!-- Wednesday -->
+                                <div class="day-column">
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot">
+                                        <div class="event-block react" data-duration="2">
+                                            <div class="event-content">
+                                                <div class="event-title">React Hooks Deep Dive</div>
+                                                <div class="event-time">11:00 - 13:00</div>
+                                                <div class="event-instructor">Sarah Johnson</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                </div>
+                                
+                                <!-- Thursday -->
+                                <div class="day-column">
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot">
+                                        <div class="event-block javascript" data-duration="1.5">
+                                            <div class="event-content">
+                                                <div class="event-title">JavaScript Testing</div>
+                                                <div class="event-time">09:00 - 10:30</div>
+                                                <div class="event-instructor">Mike Chen</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot">
+                                        <div class="event-block assignments" data-duration="1">
+                                            <div class="event-content">
+                                                <div class="event-title">Assignment Due</div>
+                                                <div class="event-time">14:00</div>
+                                                <div class="event-instructor">Python Data Analysis</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                </div>
+                                
+                                <!-- Friday -->
+                                <div class="day-column">
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot">
+                                        <div class="event-block personal" data-duration="2">
+                                            <div class="event-content">
+                                                <div class="event-title">Study Group</div>
+                                                <div class="event-time">14:00 - 16:00</div>
+                                                <div class="event-instructor">JavaScript Study Group</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                </div>
+                                
+                                <!-- Saturday -->
+                                <div class="day-column">
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                    <div class="hour-slot"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Event Details Modal -->
+    <div class="modal" id="eventModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Event Details</h3>
+                <button class="modal-close" id="closeEventModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="event-details-content">
+                    <div class="event-detail-item">
+                        <i class="fas fa-book"></i>
+                        <div>
+                            <strong>Course:</strong>
+                            <span>JavaScript Advanced Concepts</span>
+                        </div>
+                    </div>
+                    <div class="event-detail-item">
+                        <i class="fas fa-user"></i>
+                        <div>
+                            <strong>Instructor:</strong>
+                            <span>Dr. Sarah Chen</span>
+                        </div>
+                    </div>
+                    <div class="event-detail-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <strong>Time:</strong>
+                            <span>Monday, January 6, 2025 - 09:00 AM to 11:00 AM</span>
+                        </div>
+                    </div>
+                    <div class="event-detail-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <strong>Location:</strong>
+                            <span>Virtual Classroom - Zoom Meeting</span>
+                        </div>
+                    </div>
+                    <div class="event-detail-item">
+                        <i class="fas fa-info-circle"></i>
+                        <div>
+                            <strong>Description:</strong>
+                            <span>Deep dive into advanced JavaScript concepts including closures, prototypes, and async patterns. We'll cover practical examples and best practices for modern JavaScript development.</span>
+                        </div>
+                    </div>
+                    <div class="event-detail-item">
+                        <i class="fas fa-users"></i>
+                        <div>
+                            <strong>Attendees:</strong>
+                            <span>24 students enrolled</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary">Add to Calendar</button>
+                <button class="btn-primary">Join Meeting</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/dashboard.js"></script>
+    <script src="scripts/api.js"></script>
+    <script src="scripts/auth.js"></script>
+    <script src="scripts/calendar.js"></script>
+    <script src="scripts/calendar-integration.js"></script>
+</body>
+</html>

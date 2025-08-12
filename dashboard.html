@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - OpenRockets LMS</title>
+    <meta name="description" content="Access your personalized OpenRockets learning dashboard - track programming course progress, join live coding classes, manage assignments, view analytics, connect with instructors, and collaborate with fellow students. Your comprehensive hub for mastering JavaScript, Python, C++, AI, and Machine Learning.">
+    <link rel="icon" type="image/png" href="i/assets/static/openthread_logo_bash-trans-removebg-preview (1).png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles/dashboard.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <img src="./v/openrockets.png" alt="OpenRockets" class="sidebar-logo">
+            <span class="sidebar-title">OpenRockets LMS</span>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item active">
+                <i class="fas fa-home"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="calendar.html" class="nav-item">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Calendar</span>
+            </a>
+            <a href="courses.html" class="nav-item">
+                <i class="fas fa-graduation-cap"></i>
+                <span>My Courses</span>
+            </a>
+            <a href="community.html" class="nav-item">
+                <i class="fas fa-users"></i>
+                <span>Community</span>
+            </a>
+            <a href="assignments.html" class="nav-item">
+                <i class="fas fa-clipboard-list"></i>
+                <span>Assignments</span>
+            </a>
+            <a href="grades.html" class="nav-item">
+                <i class="fas fa-chart-line"></i>
+                <span>Grades</span>
+            </a>
+            <a href="messages.html" class="nav-item">
+                <i class="fas fa-comments"></i>
+                <span>Messages</span>
+                <span class="badge">3</span>
+            </a>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <div class="user-profile">
+                <div class="user-avatar">JD</div>
+                <div class="user-info">
+                    <div class="user-name">John Doe</div>
+                    <div class="user-role">Student</div>
+                </div>
+                <button class="user-menu-btn">
+                    <i class="fas fa-ellipsis-v"></i>
+                </button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Bar -->
+        <header class="top-bar">
+            <div class="top-bar-left">
+                <button class="sidebar-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h1 class="page-title">Dashboard</h1>
+            </div>
+            <div class="top-bar-right">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search courses, assignments, or people...">
+                </div>
+                <button class="notification-btn">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-dot"></span>
+                </button>
+                <div class="user-menu">
+                    <div class="user-avatar small">JD</div>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dashboard Content -->
+        <div class="dashboard-content">
+            <!-- Welcome Section -->
+            <section class="welcome-section">
+                <div class="welcome-content">
+                    <h2>Welcome back, John! 👋</h2>
+                    <p>You have 3 upcoming classes today and 2 pending assignments.</p>
+                </div>
+                <div class="quick-actions">
+                    <button class="quick-action-btn">
+                        <i class="fas fa-plus"></i>
+                        <span>Join Class</span>
+                    </button>
+                    <button class="quick-action-btn">
+                        <i class="fas fa-upload"></i>
+                        <span>Submit Assignment</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Main Dashboard Grid -->
+            <div class="dashboard-grid">
+                <!-- Today's Schedule -->
+                <div class="dashboard-card schedule-card">
+                    <div class="card-header">
+                        <h3>Today's Schedule</h3>
+                        <span class="date">Monday, January 6, 2025</span>
+                    </div>
+                    <div class="schedule-list">
+                        <div class="schedule-item current">
+                            <div class="schedule-time">
+                                <span class="time">09:00 AM</span>
+                                <span class="duration">2h</span>
+                            </div>
+                            <div class="schedule-details">
+                                <h4>Advanced JavaScript Concepts</h4>
+                                <p>Dr. Sarah Chen</p>
+                                <div class="schedule-tags">
+                                    <span class="tag">JavaScript</span>
+                                    <span class="tag">Advanced</span>
+                                </div>
+                            </div>
+                            <div class="schedule-actions">
+                                <button class="btn-join">Join Now</button>
+                            </div>
+                        </div>
+                        
+                        <div class="schedule-item">
+                            <div class="schedule-time">
+                                <span class="time">02:00 PM</span>
+                                <span class="duration">1.5h</span>
+                            </div>
+                            <div class="schedule-details">
+                                <h4>Python for Machine Learning</h4>
+                                <p>Prof. Alex Kumar</p>
+                                <div class="schedule-tags">
+                                    <span class="tag">Python</span>
+                                    <span class="tag">ML</span>
+                                </div>
+                            </div>
+                            <div class="schedule-actions">
+                                <button class="btn-join disabled">Starts in 4h</button>
+                            </div>
+                        </div>
+                        
+                        <div class="schedule-item">
+                            <div class="schedule-time">
+                                <span class="time">05:30 PM</span>
+                                <span class="duration">1h</span>
+                            </div>
+                            <div class="schedule-details">
+                                <h4>Code Review Session</h4>
+                                <p>Team Session</p>
+                                <div class="schedule-tags">
+                                    <span class="tag">Review</span>
+                                </div>
+                            </div>
+                            <div class="schedule-actions">
+                                <button class="btn-join disabled">Starts in 7h</button>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="calendar.html" class="view-all-link">View Full Calendar →</a>
+                </div>
+
+                <!-- Progress Overview -->
+                <div class="dashboard-card progress-card">
+                    <div class="card-header">
+                        <h3>Learning Progress</h3>
+                        <span class="progress-summary">75% Complete</span>
+                    </div>
+                    <div class="progress-list">
+                        <div class="progress-item">
+                            <div class="progress-info">
+                                <h4>JavaScript Fundamentals</h4>
+                                <p>Module 8 of 10</p>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" data-progress="80"></div>
+                            </div>
+                            <span class="progress-percent">80%</span>
+                        </div>
+                        
+                        <div class="progress-item">
+                            <div class="progress-info">
+                                <h4>React Development</h4>
+                                <p>Module 5 of 12</p>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" data-progress="42"></div>
+                            </div>
+                            <span class="progress-percent">42%</span>
+                        </div>
+                        
+                        <div class="progress-item">
+                            <div class="progress-info">
+                                <h4>Python Basics</h4>
+                                <p>Module 12 of 15</p>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" data-progress="88"></div>
+                            </div>
+                            <span class="progress-percent">88%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Assignments -->
+                <div class="dashboard-card assignments-card">
+                    <div class="card-header">
+                        <h3>Pending Assignments</h3>
+                        <span class="assignment-count">2 Due Soon</span>
+                    </div>
+                    <div class="assignments-list">
+                        <div class="assignment-item urgent">
+                            <div class="assignment-info">
+                                <h4>JavaScript Project - Todo App</h4>
+                                <p>Advanced JavaScript Concepts</p>
+                                <div class="assignment-meta">
+                                    <span class="due-date">Due: Today, 11:59 PM</span>
+                                    <span class="assignment-type">Project</span>
+                                </div>
+                            </div>
+                            <button class="submit-btn">Submit</button>
+                        </div>
+                        
+                        <div class="assignment-item">
+                            <div class="assignment-info">
+                                <h4>Python Data Analysis Report</h4>
+                                <p>Python for Machine Learning</p>
+                                <div class="assignment-meta">
+                                    <span class="due-date">Due: Wednesday, Jan 8</span>
+                                    <span class="assignment-type">Report</span>
+                                </div>
+                            </div>
+                            <button class="submit-btn">Submit</button>
+                        </div>
+                    </div>
+                    <a href="assignments.html" class="view-all-link">View All Assignments →</a>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="dashboard-card activity-card">
+                    <div class="card-header">
+                        <h3>Recent Activity</h3>
+                    </div>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <div class="activity-icon grade">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="activity-content">
+                                <p><strong>Grade received</strong> for React Component Lab</p>
+                                <span class="activity-time">2 hours ago</span>
+                            </div>
+                            <div class="activity-grade">A+</div>
+                        </div>
+                        
+                        <div class="activity-item">
+                            <div class="activity-icon message">
+                                <i class="fas fa-comment"></i>
+                            </div>
+                            <div class="activity-content">
+                                <p><strong>New message</strong> from Dr. Sarah Chen</p>
+                                <span class="activity-time">4 hours ago</span>
+                            </div>
+                        </div>
+                        
+                        <div class="activity-item">
+                            <div class="activity-icon class">
+                                <i class="fas fa-video"></i>
+                            </div>
+                            <div class="activity-content">
+                                <p><strong>Attended class</strong> Python Fundamentals</p>
+                                <span class="activity-time">Yesterday</span>
+                            </div>
+                        </div>
+                        
+                        <div class="activity-item">
+                            <div class="activity-icon achievement">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <div class="activity-content">
+                                <p><strong>Achievement unlocked:</strong> First Pull Request</p>
+                                <span class="activity-time">2 days ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Stats -->
+                <div class="dashboard-card stats-card">
+                    <div class="card-header">
+                        <h3>Quick Stats</h3>
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div class="stat-content">
+                                <span class="stat-number">6</span>
+                                <span class="stat-label">Active Courses</span>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-item">
+                            <div class="stat-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="stat-content">
+                                <span class="stat-number">32h</span>
+                                <span class="stat-label">This Week</span>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-item">
+                            <div class="stat-icon">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <div class="stat-content">
+                                <span class="stat-number">15</span>
+                                <span class="stat-label">Achievements</span>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-item">
+                            <div class="stat-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="stat-content">
+                                <span class="stat-number">124</span>
+                                <span class="stat-label">Classmates</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Community Highlights -->
+                <div class="dashboard-card community-card">
+                    <div class="card-header">
+                        <h3>Community Highlights</h3>
+                    </div>
+                    <div class="community-posts">
+                        <div class="community-post">
+                            <div class="post-author">
+                                <div class="user-avatar mini">AS</div>
+                                <div class="author-info">
+                                    <span class="author-name">Alice Smith</span>
+                                    <span class="post-time">1h ago</span>
+                                </div>
+                            </div>
+                            <div class="post-content">
+                                Just completed my first React project! Thanks to everyone who helped in the study group 🚀
+                            </div>
+                            <div class="post-actions">
+                                <button class="post-action">
+                                    <i class="fas fa-heart"></i>
+                                    <span>12</span>
+                                </button>
+                                <button class="post-action">
+                                    <i class="fas fa-comment"></i>
+                                    <span>5</span>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="community-post">
+                            <div class="post-author">
+                                <div class="user-avatar mini">MJ</div>
+                                <div class="author-info">
+                                    <span class="author-name">Mike Johnson</span>
+                                    <span class="post-time">3h ago</span>
+                                </div>
+                            </div>
+                            <div class="post-content">
+                                Anyone interested in a JavaScript study group this weekend? Drop a comment if you're in!
+                            </div>
+                            <div class="post-actions">
+                                <button class="post-action">
+                                    <i class="fas fa-heart"></i>
+                                    <span>8</span>
+                                </button>
+                                <button class="post-action">
+                                    <i class="fas fa-comment"></i>
+                                    <span>15</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="community.html" class="view-all-link">View Community →</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="scripts/api.js"></script>
+    <script src="scripts/auth.js"></script>
+    <script src="scripts/dashboard.js"></script>
+    <script src="scripts/dashboard-integration.js"></script>
+</body>
+</html>
