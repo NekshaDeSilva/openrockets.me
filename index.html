@@ -3,23 +3,936 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OpenRockets - Open Source Programming Community</title>
-    <meta name="description" content="OpenRockets is a dynamic open-source community at the intersection of C++, JavaScript, Python, Artificial Intelligence, and Machine Learning.">
-    <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="styles/components.css">
-    <link rel="stylesheet" href="styles/responsive.css">
+    <title>OpenRockets - Premier Open Source Programming Community & Learning Platform</title>
+    <meta name="description" content="Join OpenRockets, a cutting-edge open-source programming community specializing in C++, JavaScript, Python, AI, and Machine Learning. Access world-class learning management system, expert instructors, interactive coding classes, vibrant community collaboration, and comprehensive programming education. Transform your coding journey with 10K+ active students and 500+ expert lecturers.">
+    <meta name="keywords" content="programming education, open source community, LMS, coding bootcamp, JavaScript, Python, C++, AI, ML, online learning, programming courses, tech education">
+    <meta name="author" content="OpenRockets Software Foundation">
+    <link rel="icon" type="image/png" href="i/assets/static/openthread_logo_bash-trans-removebg-preview (1).png">
+    
+    <!-- Sophisticated Font Imports -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cal+Sans&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* Root Variables & Base Styles */
+        :root {
+            --primary-color: #0d1b2a;
+            --secondary-color: #415a77;
+            --accent-color: #778da9;
+            --highlight-color: #e0e1dd;
+            --text-primary: #f8f9fa;
+            --text-secondary: #adb5bd;
+            --gradient-primary: linear-gradient(135deg, #0d1b2a 0%, #415a77 100%);
+            --gradient-accent: linear-gradient(135deg, #778da9 0%, #e0e1dd 100%);
+            --shadow-light: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-medium: 0 8px 25px rgba(0, 0, 0, 0.15);
+            --shadow-heavy: 0 15px 35px rgba(0, 0, 0, 0.2);
+            --border-radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--primary-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Typography System */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        .display-1 {
+            font-size: clamp(3rem, 8vw, 7rem);
+            font-weight: 900;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .heading-xl {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+        }
+
+        .heading-lg {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+        }
+
+        .heading-md {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 600;
+        }
+
+        .body-lg {
+            font-family: 'Kanit', sans-serif;
+            font-size: clamp(1.125rem, 2vw, 1.25rem);
+            font-weight: 400;
+            color: var(--text-secondary);
+        }
+
+        .body-md {
+            font-family: 'Prompt', sans-serif;
+            font-size: clamp(1rem, 1.5vw, 1.125rem);
+            font-weight: 400;
+        }
+
+        .label {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(13, 27, 42, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(119, 141, 169, 0.1);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-brand img {
+            width: 3rem;
+            height: auto;
+        }
+
+        .brand-text {
+            font-family: 'Cal Sans', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 500;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--highlight-color);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-accent);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Buttons */
+        .btn {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--gradient-accent);
+            color: var(--primary-color);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 2px solid var(--accent-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent-color);
+            color: var(--primary-color);
+        }
+
+        .btn-large {
+            padding: 1rem 2rem;
+            font-size: 1.125rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: var(--gradient-primary);
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            background-image: 
+                radial-gradient(circle at 25% 25%, var(--accent-color) 2px, transparent 2px),
+                radial-gradient(circle at 75% 75%, var(--highlight-color) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .hero-content {
+            z-index: 2;
+        }
+
+        .hero-subtitle {
+            font-family: 'Kanit', sans-serif;
+            font-size: 1.25rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .hero-title {
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-description {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            display: block;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--highlight-color);
+        }
+
+        .stat-label {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Hero Visual */
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .floating-elements {
+            position: relative;
+            width: 100%;
+            height: 600px;
+        }
+
+        .floating-card {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            box-shadow: var(--shadow-medium);
+            animation: floatCard 6s ease-in-out infinite;
+        }
+
+        @keyframes floatCard {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .calendar-preview {
+            top: 50px;
+            right: 100px;
+            width: 280px;
+            animation-delay: 0s;
+        }
+
+        .community-preview {
+            top: 200px;
+            left: 50px;
+            width: 250px;
+            animation-delay: 2s;
+        }
+
+        .progress-preview {
+            bottom: 100px;
+            right: 50px;
+            width: 260px;
+            animation-delay: 4s;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+        }
+
+        /* Sections */
+        .section {
+            padding: 6rem 0;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-subtitle {
+            font-family: 'Kanit', sans-serif;
+            color: var(--accent-color);
+            font-size: 1.125rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .section-description {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-heavy);
+            border-color: var(--accent-color);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--highlight-color);
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Languages Section */
+        .languages {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .languages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .language-card {
+            text-align: center;
+            padding: 2rem 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+
+        .language-card:hover {
+            transform: translateY(-4px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .language-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .language-icon.javascript { color: #f7df1e; }
+        .language-icon.python { color: #3776ab; }
+        .language-icon.cpp { color: #00599c; }
+        .language-icon.react { color: #61dafb; }
+        .language-icon.node { color: #339933; }
+        .language-icon.ai { color: #ff6b6b; }
+
+        /* CTA Section */
+        .cta {
+            background: var(--gradient-primary);
+            text-align: center;
+        }
+
+        .cta-content h2 {
+            margin-bottom: 1rem;
+        }
+
+        .cta-content p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .cta-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-brand p {
+            color: var(--text-secondary);
+            margin-top: 1rem;
+        }
+
+        .footer-links {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .footer-section h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.125rem;
+            margin-bottom: 1rem;
+            color: var(--highlight-color);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-section a:hover {
+            color: var(--highlight-color);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1rem;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 2rem 1rem;
+            }
+
+            .hero-stats {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .cta-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-links {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-slide-up {
+            animation: slideInUp 0.6s ease-out;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--primary-color);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-color);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--highlight-color);
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-brand">
-                <img draggable="false" src="./v/openrockets.png" alt="logo" style="width: 5rem;">
+                <img src="./v/openrockets.png" alt="OpenRockets Logo">
+                <span class="brand-text">OpenRockets</span>
             </div>
+            <div class="nav-links">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#languages" class="nav-link">Languages</a>
+                <a href="community.html" class="nav-link">Community</a>
+                <a href="dashboard.html" class="btn btn-secondary">Dashboard</a>
+                <a href="join.html" class="btn btn-primary">Join Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-background"></div>
+        <div class="hero-container">
+            <div class="hero-content animate-slide-up">
+                <p class="hero-subtitle">Welcome to the Future</p>
+                <h1 class="display-1 hero-title">Premier Programming Education Platform</h1>
+                <p class="hero-description body-lg">
+                    Join OpenRockets, the most comprehensive open-source programming community. Master C++, JavaScript, Python, AI, and Machine Learning with expert instructors, interactive classes, and a vibrant learning ecosystem designed for tomorrow's innovators.
+                </p>
+                <div class="hero-actions">
+                    <a href="join.html" class="btn btn-primary btn-large">Start Learning Today</a>
+                    <a href="dashboard.html" class="btn btn-secondary btn-large">Explore Dashboard</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">10K+</span>
+                        <span class="stat-label">Active Students</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">Expert Instructors</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">1K+</span>
+                        <span class="stat-label">Courses</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="floating-elements">
+                    <div class="floating-card calendar-preview">
+                        <div class="card-header">
+                            <i class="fas fa-calendar"></i>
+                            <span>Upcoming Classes</span>
+                        </div>
+                        <div class="class-item">
+                            <div class="class-time">09:00 AM</div>
+                            <div class="class-info">
+                                <div class="class-title">Advanced JavaScript</div>
+                                <div class="class-instructor">Dr. Sarah Chen</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="floating-card community-preview">
+                        <div class="card-header">
+                            <i class="fas fa-users"></i>
+                            <span>Community</span>
+                        </div>
+                        <div class="community-post">
+                            <div class="post-content">Just completed React course! 🚀</div>
+                        </div>
+                    </div>
+
+                    <div class="floating-card progress-preview">
+                        <div class="card-header">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Your Progress</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 75%; height: 8px; background: var(--gradient-accent); border-radius: 4px;"></div>
+                        </div>
+                        <div class="progress-text">JavaScript Fundamentals - 75%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-subtitle">Who We Are</p>
+                <h2 class="heading-xl">Dynamic Open-Source Programming Community</h2>
+                <p class="section-description">
+                    OpenRockets is a cutting-edge open-source community at the intersection of modern programming languages, artificial intelligence, and machine learning. We bring passionate developers together to collaborate, innovate, and grow through transformative educational experiences.
+                </p>
+            </div>
+            <div class="hero-stats" style="margin-top: 3rem;">
+                <div class="stat">
+                    <span class="stat-number">15+</span>
+                    <span class="stat-label">Core Members</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Non-Profit</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">8+</span>
+                    <span class="stat-label">Innovations</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="section">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-subtitle">Platform Features</p>
+                <h2 class="heading-xl">Powerful Tools for Modern Learning</h2>
+                <p class="section-description">
+                    Everything you need to learn, teach, and collaborate in programming education with cutting-edge technology and innovative pedagogical approaches.
+                </p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3>Smart Calendar System</h3>
+                    <p>Microsoft Teams-inspired calendar system for scheduling and joining programming classes seamlessly with automated reminders and integration.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3>Interactive Live Classes</h3>
+                    <p>Join live coding sessions, workshops, and lectures with screen sharing, real-time collaboration, and interactive coding environments.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Vibrant Community</h3>
+                    <p>Connect with fellow learners, share projects, ask questions, collaborate on coding challenges, and build lasting professional relationships.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Advanced Code Editor</h3>
+                    <p>Built-in code editor with syntax highlighting, real-time collaboration, instant feedback, and integrated debugging tools.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Progress Analytics</h3>
+                    <p>Track your learning journey with detailed analytics, achievements, personalized recommendations, and skill assessments.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Expert Instructors</h3>
+                    <p>Learn from industry professionals and experienced educators with proven track records in various programming languages and technologies.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programming Languages Section -->
+    <section id="languages" class="section languages">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-subtitle">Technologies</p>
+                <h2 class="heading-xl">Master In-Demand Programming Languages</h2>
+                <p class="section-description">
+                    Comprehensive courses in the most sought-after programming languages and cutting-edge technologies that drive today's digital innovation.
+                </p>
+            </div>
+            <div class="languages-grid">
+                <div class="language-card">
+                    <div class="language-icon javascript">
+                        <i class="fab fa-js-square"></i>
+                    </div>
+                    <h3 class="heading-md">JavaScript</h3>
+                    <p class="body-md">Frontend and backend development</p>
+                </div>
+                <div class="language-card">
+                    <div class="language-icon python">
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <h3 class="heading-md">Python</h3>
+                    <p class="body-md">Data science and AI development</p>
+                </div>
+                <div class="language-card">
+                    <div class="language-icon cpp">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="heading-md">C++</h3>
+                    <p class="body-md">Systems programming and algorithms</p>
+                </div>
+                <div class="language-card">
+                    <div class="language-icon react">
+                        <i class="fab fa-react"></i>
+                    </div>
+                    <h3 class="heading-md">React</h3>
+                    <p class="body-md">Modern web application development</p>
+                </div>
+                <div class="language-card">
+                    <div class="language-icon node">
+                        <i class="fab fa-node-js"></i>
+                    </div>
+                    <h3 class="heading-md">Node.js</h3>
+                    <p class="body-md">Server-side JavaScript development</p>
+                </div>
+                <div class="language-card">
+                    <div class="language-icon ai">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="heading-md">AI/ML</h3>
+                    <p class="body-md">Artificial Intelligence and Machine Learning</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="heading-xl">Ready to Transform Your Programming Journey?</h2>
+                <p>Join thousands of students and instructors in our innovative learning ecosystem and unlock your full potential in software development.</p>
+                <div class="cta-actions">
+                    <a href="join.html" class="btn btn-primary btn-large">Start Learning Now</a>
+                    <a href="dashboard.html" class="btn btn-secondary btn-large">Explore Platform</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="./v/openrockets.png" alt="OpenRockets" style="width: 3rem; margin-bottom: 1rem;">
+                    <p>Empowering the next generation of programmers through innovative education and collaborative open-source development.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-section">
+                        <h4>Platform</h4>
+                        <ul>
+                            <li><a href="dashboard.html">Dashboard</a></li>
+                            <li><a href="community.html">Community</a></li>
+                            <li><a href="calendar.html">Calendar</a></li>
+                            <li><a href="join.html">Join</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="#help">Help Center</a></li>
+                            <li><a href="#docs">Documentation</a></li>
+                            <li><a href="#api">API</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Connect</h4>
+                        <ul>
+                            <li><a href="https://github.com/openrockets">GitHub</a></li>
+                            <li><a href="channel.html">Community Chat</a></li>
+                            <li><a href="#twitter">Twitter</a></li>
+                            <li><a href="#linkedin">LinkedIn</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 OpenRockets Software Foundation. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts/api.js"></script>
+    <script src="scripts/auth.js"></script>
+    <script src="scripts/main.js"></script>
+</body>
+</html>
             <div class="nav-menu" id="navMenu">
                 <a href="#home" class="nav-link">Home</a>
                   <a href="/education" class="nav-link">
