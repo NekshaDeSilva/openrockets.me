@@ -18,19 +18,25 @@
     <style>
         /* Root Variables & Base Styles */
         :root {
-            --primary-color: #0d1b2a;
-            --secondary-color: #004b49;
-            --accent-color: #778da9;
-            --highlight-color: #e0e1dd;
-            --text-primary: #f8f9fa;
-            --text-secondary: #adb5bd;
-            --gradient-primary: linear-gradient(135deg, #0d1b2a 0%, #415a77 100%);
-            --gradient-accent: linear-gradient(135deg, #778da9 0%, #e0e1dd 100%);
-            --shadow-light: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --shadow-medium: 0 8px 25px rgba(0, 0, 0, 0.15);
-            --shadow-heavy: 0 15px 35px rgba(0, 0, 0, 0.2);
-            --border-radius: 12px;
+            --primary-color: #0f1419;
+            --secondary-color: #1a1f2e;
+            --accent-color: #ec3750;
+            --accent-secondary: #ff8c42;
+            --accent-tertiary: #33d9b2;
+            --highlight-color: #ffffff;
+            --text-primary: #ffffff;
+            --text-secondary: #8492a6;
+            --gradient-primary: linear-gradient(135deg, #0f1419 0%, #1a1f2e 50%, #252f3f 100%);
+            --gradient-accent: linear-gradient(135deg, #ec3750 0%, #ff8c42 100%);
+            --gradient-secondary: linear-gradient(135deg, #33d9b2 0%, #3742fa 100%);
+            --gradient-rainbow: linear-gradient(135deg, #ec3750 0%, #ff8c42 25%, #feca57 50%, #33d9b2 75%, #3742fa 100%);
+            --shadow-light: 0 4px 12px rgba(236, 55, 80, 0.15);
+            --shadow-medium: 0 8px 25px rgba(236, 55, 80, 0.2);
+            --shadow-heavy: 0 15px 35px rgba(236, 55, 80, 0.3);
+            --shadow-glow: 0 0 30px rgba(236, 55, 80, 0.4);
+            --border-radius: 16px;
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
 
         * {
@@ -45,7 +51,7 @@
 
         body {
             font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--primary-color);
+            background: var(--gradient-primary);
             color: var(--text-primary);
             line-height: 1.6;
             overflow-x: hidden;
@@ -62,10 +68,26 @@
         .display-1 {
             font-size: clamp(3rem, 8vw, 7rem);
             font-weight: 900;
-            background: var(--gradient-accent);
+            background: var(--gradient-rainbow);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            animation: gradientShift 4s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { 
+                background: var(--gradient-rainbow);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
+            50% { 
+                background: var(--gradient-secondary);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
         }
 
         .heading-xl {
@@ -109,11 +131,16 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(13, 27, 42, 0.95);
+            background: rgba(15, 20, 25, 0.85);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(119, 141, 169, 0.1);
+            border-bottom: 1px solid rgba(236, 55, 80, 0.2);
             z-index: 1000;
             transition: var(--transition);
+        }
+
+        .navbar:hover {
+            background: rgba(15, 20, 25, 0.95);
+            border-bottom: 1px solid rgba(236, 55, 80, 0.4);
         }
 
         .nav-container {
@@ -144,6 +171,11 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            transition: var(--transition-bounce);
+        }
+
+        .nav-brand:hover .brand-text {
+            transform: scale(1.05);
         }
 
         .nav-links {
@@ -163,6 +195,7 @@
 
         .nav-link:hover {
             color: var(--highlight-color);
+            transform: translateY(-1px);
         }
 
         .nav-link::after {
@@ -173,7 +206,7 @@
             width: 0;
             height: 2px;
             background: var(--gradient-accent);
-            transition: var(--transition);
+            transition: var(--transition-bounce);
         }
 
         .nav-link:hover::after {
@@ -198,24 +231,63 @@
 
         .btn-primary {
             background: var(--gradient-accent);
-            color: var(--primary-color);
+            color: var(--highlight-color);
             box-shadow: var(--shadow-medium);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
         }
 
         .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-heavy);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-glow);
+            border: 2px solid var(--accent-color);
         }
 
         .btn-secondary {
             background: transparent;
             color: var(--text-primary);
             border: 2px solid var(--accent-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-secondary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: var(--gradient-accent);
+            transition: width 0.3s ease;
+            z-index: -1;
+        }
+
+        .btn-secondary:hover::before {
+            width: 100%;
         }
 
         .btn-secondary:hover {
-            background: var(--accent-color);
-            color: var(--primary-color);
+            color: var(--highlight-color);
+            border-color: var(--accent-secondary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
         }
 
         .btn-large {
@@ -239,17 +311,28 @@
             left: 0;
             width: 100%;
             height: 100%;
-            opacity: 0.1;
+            opacity: 0.7;
             background-image: 
                 radial-gradient(circle at 25% 25%, var(--accent-color) 2px, transparent 2px),
-                radial-gradient(circle at 75% 75%, var(--highlight-color) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: float 20s ease-in-out infinite;
+                radial-gradient(circle at 75% 75%, var(--accent-secondary) 1px, transparent 1px),
+                radial-gradient(circle at 50% 10%, var(--accent-tertiary) 1px, transparent 1px);
+            background-size: 60px 60px, 40px 40px, 80px 80px;
+            animation: floatBackground 25s ease-in-out infinite;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(180deg); }
+        @keyframes floatBackground {
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg);
+                opacity: 0.7;
+            }
+            33% { 
+                transform: translateY(-10px) rotate(60deg);
+                opacity: 0.5;
+            }
+            66% { 
+                transform: translateY(-5px) rotate(120deg);
+                opacity: 0.8;
+            }
         }
 
         .hero-container {
@@ -334,18 +417,27 @@
 
         .floating-card {
             position: absolute;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(236, 55, 80, 0.3);
             border-radius: var(--border-radius);
             padding: 1.5rem;
             box-shadow: var(--shadow-medium);
-            animation: floatCard 6s ease-in-out infinite;
+            animation: floatCard 8s ease-in-out infinite;
+            transition: var(--transition-bounce);
+        }
+
+        .floating-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            border-color: var(--accent-color);
+            box-shadow: var(--shadow-glow);
         }
 
         @keyframes floatCard {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            25% { transform: translateY(-8px) rotate(1deg); }
+            50% { transform: translateY(-15px) rotate(-1deg); }
+            75% { transform: translateY(-8px) rotate(1deg); }
         }
 
         .calendar-preview {
@@ -417,30 +509,55 @@
         }
 
         .feature-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(236, 55, 80, 0.2);
             border-radius: var(--border-radius);
             padding: 2rem;
-            transition: var(--transition);
+            transition: var(--transition-bounce);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(236, 55, 80, 0.05), transparent);
+            transition: left 0.8s;
+        }
+
+        .feature-card:hover::before {
+            left: 100%;
         }
 
         .feature-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-heavy);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--shadow-glow);
             border-color: var(--accent-color);
+            background: rgba(236, 55, 80, 0.05);
         }
 
         .feature-icon {
-            width: 60px;
-            height: 60px;
+            width: 70px;
+            height: 70px;
             background: var(--gradient-accent);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 1.5rem;
-            color: var(--primary-color);
-            font-size: 1.5rem;
+            color: var(--highlight-color);
+            font-size: 1.75rem;
+            box-shadow: var(--shadow-medium);
+            transition: var(--transition-bounce);
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: var(--shadow-glow);
         }
 
         .feature-card h3 {
@@ -469,19 +586,28 @@
         .language-card {
             text-align: center;
             padding: 2rem 1rem;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(236, 55, 80, 0.2);
             border-radius: var(--border-radius);
-            transition: var(--transition);
+            transition: var(--transition-bounce);
+            cursor: pointer;
         }
 
         .language-card:hover {
-            transform: translateY(-4px);
-            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-8px) scale(1.05);
+            background: rgba(236, 55, 80, 0.05);
+            border-color: var(--accent-color);
+            box-shadow: var(--shadow-glow);
         }
 
         .language-icon {
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin-bottom: 1rem;
+            transition: var(--transition-bounce);
+        }
+
+        .language-card:hover .language-icon {
+            transform: scale(1.2) rotate(-5deg);
         }
 
         .language-icon.javascript { color: #f7df1e; }
@@ -495,22 +621,52 @@
         .cta {
             background: var(--gradient-primary);
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(236, 55, 80, 0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { 
+                transform: scale(1) rotate(0deg);
+                opacity: 0.3;
+            }
+            50% { 
+                transform: scale(1.1) rotate(180deg);
+                opacity: 0.6;
+            }
         }
 
         .cta-content h2 {
             margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
         }
 
         .cta-content p {
             font-size: 1.25rem;
             color: var(--text-secondary);
             margin-bottom: 2rem;
+            position: relative;
+            z-index: 2;
         }
 
         .cta-actions {
             display: flex;
             gap: 1rem;
             justify-content: center;
+            position: relative;
+            z-index: 2;
         }
 
         /* Footer */
@@ -609,7 +765,7 @@
         @keyframes slideInUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(50px);
             }
             to {
                 opacity: 1;
@@ -617,26 +773,150 @@
             }
         }
 
-        .animate-slide-up {
-            animation: slideInUp 0.6s ease-out;
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
 
-        /* Custom Scrollbar */
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3) rotate(-10deg);
+            }
+            50% {
+                opacity: 0.8;
+                transform: scale(1.05) rotate(5deg);
+            }
+            70% {
+                transform: scale(0.9) rotate(-2deg);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+            }
+        }
+
+        .animate-slide-up {
+            animation: slideInUp 0.8s ease-out;
+        }
+
+        .animate-slide-left {
+            animation: slideInLeft 0.8s ease-out 0.2s both;
+        }
+
+        .animate-slide-right {
+            animation: slideInRight 0.8s ease-out 0.4s both;
+        }
+
+        .animate-bounce-in {
+            animation: bounceIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.6s both;
+        }
+
+        /* Additional interactive effects */
+        .hero-title {
+            cursor: default;
+            user-select: none;
+        }
+
+        .hero-title:hover {
+            text-shadow: 0 0 30px rgba(236, 55, 80, 0.5);
+        }
+
+        /* Sparkle animation for special elements */
+        .sparkle {
+            position: relative;
+        }
+
+        .sparkle::before,
+        .sparkle::after {
+            content: '✨';
+            position: absolute;
+            font-size: 1rem;
+            opacity: 0;
+            pointer-events: none;
+            animation: sparkleFloat 3s ease-in-out infinite;
+        }
+
+        .sparkle::before {
+            top: -10px;
+            left: -10px;
+            animation-delay: 0s;
+        }
+
+        .sparkle::after {
+            bottom: -10px;
+            right: -10px;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes sparkleFloat {
+            0%, 100% { 
+                opacity: 0;
+                transform: translateY(0px) scale(0.5) rotate(0deg);
+            }
+            25% { 
+                opacity: 1;
+                transform: translateY(-5px) scale(1) rotate(180deg);
+            }
+            75% { 
+                opacity: 1;
+                transform: translateY(-3px) scale(0.8) rotate(360deg);
+            }
+        }
+
+        /* Loading shimmer effect for stats */
+        .stat-number {
+            background: linear-gradient(90deg, var(--highlight-color) 0%, var(--accent-color) 50%, var(--highlight-color) 100%);
+            background-size: 200% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 2s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -200% 0;
+            }
+            100% {
+                background-position: 200% 0;
+            }
+        }
         ::-webkit-scrollbar {
-            width: 8px;
+            width: 12px;
         }
 
         ::-webkit-scrollbar-track {
             background: var(--primary-color);
+            border-radius: 6px;
         }
 
         ::-webkit-scrollbar-thumb {
-            background: var(--accent-color);
-            border-radius: 4px;
+            background: var(--gradient-accent);
+            border-radius: 6px;
+            border: 2px solid var(--primary-color);
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: var(--highlight-color);
+            background: var(--gradient-secondary);
+            box-shadow: var(--shadow-medium);
         }
     </style>
 </head>
@@ -665,13 +945,13 @@
         <div class="hero-container">
             <div class="hero-content animate-slide-up">
                 
-                <h1 class="display-1 hero-title" style="margin-top: 7rem;">We Contribute.</h1>
-                <p class="hero-description body-lg">
-                   The Community.<br>We let young programmers, STEM innovators, diruptors to make a visible change in the world, with the massive support from our community,
+                <h1 class="display-1 hero-title animate-bounce-in" style="margin-top: 7rem;">We Contribute. 🚀</h1>
+                <p class="hero-description body-lg animate-slide-left">
+                   The Community.<br>Empowering young programmers, STEM innovators, and disruptors to make a visible change in the world, with massive support from our <span class="sparkle">thriving community!</span> ✨
                 </p>
-                <div class="hero-actions">
-                    <a href="join.html" class="btn btn-primary btn-large">Learn</a>
-                    <a href="dashboard.html" class="btn btn-secondary btn-large">Your Dashboard</a>
+                <div class="hero-actions animate-slide-right">
+                    <a href="join.html" class="btn btn-primary btn-large">🎯 Start Learning</a>
+                    <a href="dashboard.html" class="btn btn-secondary btn-large">📊 Your Dashboard</a>
                 </div>
                 <div class="hero-stats">
                     <div class="stat">
@@ -734,9 +1014,9 @@
         <div class="container">
             <div class="section-header">
                 
-                <h2 class="heading-xl">Team Up, Compete</h2>
+                <h2 class="heading-xl">Team Up, Compete 💪</h2>
                 <p class="section-description">
-                Create teams and compete in groundbreaking tech competitions and hackathons.
+                Create teams and compete in groundbreaking tech competitions and hackathons. Build the future together! 🏆
                 </p>
             </div>
             <p class="section-subtitle" style="width:100%; display: flex;justify-content: center;align-items: center; margin-top: 3rem;">We're</p>
@@ -772,42 +1052,42 @@
                     <div class="feature-icon">
                         <i class="fas fa-calendar-alt"></i>
                     </div>
-                    <h3>Smart Calendar System</h3>
+                    <h3>Smart Calendar System 📅</h3>
                     <p>Microsoft Teams-inspired calendar system for scheduling and joining programming classes seamlessly with automated reminders and integration.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-video"></i>
                     </div>
-                    <h3>Interactive Live Classes</h3>
+                    <h3>Interactive Live Classes 🎥</h3>
                     <p>Join live coding sessions, workshops, and lectures with screen sharing, real-time collaboration, and interactive coding environments.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-users"></i>
                     </div>
-                    <h3>Vibrant Community</h3>
+                    <h3>Vibrant Community 👥</h3>
                     <p>Connect with fellow learners, share projects, ask questions, collaborate on coding challenges, and build lasting professional relationships.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-code"></i>
                     </div>
-                    <h3>Advanced Code Editor</h3>
+                    <h3>Advanced Code Editor 💻</h3>
                     <p>Built-in code editor with syntax highlighting, real-time collaboration, instant feedback, and integrated debugging tools.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-chart-line"></i>
                     </div>
-                    <h3>Progress Analytics</h3>
+                    <h3>Progress Analytics 📈</h3>
                     <p>Track your learning journey with detailed analytics, achievements, personalized recommendations, and skill assessments.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-graduation-cap"></i>
                     </div>
-                    <h3>Expert Instructors</h3>
+                    <h3>Expert Instructors 🎓</h3>
                     <p>Learn from industry professionals and experienced educators with proven track records in various programming languages and technologies.</p>
                 </div>
             </div>
@@ -875,11 +1155,11 @@
     <section class="section cta">
         <div class="container">
             <div class="cta-content">
-                <h2 class="heading-xl">Let's team up!</h2>
-                <p>Join a thriving community of students and instructors in our cutting-edge learning ecosystem. Unlock your full potential and explore limitless opportunities, wherever your passions lie.</p>
+                <h2 class="heading-xl">Let's team up! 🤝</h2>
+                <p>Join a thriving community of students and instructors in our cutting-edge learning ecosystem. Unlock your full potential and explore limitless opportunities, wherever your passions lie! 🌟</p>
                 <div class="cta-actions">
-                    <a href="join.html" class="btn btn-primary btn-large">Start Learning Now</a>
-                    <a href="dashboard.html" class="btn btn-secondary btn-large">Explore Platform</a>
+                    <a href="join.html" class="btn btn-primary btn-large">🚀 Start Learning Now</a>
+                    <a href="dashboard.html" class="btn btn-secondary btn-large">🔍 Explore Platform</a>
                 </div>
             </div>
         </div>
