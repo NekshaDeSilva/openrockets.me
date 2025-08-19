@@ -1,1026 +1,449 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+            <a href="#" class="nav-brand">
+                <img src="v/openrockets.png" alt="OpenRockets">
+                <div class="brand-content">
+                    <span class="brand-text">OpenRockets</span>
+                    <span class="brand-platform michroma-regular">platform</span>
+                </div>
+            </a>d>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OpenRockets / Home</title>
-    <meta name="description" content="Join OpenRockets, a cutting-edge open-source programming community specializing in C++, JavaScript, Python, AI, and Machine Learning. Access world-class learning management system, expert instructors, interactive coding classes, vibrant community collaboration, and comprehensive programming education. Transform your coding journey with 10K+ active students and 500+ expert lecturers.">
-    <meta name="keywords" content="programming education, open source community, LMS, coding bootcamp, JavaScript, Python, C++, AI, ML, online learning, programming courses, tech education">
-    <meta name="author" content="OpenRockets Software Foundation">
+    <title>OpenRockets - Build the Future Together</title>
+    <meta name="description" content="OpenRockets OSS - Advancing software, education, and data innovation through the power of open-source. Level up, Challenge, Grow, Contribute.">
+    <meta name="keywords" content="programming community, open source, coding, hackathons, builders, developers, students">
+    <meta name="author" content="OpenRockets">
     <link rel="icon" type="image/png" href="i/assets/static/openthread_logo_bash-trans-removebg-preview (1).png">
     
-    <!-- Sophisticated Font Imports -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cal+Sans&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet">
     
     <style>
-        /* Root Variables & Base Styles */
-        :root {
-            --primary-color: #0d1b2a;
-            --secondary-color: #004b49;
-            --accent-color: #778da9;
-            --highlight-color: #e0e1dd;
-            --text-primary: #f8f9fa;
-            --text-secondary: #adb5bd;
-            --gradient-primary: linear-gradient(135deg, #0d1b2a 0%, #415a77 100%);
-            --gradient-accent: linear-gradient(135deg, #778da9 0%, #e0e1dd 100%);
-            --shadow-light: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --shadow-medium: 0 8px 25px rgba(0, 0, 0, 0.15);
-            --shadow-heavy: 0 15px 35px rgba(0, 0, 0, 0.2);
-            --border-radius: 12px;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--primary-color);
-            color: var(--text-primary);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Typography System */
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            line-height: 1.2;
-        }
-
-        .display-1 {
-            font-size: clamp(3rem, 8vw, 7rem);
-            font-weight: 900;
-            background: var(--gradient-accent);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .heading-xl {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 800;
-        }
-
-        .heading-lg {
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 700;
-        }
-
-        .heading-md {
-            font-size: clamp(1.5rem, 3vw, 2rem);
-            font-weight: 600;
-        }
-
-        .body-lg {
-            font-family: 'Kanit', sans-serif;
-            font-size: clamp(1.125rem, 2vw, 1.25rem);
+        .michroma-regular {
+            font-family: "Michroma", sans-serif;
             font-weight: 400;
-            color: var(--text-secondary);
-        }
-
-        .body-md {
-            font-family: 'Prompt', sans-serif;
-            font-size: clamp(1rem, 1.5vw, 1.125rem);
-            font-weight: 400;
-        }
-
-        .label {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.875rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-
-        /* Navigation */
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(13, 27, 42, 0.95);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(119, 141, 169, 0.1);
-            z-index: 1000;
-            transition: var(--transition);
-        }
-
-        .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 1rem 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .nav-brand {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .nav-brand img {
-            width: 3rem;
-            height: auto;
-        }
-
-        .brand-text {
-            font-family: 'Cal Sans', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 600;
-            background: var(--gradient-accent);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        .nav-link {
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 500;
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .nav-link:hover {
-            color: var(--highlight-color);
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gradient-accent);
-            transition: var(--transition);
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        /* Buttons */
-        .btn {
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 600;
-            padding: 0.75rem 1.5rem;
-            border-radius: var(--border-radius);
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: var(--transition);
-            cursor: pointer;
-            border: none;
-            font-size: 1rem;
-        }
-
-        .btn-primary {
-            background: var(--gradient-accent);
-            color: var(--primary-color);
-            box-shadow: var(--shadow-medium);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-heavy);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--text-primary);
-            border: 2px solid var(--accent-color);
-        }
-
-        .btn-secondary:hover {
-            background: var(--accent-color);
-            color: var(--primary-color);
-        }
-
-        .btn-large {
-            padding: 1rem 2rem;
-            font-size: 1.125rem;
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-            background: var(--gradient-primary);
-        }
-
-        .hero-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.1;
-            background-image: 
-                radial-gradient(circle at 25% 25%, var(--accent-color) 2px, transparent 2px),
-                radial-gradient(circle at 75% 75%, var(--highlight-color) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: float 20s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(180deg); }
-        }
-
-        .hero-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            min-height: 100vh;
-        }
-
-        .hero-content {
-            z-index: 2;
-        }
-
-        .hero-subtitle {
-            font-family: 'Kanit', sans-serif;
-            font-size: 1.25rem;
-            color: var(--accent-color);
-            margin-bottom: 1rem;
-            font-weight: 500;
-        }
-
-        .hero-title {
-            margin-bottom: 1.5rem;
-        }
-
-        .hero-description {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-            max-width: 600px;
-        }
-
-        .hero-actions {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 3rem;
-        }
-
-        .hero-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-
-        .stat {
-            text-align: center;
-        }
-
-        .stat-number {
-            display: block;
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            font-weight: 900;
-            color: var(--highlight-color);
-        }
-
-        .stat-label {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-
-        /* Hero Visual */
-        .hero-visual {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .floating-elements {
-            position: relative;
-            width: 100%;
-            height: 600px;
-        }
-
-        .floating-card {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: var(--border-radius);
-            padding: 1.5rem;
-            box-shadow: var(--shadow-medium);
-            animation: floatCard 6s ease-in-out infinite;
-        }
-
-        @keyframes floatCard {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .calendar-preview {
-            top: 50px;
-            right: 100px;
-            width: 280px;
-            animation-delay: 0s;
-        }
-
-        .community-preview {
-            top: 200px;
-            left: 50px;
-            width: 250px;
-            animation-delay: 2s;
-        }
-
-        .progress-preview {
-            bottom: 100px;
-            right: 50px;
-            width: 260px;
-            animation-delay: 4s;
-        }
-
-        .card-header {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 600;
-        }
-
-        /* Sections */
-        .section {
-            padding: 6rem 0;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-subtitle {
-            font-family: 'Kanit', sans-serif;
-            color: var(--accent-color);
-            font-size: 1.125rem;
-            font-weight: 500;
-            margin-bottom: 1rem;
-        }
-
-        .section-description {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        /* Features Grid */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .feature-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: var(--border-radius);
-            padding: 2rem;
-            transition: var(--transition);
-        }
-
-        .feature-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-heavy);
-            border-color: var(--accent-color);
-        }
-
-        .feature-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--gradient-accent);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-            color: var(--primary-color);
-            font-size: 1.5rem;
-        }
-
-        .feature-card h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--highlight-color);
-        }
-
-        .feature-card p {
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-
-        /* Languages Section */
-        .languages {
-            background: rgba(255, 255, 255, 0.02);
-        }
-
-        .languages-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .language-card {
-            text-align: center;
-            padding: 2rem 1rem;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: var(--border-radius);
-            transition: var(--transition);
-        }
-
-        .language-card:hover {
-            transform: translateY(-4px);
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .language-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .language-icon.javascript { color: #f7df1e; }
-        .language-icon.python { color: #3776ab; }
-        .language-icon.cpp { color: #00599c; }
-        .language-icon.react { color: #61dafb; }
-        .language-icon.node { color: #339933; }
-        .language-icon.ai { color: #ff6b6b; }
-
-        /* CTA Section */
-        .cta {
-            background: var(--gradient-primary);
-            text-align: center;
-        }
-
-        .cta-content h2 {
-            margin-bottom: 1rem;
-        }
-
-        .cta-content p {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-        }
-
-        .cta-actions {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-        }
-
-        /* Footer */
-        .footer {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 3rem 0 1rem;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 3rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-brand p {
-            color: var(--text-secondary);
-            margin-top: 1rem;
-        }
-
-        .footer-links {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-
-        .footer-section h4 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.125rem;
-            margin-bottom: 1rem;
-            color: var(--highlight-color);
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section li {
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-section a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .footer-section a:hover {
-            color: var(--highlight-color);
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 1rem;
-            text-align: center;
-            color: var(--text-secondary);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-container {
-                padding: 1rem;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .hero-container {
-                grid-template-columns: 1fr;
-                text-align: center;
-                padding: 2rem 1rem;
-            }
-
-            .hero-stats {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-
-            .cta-actions {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .footer-links {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Animations */
-        @keyframes slideInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .animate-slide-up {
-            animation: slideInUp 0.6s ease-out;
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: var(--primary-color);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--accent-color);
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--highlight-color);
+            font-style: normal;
         }
     </style>
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles/hackclub-style.css">
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="nav-brand">
-                <img src="./v/openrockets.png" alt="OpenRockets Logo">
-                <span class="brand-text">Platform</span>
-            </div>
-            <div class="nav-links">
-                <a href="#about" class="nav-link">About</a>
-                <a href="#features" class="nav-link">Features</a>
-                <a href="#languages" class="nav-link">Languages</a>
-                <a href="community.html" class="nav-link">Community</a>
-                <a href="dashboard.html" class="btn btn-secondary">Dashboard</a>
-                <a href="join.html" class="btn btn-primary">Join Now</a>
-            </div>
+            <a href="#" class="nav-brand">
+                <img src="v/openrockets.png" alt="OpenRockets">
+                <span class="brand-text">platform</span>
+            </a>
+            
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#community" class="nav-link">Community</a></li>
+                <li><a href="#events" class="nav-link">Events</a></li>
+                <li><a href="join.html" class="nav-link">Join</a></li>
+            </ul>
+            
+            <button class="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-background"></div>
-        <div class="hero-container">
-            <div class="hero-content animate-slide-up">
-                
-                <h1 class="display-1 hero-title" style="margin-top: 7rem;">We Contribute.</h1>
-                <p class="hero-description body-lg">
-                   The Community.<br>We let young programmers, STEM innovators, diruptors to make a visible change in the world, with the massive support from our community,
-                </p>
-                <div class="hero-actions">
-                    <a href="join.html" class="btn btn-primary btn-large">Learn</a>
-                    <a href="dashboard.html" class="btn btn-secondary btn-large">Your Dashboard</a>
-                </div>
-                <div class="hero-stats">
-                    <div class="stat">
-                        <span class="stat-number">11K+</span>
-                        <span class="stat-label">Educational Resources</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number">50+</span>
-                        <span class="stat-label">Students who teach</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number">1K+</span>
-                        <span class="stat-label">Students who learn</span>
-                    </div>
-                </div>
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-badge clickable" onclick="window.open('https://github.com/OpenRockets/opensocial')">
+                <i class="fas fa-rocket"></i>
+                <span>Solve issues in our GitHub repositories and earn rewards.</span>
             </div>
-            <div class="hero-visual">
-                <div class="floating-elements">
-                    <div class="floating-card calendar-preview">
-                        <div class="card-header">
-                            <i class="fas fa-calendar"></i>
-                            <span>Join Classes</span>
-                        </div>
-                        <div class="class-item">
-                            <div class="class-time">Chalana Perera</div>
-                            <div class="class-info">
-                                <div class="class-title">Introduction to MicroPython</div>
-                                <div class="class-instructor"><span style="color: white;background-color: black; border-radius: .5rem; padding: .5rem;">Recording</span></div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="floating-card community-preview">
-                        <div class="card-header">
-                            <i class="fas fa-users"></i>
-                            <span>Community</span>
-                        </div>
-                        <div class="community-post">
-                            <div class="post-content">Hello Aravind! Nice work. Keep wearing that cap🙌</div>
-                        </div>
-                    </div>
+            
+            <h1 class="hero-title">
+                We build the future
+                <span class="text-gradient">together</span>
+            </h1>
+            
+            <p class="hero-subtitle">
+                Advancing software, education, and data innovation through the power of open-source. 
+                Level up, Challenge, Grow, Contribute with passionate high-school builders worldwide.
+            </p>
+            
+            <div class="hero-cta">
+                <a href="join.html" class="btn btn-primary btn-large">
+                    <i class="fas fa-rocket"></i>
+                    Start Building
+                </a>
+                <a href="#projects" class="btn btn-secondary btn-large">
+                    <i class="fas fa-code"></i>
+                    Explore Projects
+                </a>
+            </div>
+        </div>
+        
+        <!-- Student illustrations -->
+        <div class="hero-illustrations">
+            <img src="i/sketches/pngtree-illustration-of-a-girl-wearing-a-hat-coloring-pages-vector-png-image_6781618.png" alt="Student builder" class="hero-img girl-coding">
+            <img src="i/sketches/454-4543412_for-practitioners-supporting-young-people-moving-to-school.png" alt="Young developers" class="hero-img students-group">
+        </div>
+    </section>
 
-                    <div class="floating-card progress-preview">
-                        <div class="card-header">
-                            <i class="fas fa-chart-line"></i>
-                            <span>Track Progress</span>
-                        </div>
-                        <div class="progress-bar" style="background-color: #000000; border-radius: 4px;">
-                            <div class="progress-fill" style="width: 45%; height: 8px; background: rgb(255, 255, 255); border-radius: 4px;"></div>
-                        </div>
-                        <div class="progress-text">JavaScript Fundamentals</div>
-                    </div>
-                </div>
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <span class="stat-number">31+</span>
+                <span class="stat-label">GitHub Followers</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">18+</span>
+                <span class="stat-label">Open Repositories</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">2.9k+</span>
+                <span class="stat-label">GitHub Stars</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">24/7</span>
+                <span class="stat-label">Active Community</span>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="section">
-        <div class="container">
-            <div class="section-header">
+    <!-- School Marquee Section -->
+    <section class="school-marquee">
+        <div class="marquee-header">
+            <h3>Builders from schools that are ranked high</h3>
+            <p>High-school students from top institutions in India, Sri Lanka and around the world are building amazing open-source projects with OpenRockets.</p>
+        </div>
+        <div class="marquee-container">
+            <div class="marquee-content">
+                <img src="assets/i/static-v3/Logo_of_Nalanda_College_Colombo.png" alt="Nalanda College Colombo" class="school-logo">
+                <img src="assets/i/static-v3/royal-college-black.png" alt="Royal College" class="school-logo">
+                <img src="assets/i/static-v3/St_John's_College_Jaffna_crest.png" alt="St John's College Jaffna" class="school-logo">
+                <img src="assets/i/static-v3/logo.png" alt="OpenRockets" class="school-logo">
+                <img src="assets/i/static-v3/logo_flag.png" alt="OpenRockets Flag" class="school-logo">
+                <!-- Duplicate for seamless loop -->
+                <img src="assets/i/static-v3/Logo_of_Nalanda_College_Colombo.png" alt="Nalanda College Colombo" class="school-logo">
+                <img src="assets/i/static-v3/royal-college-black.png" alt="Royal College" class="school-logo">
+                <img src="assets/i/static-v3/St_John's_College_Jaffna_crest.png" alt="St John's College Jaffna" class="school-logo">
+                <img src="assets/i/static-v3/logo.png" alt="OpenRockets" class="school-logo">
+                <img src="assets/i/static-v3/logo_flag.png" alt="OpenRockets Flag" class="school-logo">
+                <img src="assets/i/static-v3/Logo_of_Nalanda_College_Colombo.png" alt="Nalanda College Colombo" class="school-logo">
+                <img src="assets/i/static-v3/royal-college-black.png" alt="Royal College" class="school-logo">
+                <img src="assets/i/static-v3/St_John's_College_Jaffna_crest.png" alt="St John's College Jaffna" class="school-logo">
+                <img src="assets/i/static-v3/logo.png" alt="OpenRockets" class="school-logo">
+                <img src="assets/i/static-v3/logo_flag.png" alt="OpenRockets Flag" class="school-logo">
+                <img src="assets/i/static-v3/Logo_of_Nalanda_College_Colombo.png" alt="Nalanda College Colombo" class="school-logo">
+                <img src="assets/i/static-v3/royal-college-black.png" alt="Royal College" class="school-logo">
+                <img src="assets/i/static-v3/St_John's_College_Jaffna_crest.png" alt="St John's College Jaffna" class="school-logo">
+                <img src="assets/i/static-v3/logo.png" alt="OpenRockets" class="school-logo">
+                <img src="assets/i/static-v3/logo_flag.png" alt="OpenRockets Flag" class="school-logo">
+                <img src="assets/i/static-v3/Logo_of_Nalanda_College_Colombo.png" alt="Nalanda College Colombo" class="school-logo">
+                <img src="assets/i/static-v3/royal-college-black.png" alt="Royal College" class="school-logo">
+                <img src="assets/i/static-v3/St_John's_College_Jaffna_crest.png" alt="St John's College Jaffna" class="school-logo">
+                <img src="assets/i/static-v3/logo.png" alt="OpenRockets" class="school-logo">
+                <img src="assets/i/static-v3/logo_flag.png" alt="OpenRockets Flag" class="school-logo">
+                <img src="assets/i/static-v3/Logo_of_Nalanda_College_Colombo.png" alt="Nalanda College Colombo" class="school-logo">
+                <img src="assets/i/static-v3/royal-college-black.png" alt="Royal College" class="school-logo">
+                <img src="assets/i/static-v3/St_John's_College_Jaffna_crest.png" alt="St John's College Jaffna" class="school-logo">
+                <img src="assets/i/static-v3/logo.png" alt="OpenRockets" class="school-logo">
+                <img src="assets/i/static-v3/logo_flag.png" alt="OpenRockets Flag" class="school-logo">
+                <img src="assets/i/static-v3/Logo_of_Nalanda_College_Colombo.png" alt="Nalanda College Colombo" class="school-logo">
+                <img src="assets/i/static-v3/royal-college-black.png" alt="Royal College" class="school-logo">
+                <img src="assets/i/static-v3/St_John's_College_Jaffna_crest.png" alt="St John's College Jaffna" class="school-logo">
+                <img src="assets/i/static-v3/logo.png" alt="OpenRockets" class="school-logo">
+                <img src="assets/i/static-v3/logo_flag.png" alt="OpenRockets Flag" class="school-logo">
                 
-                <h2 class="heading-xl">Team Up, Compete</h2>
-                <p class="section-description">
-                Create teams and compete in groundbreaking tech competitions and hackathons.
-                </p>
-            </div>
-            <p class="section-subtitle" style="width:100%; display: flex;justify-content: center;align-items: center; margin-top: 3rem;">We're</p>
-            <div class="hero-stats" style="margin-top: 3rem;">
-                <div class="stat">
-                    <span class="stat-number">15+</span>
-                    <span class="stat-label">Core Members</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-number">100%</span>
-                    <span class="stat-label">Non-Profit</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-number">8+</span>
-                    <span class="stat-label">Innovations</span>
-                </div>
             </div>
         </div>
     </section>
 
     <!-- Features Section -->
-    <section id="features" class="section">
-        <div class="container">
-            <div class="section-header">
-                <p class="section-subtitle">Platform Features</p>
-                <h2 class="heading-xl">Powerful Tools for Modern Learning</h2>
-                <p class="section-description">
-                    Everything you need to learn, teach, and collaborate in programming education with cutting-edge technology and innovative pedagogical approaches.
+    <section id="about" class="features">
+        <div class="section-header">
+            <h2 class="section-title">Build Amazing Things</h2>
+            <p class="section-subtitle">
+                Whether you're just starting out or you're a seasoned developer, 
+                OpenRockets provides everything you need to create and collaborate on open-source projects.
+            </p>
+        </div>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <div class="feature-image laptop">
+                    <img src="assets/i/uploads/pngimg.com - laptop_PNG101830.png" alt="Modern Development">
+                </div>
+                <h3 class="feature-title">Open Source Projects</h3>
+                <p class="feature-description">
+                    Contribute to real-world projects like OpenSocial, our comprehensive social media platform, 
+                    and web-dev-error-solutions with 2.9k+ GitHub stars.
                 </p>
             </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-calendar-alt"></i>
-                    </div>
-                    <h3>Smart Calendar System</h3>
-                    <p>Microsoft Teams-inspired calendar system for scheduling and joining programming classes seamlessly with automated reminders and integration.</p>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-users"></i>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-video"></i>
-                    </div>
-                    <h3>Interactive Live Classes</h3>
-                    <p>Join live coding sessions, workshops, and lectures with screen sharing, real-time collaboration, and interactive coding environments.</p>
+                <h3 class="feature-title">Global Community</h3>
+                <p class="feature-description">
+                    Connect with builders from Sri Lanka and around the world. Share knowledge, 
+                    get feedback, and collaborate on innovative solutions.
+                </p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-graduation-cap"></i>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>Vibrant Community</h3>
-                    <p>Connect with fellow learners, share projects, ask questions, collaborate on coding challenges, and build lasting professional relationships.</p>
+                <div class="feature-image disk">
+                    <img src="assets/i/uploads/pngtree-aesthetic-dvd-or-cd-disk-png-image_5888606.png" alt="Learning Resources">
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <h3>Advanced Code Editor</h3>
-                    <p>Built-in code editor with syntax highlighting, real-time collaboration, instant feedback, and integrated debugging tools.</p>
+                <h3 class="feature-title">Learn by Building</h3>
+                <p class="feature-description">
+                    Master new technologies through hands-on projects. From JavaScript to complex 
+                    web applications, learn with real-world experience.
+                </p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-calendar-alt"></i>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>Progress Analytics</h3>
-                    <p>Track your learning journey with detailed analytics, achievements, personalized recommendations, and skill assessments.</p>
+                <div class="feature-image tinkercad">
+                    <img src="i/sketches/Logo-tinkercad-wordmark.svg.png" alt="Design Tools">
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <h3>Expert Instructors</h3>
-                    <p>Learn from industry professionals and experienced educators with proven track records in various programming languages and technologies.</p>
+                <h3 class="feature-title">Hackathons & Events</h3>
+                <p class="feature-description">
+                    Participate in coding competitions, workshops, and hackathons. Win prizes, 
+                    gain recognition, and showcase your skills to the community.
+                </p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-tools"></i>
                 </div>
+                <div class="feature-image usb">
+                    <img src="assets/i/uploads/AE047A9E8D150297E2CF610FEF5BCEE69C442913_IXPANDFLASHDRIVEGOUPMAIN_gallery.png" alt="Developer Tools">
+                </div>
+                <h3 class="feature-title">Modern Tools</h3>
+                <p class="feature-description">
+                    Access cutting-edge development tools, GitHub integration, and 
+                    infrastructure to bring your innovative ideas to life.
+                </p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <h3 class="feature-title">Recognition & Rewards</h3>
+                <p class="feature-description">
+                    Top contributors receive free domain names, full project ownership, 
+                    and media recognition. Build your reputation in the open-source community.
+                </p>
             </div>
         </div>
     </section>
 
-    <!-- Programming Languages Section -->
-    <section id="languages" class="section languages">
-        <div class="container">
-            <div class="section-header">
-                <p class="section-subtitle">Learn to Code!</p>
-                <h2 class="heading-xl">Master In-Demand Programming Languages</h2>
-                <p class="section-description">
-                    Comprehensive courses in the most sought-after programming languages and cutting-edge technologies that drive today's digital innovation.
+    <!-- Projects Showcase -->
+    <section id="projects" class="features">
+        <div class="section-header">
+            <h2 class="section-title">Featured Projects</h2>
+            <p class="section-subtitle">
+                Check out some of the incredible open-source projects our community has built and maintains.
+            </p>
+        </div>
+        
+        <div class="features-grid">
+            <div class="feature-card glow">
+                <div class="feature-icon">
+                    <i class="fab fa-js-square"></i>
+                </div>
+                <h3 class="feature-title">OpenSocial Platform</h3>
+                <p class="feature-description">
+                    Build Sri Lanka's most comprehensive open-source social media platform! 
+                    Top 3 contributors receive free domain names and full platform ownership.
                 </p>
+                <a href="https://github.com/OpenRockets/opensocial" target="_blank" rel="noopener" class="project-link">
+                    <i class="fas fa-external-link-alt"></i> View on GitHub
+                </a>
             </div>
-            <div class="languages-grid">
-                <div class="language-card">
-                    <div class="language-icon javascript">
-                        <i class="fab fa-js-square"></i>
-                    </div>
-                    <h3 class="heading-md">JavaScript</h3>
-                    <p class="body-md">Frontend and backend development</p>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-book"></i>
                 </div>
-                <div class="language-card">
-                    <div class="language-icon python">
-                        <i class="fab fa-python"></i>
-                    </div>
-                    <h3 class="heading-md">Python</h3>
-                    <p class="body-md">Data science and AI development</p>
+                <div class="feature-image old-laptop">
+                    <img src="assets/i/uploads/pngtree-old-laptop-computer-obsolete-white-dirty-png-image_14053775.png" alt="Web Development">
                 </div>
-                <div class="language-card">
-                    <div class="language-icon cpp">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <h3 class="heading-md">C++</h3>
-                    <p class="body-md">Systems programming and algorithms</p>
+                <h3 class="feature-title">Web Dev Error Solutions</h3>
+                <p class="feature-description">
+                    A community-curated handbook with 2,948+ GitHub stars for common web development 
+                    errors. Find fixes for JavaScript, React, Node.js, CSS, and more!
+                </p>
+                <a href="https://github.com/OpenRockets/web-dev-error-solutions" target="_blank" rel="noopener" class="project-link">
+                    <i class="fas fa-external-link-alt"></i> 2.9k Stars
+                </a>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-gamepad"></i>
                 </div>
-                <div class="language-card">
-                    <div class="language-icon react">
-                        <i class="fab fa-react"></i>
-                    </div>
-                    <h3 class="heading-md">React</h3>
-                    <p class="body-md">Modern web application development</p>
+                <h3 class="feature-title">CityofGits</h3>
+                <p class="feature-description">
+                    Build anything. From towers to rockets. Create your own world, live chat, 
+                    play freely, and share it with friends. Interactive gaming platform.
+                </p>
+                <a href="https://github.com/OpenRockets/CityofGits" target="_blank" rel="noopener" class="project-link">
+                    <i class="fas fa-external-link-alt"></i> Explore Game
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section id="community" class="features">
+        <div class="section-header">
+            <h2 class="section-title">Join Our <span class="text-gradient">Community</span></h2>
+            <p class="section-subtitle">
+                Connect with builders from around the world and collaborate on amazing open-source projects.
+            </p>
+        </div>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fab fa-discord"></i>
                 </div>
-                <div class="language-card">
-                    <div class="language-icon node">
-                        <i class="fab fa-node-js"></i>
-                    </div>
-                    <h3 class="heading-md">Node.js</h3>
-                    <p class="body-md">Server-side JavaScript development</p>
+                <h3 class="feature-title">Discord Server</h3>
+                <p class="feature-description">
+                    Join our active Discord community where developers collaborate, share knowledge, 
+                    and get help with coding challenges 24/7.
+                </p>
+                <a href="https://bit.ly/openrockets-discord" target="_blank" rel="noopener" class="project-link">
+                    <i class="fab fa-discord"></i> Join Discord
+                </a>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fab fa-github"></i>
                 </div>
-                <div class="language-card">
-                    <div class="language-icon ai">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <h3 class="heading-md">AI/ML</h3>
-                    <p class="body-md">Artificial Intelligence and Machine Learning</p>
+                <h3 class="feature-title">GitHub Organization</h3>
+                <p class="feature-description">
+                    Contribute to our 18+ repositories, create pull requests, and collaborate 
+                    with developers worldwide on innovative projects.
+                </p>
+                <a href="https://github.com/OpenRockets" target="_blank" rel="noopener" class="project-link">
+                    <i class="fab fa-github"></i> View Organization
+                </a>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-envelope"></i>
                 </div>
+                <h3 class="feature-title">Official Contact</h3>
+                <p class="feature-description">
+                    Reach out for partnerships, collaborations, or general inquiries. 
+                    We're always open to new opportunities and connections.
+                </p>
+                <a href="mailto:official@openrockets.me" class="project-link">
+                    <i class="fas fa-envelope"></i> Contact Us
+                </a>
             </div>
         </div>
     </section>
 
     <!-- CTA Section -->
-    <section class="section cta">
-        <div class="container">
-            <div class="cta-content">
-                <h2 class="heading-xl">Let's team up!</h2>
-                <p>Join a thriving community of students and instructors in our cutting-edge learning ecosystem. Unlock your full potential and explore limitless opportunities, wherever your passions lie.</p>
-                <div class="cta-actions">
-                    <a href="join.html" class="btn btn-primary btn-large">Start Learning Now</a>
-                    <a href="dashboard.html" class="btn btn-secondary btn-large">Explore Platform</a>
-                </div>
+    <section class="cta">
+        <div class="cta-content">
+            <h2 class="cta-title">Ready to Start Building?</h2>
+            <p class="cta-description">
+                Join 31+ followers on GitHub and contribute to innovative open-source projects. 
+                Level up, Challenge, Grow, Contribute with OpenRockets.
+            </p>
+            <div class="hero-cta">
+                <a href="join.html" class="btn btn-primary btn-large pulse">
+                    <i class="fas fa-rocket"></i>
+                    Join OpenRockets
+                </a>
+                <a href="https://bit.ly/openrockets-discord" class="btn btn-secondary btn-large" target="_blank" rel="noopener">
+                    <i class="fab fa-discord"></i>
+                    Join Discord
+                </a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <img src="./v/openrockets.png" alt="OpenRockets" style="width: 3rem; margin-bottom: 1rem;">
-                    <p>Advancing software, innovation, and education through the power of open source.<br>Headquartered in Sri Lanka, operating in India, South Africa, the Maldives, and the Philippines.</p>
-
-                    <button class="btn btn-primary dropdown-toggle" onclick="toggleDropdown()">Join Our GitHub Organizations</button>
-                        <ul class="dropdown-menu" id="githubDropdown">
-                            <li><a href="https://www.github.com/openrockets-india" target="_blank">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
-                                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-                                </svg>
-                                OpenRockets India
-                            </a></li>
-                            <li><a href="https://www.github.com/openrockets-maldives" target="_blank">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
-                                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-                                </svg>
-                                OpenRockets Maldives
-                            </a></li>
-                            <li><a href="https://www.github.com/openrockets-southafrica" target="_blank">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
-                                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-                                </svg>
-                                OpenRockets South Africa
-                            </a></li>
-                            <li><a href="https://www.github.com/openrockets-phillipines" target="_blank">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
-                                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-                                </svg>
-                                OpenRockets Philippines
-                            </a></li>
-                        </ul>
-                    </div>
-
-                    <script>
-                        function toggleDropdown() {
-                            const dropdown = document.getElementById('githubDropdown');
-                            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-                        }
-
-                        document.addEventListener('click', function (event) {
-                            const dropdown = document.getElementById('githubDropdown');
-                            if (!event.target.closest('.dropdown')) {
-                                dropdown.style.display = 'none';
-                            }
-                        });
-                    </script>
-
-                    <style>
-                        .dropdown {
-                            position: relative;
-                            display: inline-block;
-                        }
-
-                        .dropdown-toggle {
-                            cursor: pointer;
-                        }
-
-                        .dropdown-menu {
-                            display: none;
-                            position: absolute;
-                            background-color: var(--primary-color);
-                            border: 1px solid var(--accent-color);
-                            border-radius: var(--border-radius);
-                            box-shadow: var(--shadow-light);
-                            padding: 0.5rem 0;
-                            z-index: 1000;
-                            list-style: none;
-                            margin: 0;
-                            min-width: 200px;
-                        }
-
-                        .dropdown-menu li {
-                            padding: 0.5rem 1rem;
-                        }
-
-                        .dropdown-menu li a {
-                            color: var(--text-primary);
-                            text-decoration: none;
-                            display: flex;
-                            align-items: center;
-                            gap: 0.5rem;
-                        }
-
-                        .dropdown-menu li a:hover {
-                            background-color: var(--secondary-color);
-                        }
-                    </style>
-                </div>
-                <div class="footer-links">
-                    <div class="footer-section">
-                        <h4>Platform</h4>
-                        <ul>
-                            <li><a href="dashboard.html">Dashboard</a></li>
-                            <li><a href="community.html">Community</a></li>
-                            <li><a href="calendar.html">Calendar</a></li>
-                            <li><a href="join.html">Join</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-section">
-                        <h4>Resources</h4>
-                        <ul>
-                            <li><a href="about.html">About</a></li>
-                            <li><a href="#help">Help Center</a></li>
-                            <li><a href="#docs">Documentation</a></li>
-                            <li><a href="#api">API</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-section">
-                        <h4>Connect</h4>
-                        <ul>
-                            <li><a href="https://github.com/openrockets">GitHub</a></li>
-                            <li><a href="https://twitter.com/openrockets" target="_blank">Twitter</a></li>
-                            <li><a href="https://linkedin.com/company/openrockets" target="_blank">LinkedIn</a></li>
-                            <li><a href="https://instagram.com/openrockets" target="_blank">Instagram</a></li>
-                            <li><a href="channel.html">Community Chat</a></li>
-                        </ul>
-                    </div>
+        <div class="footer-content">
+            <div class="footer-section">
+                <img src="v/openrockets.png" alt="OpenRockets" class="footer-logo">
+                <h4>OpenRockets</h4>
+                <p class="footer-description">
+                    Building the future of open-source education and collaboration.
+                </p>
+                <div class="footer-social">
+                    <a href="https://github.com/openrockets" title="GitHub" rel="noopener" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://discord.gg/openrockets" title="Discord" rel="noopener" target="_blank"><i class="fab fa-discord"></i></a>
+                    <a href="https://twitter.com/openrockets" title="Twitter" rel="noopener" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://linkedin.com/company/openrockets" title="LinkedIn" rel="noopener" target="_blank"><i class="fab fa-linkedin"></i></a>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 OpenRockets Foundation (Not-for-profit organisation). All rights reserved.</p>
+            
+            <div class="footer-section">
+                <h4>Chapters</h4>
+                <ul>
+                    <li><a href="https://www.github.com/openrockets-india" target="_blank" rel="noopener">India</a></li>
+                    <li><a href="https://www.github.com/openrockets-maldives" target="_blank" rel="noopener">Maldives</a></li>
+                    <li><a href="https://www.github.com/openrockets-southafrica" target="_blank" rel="noopener">South Africa</a></li>
+                    <li><a href="https://www.github.com/openrockets-phillipines" target="_blank" rel="noopener">Philippines</a></li>
+                </ul>
             </div>
+            
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="community.html">Community</a></li>
+                    <li><a href="calendar.html">Events</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="https://twitter.com/openrockets" target="_blank" rel="noopener">Twitter</a></li>
+                    <li><a href="https://linkedin.com/company/openrockets" target="_blank" rel="noopener">LinkedIn</a></li>
+                    <li><a href="https://instagram.com/openrockets" target="_blank" rel="noopener">Instagram</a></li>
+                    <li><a href="mailto:hello@openrockets.me">Email</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 OpenRockets. Made with ❤️ by the community, for the community.</p>
         </div>
     </footer>
 
-    <script src="scripts/api.js"></script>
-    <script src="scripts/auth.js"></script>
-    <script src="scripts/main.js"></script>
-</body>
-</html>
-
-
-    <script src="scripts/main.js"></script>
+    <!-- Scripts -->
+    <script src="scripts/hackclub-interactions.js"></script>
 </body>
 </html>
