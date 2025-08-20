@@ -8,10 +8,11 @@
     <link rel="icon" type="image/png" href="i/assets/static/openthread_logo_bash-trans-removebg-preview (1).png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Kanit:wght@200;300;400;500;600;700&family=Michroma:wght@400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="styles/dashboard.css">
     <link rel="stylesheet" href="styles/community.css">
+    <link rel="stylesheet" href="styles/hackclub-style.css">
 </head>
 <body>
     <!-- Sidebar -->
@@ -531,71 +532,272 @@ print(type(squares))  # <class 'generator'></code></pre>
 
                 <!-- Right Sidebar -->
                 <aside class="community-right-sidebar">
+                    <!-- Community Live Chat -->
+                    <div class="sidebar-card live-chat-card">
+                        <div class="card-header">
+                            <h3 class="card-title">
+                                <i class="fas fa-comments"></i>
+                                Community Chat
+                                <span class="online-count" id="onlineCount">24 online</span>
+                            </h3>
+                            <button class="chat-toggle-btn" id="chatToggleBtn">
+                                <i class="fas fa-expand"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="chat-container" id="chatContainer">
+                            <div class="chat-messages" id="chatMessages">
+                                <div class="chat-message system">
+                                    <i class="fas fa-robot"></i>
+                                    <span>Welcome to OpenRockets Community Chat! 🚀</span>
+                                </div>
+                                <div class="chat-message">
+                                    <div class="message-avatar">SC</div>
+                                    <div class="message-content">
+                                        <div class="message-author">Sarah Chen</div>
+                                        <div class="message-text">Just pushed a new React tutorial! Check it out 💻</div>
+                                        <div class="message-time">2 min ago</div>
+                                    </div>
+                                </div>
+                                <div class="chat-message">
+                                    <div class="message-avatar">MJ</div>
+                                    <div class="message-content">
+                                        <div class="message-author">Mike Johnson</div>
+                                        <div class="message-text">Anyone working on the JavaScript challenge today?</div>
+                                        <div class="message-time">5 min ago</div>
+                                    </div>
+                                </div>
+                                <div class="chat-message">
+                                    <div class="message-avatar">AS</div>
+                                    <div class="message-content">
+                                        <div class="message-author">Alice Smith</div>
+                                        <div class="message-text">My React project is finally live! 🎉 Thanks for all the help!</div>
+                                        <div class="message-time">12 min ago</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="chat-input-area">
+                                <div class="chat-emoji-picker" id="chatEmojiPicker">
+                                    <button class="emoji-btn" data-emoji="😀">😀</button>
+                                    <button class="emoji-btn" data-emoji="🎉">🎉</button>
+                                    <button class="emoji-btn" data-emoji="💻">💻</button>
+                                    <button class="emoji-btn" data-emoji="🚀">🚀</button>
+                                    <button class="emoji-btn" data-emoji="❤️">❤️</button>
+                                    <button class="emoji-btn" data-emoji="👍">👍</button>
+                                </div>
+                                <div class="chat-input-group">
+                                    <button class="emoji-toggle-btn" id="emojiToggleBtn">
+                                        <i class="fas fa-smile"></i>
+                                    </button>
+                                    <input type="text" id="chatInput" class="chat-input" placeholder="Type a message..." maxlength="500">
+                                    <button class="chat-send-btn" id="chatSendBtn" disabled>
+                                        <i class="fas fa-paper-plane"></i>
+                                    </button>
+                                </div>
+                                <div class="typing-indicator" id="typingIndicator" style="display: none;">
+                                    <span></span> is typing...
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Trending Topics -->
                     <div class="sidebar-card">
-                        <h3 class="card-title">Trending Topics</h3>
+                        <h3 class="card-title">
+                            <i class="fas fa-fire gradient-icon"></i>
+                            Trending Now
+                        </h3>
                         <div class="trending-topics">
-                            <div class="trending-item">
+                            <div class="trending-item" data-trend="javascript-es2024">
                                 <div class="trending-rank">#1</div>
                                 <div class="trending-info">
                                     <div class="trending-topic">JavaScript ES2024</div>
-                                    <div class="trending-posts">127 posts</div>
+                                    <div class="trending-posts">
+                                        <i class="fas fa-arrow-up trend-up"></i>
+                                        127 posts today
+                                    </div>
+                                </div>
+                                <div class="trending-sparkline">
+                                    <div class="sparkline-bar" style="height: 60%"></div>
+                                    <div class="sparkline-bar" style="height: 80%"></div>
+                                    <div class="sparkline-bar" style="height: 100%"></div>
+                                    <div class="sparkline-bar" style="height: 90%"></div>
+                                    <div class="sparkline-bar" style="height: 95%"></div>
                                 </div>
                             </div>
-                            <div class="trending-item">
+                            <div class="trending-item" data-trend="react-hooks">
                                 <div class="trending-rank">#2</div>
                                 <div class="trending-info">
                                     <div class="trending-topic">React Hooks</div>
-                                    <div class="trending-posts">89 posts</div>
+                                    <div class="trending-posts">
+                                        <i class="fas fa-arrow-up trend-up"></i>
+                                        89 posts today
+                                    </div>
+                                </div>
+                                <div class="trending-sparkline">
+                                    <div class="sparkline-bar" style="height: 40%"></div>
+                                    <div class="sparkline-bar" style="height: 70%"></div>
+                                    <div class="sparkline-bar" style="height: 85%"></div>
+                                    <div class="sparkline-bar" style="height: 100%"></div>
+                                    <div class="sparkline-bar" style="height: 95%"></div>
                                 </div>
                             </div>
-                            <div class="trending-item">
+                            <div class="trending-item" data-trend="python-ai">
                                 <div class="trending-rank">#3</div>
                                 <div class="trending-info">
                                     <div class="trending-topic">Python AI</div>
-                                    <div class="trending-posts">76 posts</div>
+                                    <div class="trending-posts">
+                                        <i class="fas fa-arrow-up trend-up"></i>
+                                        76 posts today
+                                    </div>
+                                </div>
+                                <div class="trending-sparkline">
+                                    <div class="sparkline-bar" style="height: 30%"></div>
+                                    <div class="sparkline-bar" style="height: 50%"></div>
+                                    <div class="sparkline-bar" style="height: 70%"></div>
+                                    <div class="sparkline-bar" style="height: 90%"></div>
+                                    <div class="sparkline-bar" style="height: 100%"></div>
                                 </div>
                             </div>
-                            <div class="trending-item">
+                            <div class="trending-item" data-trend="web-development">
                                 <div class="trending-rank">#4</div>
                                 <div class="trending-info">
                                     <div class="trending-topic">Web Development</div>
-                                    <div class="trending-posts">65 posts</div>
+                                    <div class="trending-posts">
+                                        <i class="fas fa-arrow-down trend-down"></i>
+                                        65 posts today
+                                    </div>
                                 </div>
+                                <div class="trending-sparkline">
+                                    <div class="sparkline-bar" style="height: 80%"></div>
+                                    <div class="sparkline-bar" style="height: 85%"></div>
+                                    <div class="sparkline-bar" style="height: 70%"></div>
+                                    <div class="sparkline-bar" style="height: 60%"></div>
+                                    <div class="sparkline-bar" style="height: 55%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Daily Progress Tracker -->
+                    <div class="sidebar-card progress-card">
+                        <h3 class="card-title">
+                            <i class="fas fa-target gradient-icon"></i>
+                            Your Daily Progress
+                        </h3>
+                        <div class="daily-progress">
+                            <div class="progress-item completed">
+                                <div class="progress-icon">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <div class="progress-info">
+                                    <div class="progress-title">Morning Coding</div>
+                                    <div class="progress-subtitle">JavaScript fundamentals</div>
+                                </div>
+                            </div>
+                            <div class="progress-item active">
+                                <div class="progress-icon">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                                <div class="progress-info">
+                                    <div class="progress-title">Community Interaction</div>
+                                    <div class="progress-subtitle">Help 2 more people</div>
+                                </div>
+                            </div>
+                            <div class="progress-item">
+                                <div class="progress-icon">
+                                    <i class="fas fa-code"></i>
+                                </div>
+                                <div class="progress-info">
+                                    <div class="progress-title">Project Work</div>
+                                    <div class="progress-subtitle">2 hours remaining</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="daily-streak">
+                            <div class="streak-info">
+                                <span class="streak-number">12</span>
+                                <span class="streak-label">day streak! 🔥</span>
+                            </div>
+                            <div class="streak-calendar">
+                                <div class="streak-day completed"></div>
+                                <div class="streak-day completed"></div>
+                                <div class="streak-day completed"></div>
+                                <div class="streak-day completed"></div>
+                                <div class="streak-day completed"></div>
+                                <div class="streak-day today"></div>
+                                <div class="streak-day"></div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Active Users -->
                     <div class="sidebar-card">
-                        <h3 class="card-title">Active Now</h3>
+                        <h3 class="card-title">
+                            <i class="fas fa-users gradient-icon"></i>
+                            Active Now
+                            <span class="pulse-indicator"></span>
+                        </h3>
                         <div class="active-users">
-                            <div class="active-user">
+                            <div class="active-user" data-user-id="sc">
                                 <div class="user-avatar online">SC</div>
                                 <div class="user-info">
                                     <div class="user-name">Dr. Sarah Chen</div>
-                                    <div class="user-status">Teaching JavaScript</div>
+                                    <div class="user-status">
+                                        <i class="fas fa-code"></i>
+                                        Teaching JavaScript
+                                    </div>
+                                </div>
+                                <div class="user-actions">
+                                    <button class="quick-message-btn" title="Quick message">
+                                        <i class="fas fa-comment"></i>
+                                    </button>
                                 </div>
                             </div>
-                            <div class="active-user">
+                            <div class="active-user" data-user-id="mj">
                                 <div class="user-avatar online">MJ</div>
                                 <div class="user-info">
                                     <div class="user-name">Mike Johnson</div>
-                                    <div class="user-status">In Python course</div>
+                                    <div class="user-status">
+                                        <i class="fas fa-laptop-code"></i>
+                                        In Python course
+                                    </div>
+                                </div>
+                                <div class="user-actions">
+                                    <button class="quick-message-btn" title="Quick message">
+                                        <i class="fas fa-comment"></i>
+                                    </button>
                                 </div>
                             </div>
-                            <div class="active-user">
+                            <div class="active-user" data-user-id="as">
                                 <div class="user-avatar online">AS</div>
                                 <div class="user-info">
                                     <div class="user-name">Alice Smith</div>
-                                    <div class="user-status">Working on React</div>
+                                    <div class="user-status">
+                                        <i class="fas fa-react"></i>
+                                        Working on React
+                                    </div>
+                                </div>
+                                <div class="user-actions">
+                                    <button class="quick-message-btn" title="Quick message">
+                                        <i class="fas fa-comment"></i>
+                                    </button>
                                 </div>
                             </div>
-                            <div class="active-user">
-                                <div class="user-avatar online">LD</div>
+                            <div class="active-user" data-user-id="ld">
+                                <div class="user-avatar available">LD</div>
                                 <div class="user-info">
                                     <div class="user-name">Luna Davis</div>
-                                    <div class="user-status">Available to help</div>
+                                    <div class="user-status">
+                                        <i class="fas fa-hands-helping"></i>
+                                        Available to help
+                                    </div>
+                                </div>
+                                <div class="user-actions">
+                                    <button class="quick-message-btn" title="Quick message">
+                                        <i class="fas fa-comment"></i>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -603,31 +805,60 @@ print(type(squares))  # <class 'generator'></code></pre>
 
                     <!-- Study Groups -->
                     <div class="sidebar-card">
-                        <h3 class="card-title">Your Study Groups</h3>
+                        <h3 class="card-title">
+                            <i class="fas fa-graduation-cap gradient-icon"></i>
+                            Your Study Groups
+                        </h3>
                         <div class="study-groups">
-                            <div class="study-group">
+                            <div class="study-group active" data-group-id="js-masters">
+                                <div class="group-avatar">
+                                    <i class="fab fa-js-square"></i>
+                                </div>
                                 <div class="group-info">
                                     <div class="group-name">JavaScript Masters</div>
                                     <div class="group-members">24 members</div>
                                 </div>
-                                <div class="group-activity">5 new posts</div>
+                                <div class="group-activity">
+                                    <div class="activity-indicator">
+                                        <div class="activity-dot new-messages"></div>
+                                        <span>5 new</span>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="study-group">
+                            <div class="study-group" data-group-id="react-beginners">
+                                <div class="group-avatar">
+                                    <i class="fab fa-react"></i>
+                                </div>
                                 <div class="group-info">
                                     <div class="group-name">React Beginners</div>
                                     <div class="group-members">156 members</div>
                                 </div>
-                                <div class="group-activity">12 new posts</div>
+                                <div class="group-activity">
+                                    <div class="activity-indicator">
+                                        <div class="activity-dot new-messages"></div>
+                                        <span>12 new</span>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="study-group">
+                            <div class="study-group" data-group-id="python-ai">
+                                <div class="group-avatar">
+                                    <i class="fab fa-python"></i>
+                                </div>
                                 <div class="group-info">
                                     <div class="group-name">Python AI Hub</div>
                                     <div class="group-members">89 members</div>
                                 </div>
-                                <div class="group-activity">3 new posts</div>
+                                <div class="group-activity">
+                                    <div class="activity-indicator">
+                                        <span>3 new</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <button class="see-all-btn">See All Groups</button>
+                        <button class="see-all-btn gradient-btn">
+                            <i class="fas fa-plus"></i>
+                            Create New Group
+                        </button>
                     </div>
                 </aside>
             </div>
@@ -636,64 +867,272 @@ print(type(squares))  # <class 'generator'></code></pre>
 
     <!-- Create Post Modal -->
     <div class="modal" id="createPostModal">
-        <div class="modal-content">
+        <div class="modal-content create-post-modal">
             <div class="modal-header">
-                <h3>Create New Post</h3>
+                <div class="modal-title-section">
+                    <div class="modal-icon">
+                        <i class="fas fa-pen-nib"></i>
+                    </div>
+                    <h3>Create New Post</h3>
+                </div>
                 <button class="modal-close" id="closeModal">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
             <div class="modal-body">
-                <div class="post-form">
-                    <div class="form-group">
-                        <label for="postCategory">Category</label>
-                        <select id="postCategory" class="form-control">
-                            <option value="">Select a category</option>
-                            <option value="javascript">JavaScript</option>
-                            <option value="python">Python</option>
-                            <option value="cpp">C++</option>
-                            <option value="react">React</option>
-                            <option value="nodejs">Node.js</option>
-                            <option value="ai">AI/ML</option>
-                            <option value="help">Help & Support</option>
-                            <option value="general">General Discussion</option>
-                        </select>
+                <form class="post-form" id="createPostForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="postCategory">
+                                <i class="fas fa-tag"></i>
+                                Category
+                            </label>
+                            <select id="postCategory" name="category" class="form-control" required>
+                                <option value="">Select a category</option>
+                                <option value="javascript">🟡 JavaScript</option>
+                                <option value="python">🐍 Python</option>
+                                <option value="cpp">⚡ C++</option>
+                                <option value="react">⚛️ React</option>
+                                <option value="nodejs">🚀 Node.js</option>
+                                <option value="ai">🤖 AI/ML</option>
+                                <option value="web-dev">🌐 Web Development</option>
+                                <option value="mobile">📱 Mobile Development</option>
+                                <option value="help">🆘 Help & Support</option>
+                                <option value="showcase">🎨 Project Showcase</option>
+                                <option value="discussion">💬 General Discussion</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="postVisibility">
+                                <i class="fas fa-eye"></i>
+                                Visibility
+                            </label>
+                            <select id="postVisibility" name="visibility" class="form-control">
+                                <option value="public">🌍 Public</option>
+                                <option value="group">👥 Study Groups Only</option>
+                                <option value="followers">👤 Followers Only</option>
+                            </select>
+                        </div>
                     </div>
+                    
                     <div class="form-group">
-                        <label for="postTitle">Title (optional)</label>
-                        <input type="text" id="postTitle" class="form-control" placeholder="Give your post a title...">
+                        <label for="postTitle">
+                            <i class="fas fa-heading"></i>
+                            Title <span class="optional">(optional)</span>
+                        </label>
+                        <input type="text" id="postTitle" name="title" class="form-control" placeholder="Give your post a catchy title...">
                     </div>
+                    
                     <div class="form-group">
-                        <label for="postContent">Content</label>
-                        <textarea id="postContent" class="form-control" rows="8" placeholder="What's on your mind? Share your thoughts, ask questions, or help others..."></textarea>
+                        <label for="postContent">
+                            <i class="fas fa-edit"></i>
+                            Content
+                        </label>
+                        <div class="content-editor">
+                            <div class="editor-toolbar">
+                                <button type="button" class="toolbar-btn" data-action="bold" title="Bold">
+                                    <i class="fas fa-bold"></i>
+                                </button>
+                                <button type="button" class="toolbar-btn" data-action="italic" title="Italic">
+                                    <i class="fas fa-italic"></i>
+                                </button>
+                                <button type="button" class="toolbar-btn" data-action="code" title="Inline code">
+                                    <i class="fas fa-code"></i>
+                                </button>
+                                <button type="button" class="toolbar-btn" data-action="link" title="Add link">
+                                    <i class="fas fa-link"></i>
+                                </button>
+                                <div class="toolbar-divider"></div>
+                                <button type="button" class="toolbar-btn" data-action="code-block" title="Code block">
+                                    <i class="fas fa-terminal"></i>
+                                </button>
+                                <button type="button" class="toolbar-btn" data-action="quote" title="Quote">
+                                    <i class="fas fa-quote-left"></i>
+                                </button>
+                                <button type="button" class="toolbar-btn" data-action="list" title="List">
+                                    <i class="fas fa-list-ul"></i>
+                                </button>
+                            </div>
+                            <textarea id="postContent" name="content" class="form-control content-textarea" 
+                                     rows="6" placeholder="What's on your mind? Share your thoughts, ask questions, or help others..." 
+                                     required></textarea>
+                            <div class="character-counter">
+                                <span id="charCount">0</span> / 2000
+                            </div>
+                        </div>
                     </div>
+                    
                     <div class="form-group">
-                        <label for="postTags">Tags</label>
-                        <input type="text" id="postTags" class="form-control" placeholder="Add tags separated by spaces (e.g., #javascript #beginners #help)">
+                        <label for="postTags">
+                            <i class="fas fa-hashtag"></i>
+                            Tags
+                        </label>
+                        <div class="tags-input-container">
+                            <div class="tags-display" id="tagsDisplay"></div>
+                            <input type="text" id="postTags" name="tags" class="form-control tags-input" 
+                                   placeholder="Add tags (press Enter or comma to add)">
+                            <div class="suggested-tags">
+                                <span class="tag-suggestion" data-tag="beginners">#beginners</span>
+                                <span class="tag-suggestion" data-tag="tutorial">#tutorial</span>
+                                <span class="tag-suggestion" data-tag="project">#project</span>
+                                <span class="tag-suggestion" data-tag="help">#help</span>
+                                <span class="tag-suggestion" data-tag="opensource">#opensource</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="post-options">
-                        <button class="option-btn" data-option="code">
-                            <i class="fas fa-code"></i>
-                            <span>Add Code Block</span>
+                    
+                    <div class="post-options-grid">
+                        <div class="option-card" data-option="image">
+                            <div class="option-icon">
+                                <i class="fas fa-image"></i>
+                            </div>
+                            <div class="option-info">
+                                <div class="option-title">Add Images</div>
+                                <div class="option-subtitle">Upload screenshots or photos</div>
+                            </div>
+                            <div class="option-action">
+                                <input type="file" id="imageUpload" accept="image/*" multiple style="display: none;">
+                                <button type="button" class="option-btn" onclick="document.getElementById('imageUpload').click()">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="option-card" data-option="code">
+                            <div class="option-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div class="option-info">
+                                <div class="option-title">Code Block</div>
+                                <div class="option-subtitle">Share code snippets</div>
+                            </div>
+                            <div class="option-action">
+                                <button type="button" class="option-btn" id="addCodeBlockBtn">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="option-card" data-option="poll">
+                            <div class="option-icon">
+                                <i class="fas fa-poll"></i>
+                            </div>
+                            <div class="option-info">
+                                <div class="option-title">Create Poll</div>
+                                <div class="option-subtitle">Ask the community</div>
+                            </div>
+                            <div class="option-action">
+                                <button type="button" class="option-btn" id="addPollBtn">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="option-card" data-option="event">
+                            <div class="option-icon">
+                                <i class="fas fa-calendar"></i>
+                            </div>
+                            <div class="option-info">
+                                <div class="option-title">Schedule Event</div>
+                                <div class="option-subtitle">Create study sessions</div>
+                            </div>
+                            <div class="option-action">
+                                <button type="button" class="option-btn" id="addEventBtn">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Image Preview Area -->
+                    <div class="image-preview-area" id="imagePreviewArea" style="display: none;">
+                        <div class="preview-header">
+                            <h4><i class="fas fa-images"></i> Image Previews</h4>
+                        </div>
+                        <div class="image-previews" id="imagePreviews"></div>
+                    </div>
+                    
+                    <!-- Poll Creator -->
+                    <div class="poll-creator" id="pollCreator" style="display: none;">
+                        <div class="poll-header">
+                            <h4><i class="fas fa-poll"></i> Create Poll</h4>
+                        </div>
+                        <input type="text" class="form-control poll-question" placeholder="Ask a question...">
+                        <div class="poll-options">
+                            <input type="text" class="form-control poll-option" placeholder="Option 1">
+                            <input type="text" class="form-control poll-option" placeholder="Option 2">
+                        </div>
+                        <button type="button" class="add-poll-option-btn">
+                            <i class="fas fa-plus"></i> Add Option
                         </button>
-                        <button class="option-btn" data-option="image">
-                            <i class="fas fa-image"></i>
-                            <span>Add Image</span>
-                        </button>
-                        <button class="option-btn" data-option="poll">
-                            <i class="fas fa-poll"></i>
-                            <span>Create Poll</span>
-                        </button>
                     </div>
-                </div>
+                </form>
             </div>
             <div class="modal-footer">
-                <button class="btn-secondary" id="cancelPost">Cancel</button>
-                <button class="btn-primary" id="publishPost">Publish Post</button>
+                <div class="footer-left">
+                    <button type="button" class="btn-secondary draft-btn" id="saveDraftBtn">
+                        <i class="fas fa-save"></i>
+                        Save Draft
+                    </button>
+                </div>
+                <div class="footer-right">
+                    <button type="button" class="btn-secondary" id="cancelPost">Cancel</button>
+                    <button type="submit" form="createPostForm" class="btn-primary publish-btn" id="publishPost">
+                        <i class="fas fa-rocket"></i>
+                        Publish Post
+                    </button>
+                </div>
             </div>
         </div>
     </div>
 
+    <!-- Community Chat Modal (Full Screen) -->
+    <div class="modal chat-modal" id="chatModal">
+        <div class="modal-content chat-modal-content">
+            <div class="chat-modal-header">
+                <div class="chat-title">
+                    <i class="fas fa-comments"></i>
+                    Community Chat
+                </div>
+                <div class="chat-controls">
+                    <button class="chat-control-btn" id="chatSettingsBtn">
+                        <i class="fas fa-cog"></i>
+                    </button>
+                    <button class="chat-control-btn" id="chatMinimizeBtn">
+                        <i class="fas fa-compress"></i>
+                    </button>
+                    <button class="modal-close" id="closeChatModal">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="chat-modal-body">
+                <div class="chat-sidebar">
+                    <div class="chat-tabs">
+                        <button class="chat-tab active" data-tab="general"># general</button>
+                        <button class="chat-tab" data-tab="help"># help</button>
+                        <button class="chat-tab" data-tab="random"># random</button>
+                        <button class="chat-tab" data-tab="javascript"># javascript</button>
+                    </div>
+                    <div class="online-users-list">
+                        <h4>Online Users (24)</h4>
+                        <div class="users-list" id="chatUsersList"></div>
+                    </div>
+                </div>
+                <div class="chat-main-area">
+                    <div class="chat-messages-container" id="chatModalMessages"></div>
+                    <div class="chat-input-container">
+                        <input type="text" class="chat-modal-input" placeholder="Type a message...">
+                        <button class="chat-modal-send">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.4/socket.io.js"></script>
     <script src="scripts/dashboard.js"></script>
     <script src="scripts/api.js"></script>
     <script src="scripts/auth.js"></script>
