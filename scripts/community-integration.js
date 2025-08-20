@@ -1,14 +1,238 @@
 // Community Page Integration with Backend
 document.addEventListener('DOMContentLoaded', async function() {
-    // Ensure user is authenticated
-    if (!api.requireAuth()) return;
-
-    // Load community data
-    await loadCommunityData();
+    // Check if user is authenticated, but don't redirect
+    const isAuthenticated = api.isAuthenticated();
     
-    // Set up real-time features
-    setupCommunityFeatures();
+    if (isAuthenticated) {
+        // Load full community data for authenticated users
+        await loadCommunityData();
+        setupCommunityFeatures();
+    } else {
+        // Load limited community data for guests
+        await loadPublicCommunityData();
+        setupGuestFeatures();
+        showAuthPrompts();
+    }
 });
+
+async function loadPublicCommunityData() {
+    try {
+        // Show loading state
+        showCommunityLoading(true);
+        
+        // Load public posts (no authentication required)
+        await loadPublicPosts();
+        
+        // Load trending topics (public)
+        await loadTrendingTopics();
+        
+        // Show sample active users and study groups
+        showSampleData();
+        
+    } catch (error) {
+        console.error('Failed to load public community data:', error);
+        showOfflineMessage();
+    } finally {
+        showCommunityLoading(false);
+    }
+}
+
+async function loadPublicPosts() {
+    try {
+        // For now, show the existing static posts
+        // In a real implementation, you'd fetch public posts without auth
+        const postsContainer = document.querySelector('.posts-feed');
+        if (postsContainer && postsContainer.children.length === 0) {
+            // Posts are already in the HTML, so no need to load
+            console.log('Using existing static posts for demo');
+        }
+    } catch (error) {
+        console.error('Failed to load public posts:', error);
+    }
+}
+
+function setupGuestFeatures() {
+    // Disable posting features for guests
+    const createPostBtn = document.getElementById('createPostBtn');
+    if (createPostBtn) {
+        createPostBtn.addEventListener('click', () => {
+            showAuthPrompt('You need to log in to create posts. Join our community!');
+        });
+    }
+    
+    // Disable interaction buttons for guests
+    document.querySelectorAll('.action-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            showAuthPrompt('Please log in to interact with posts!');
+        });
+    });
+    
+    // Disable chat for guests
+    const chatInput = document.getElementById('chatInput');
+    if (chatInput) {
+        chatInput.disabled = true;
+        chatInput.placeholder = 'Log in to join the conversation...';
+    }
+    
+    const chatSendBtn = document.getElementById('chatSendBtn');
+    if (chatSendBtn) {
+        chatSendBtn.disabled = true;
+        chatSendBtn.addEventListener('click', () => {
+            showAuthPrompt('Please log in to participate in community chat!');
+        });
+    }
+}
+
+function showAuthPrompts() {
+    // Add login prompts to various sections
+    const sidebar = document.querySelector('.community-right-sidebar');
+    if (sidebar) {
+        const authPrompt = document.createElement('div');
+        authPrompt.className = 'sidebar-card auth-prompt';
+        authPrompt.innerHTML = `
+            <div class="auth-prompt-content">
+                <div class="auth-prompt-icon">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <h3>Join OpenRockets!</h3>
+                <p>Sign up to participate in discussions, share projects, and connect with fellow developers.</p>
+                <div class="auth-prompt-buttons">
+                    <button class="btn-primary" onclick="showRegisterModal()">
+                        <i class="fas fa-user-plus"></i>
+                        Sign Up Free
+                    </button>
+                    <button class="btn-secondary" onclick="showLoginModal()">
+                        <i class="fas fa-sign-in-alt"></i>
+                        Sign In
+                    </button>
+                </div>
+                <div class="auth-prompt-features">
+                    <div class="feature-item">
+                        <i class="fas fa-comments"></i>
+                        <span>Real-time chat</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-share-alt"></i>
+                        <span>Share projects</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-users"></i>
+                        <span>Study groups</span>
+                    </div>
+                </div>
+            </div>
+        `;
+        sidebar.insertBefore(authPrompt, sidebar.firstChild);
+    }
+}
+
+function showAuthPrompt(message) {
+    // Create a nice auth prompt modal
+    const authPromptModal = document.createElement('div');
+    authPromptModal.className = 'auth-prompt-modal';
+    authPromptModal.innerHTML = `
+        <div class="auth-prompt-modal-content">
+            <div class="auth-prompt-header">
+                <div class="auth-prompt-icon">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <h3>Authentication Required</h3>
+                <button class="close-auth-prompt" onclick="this.closest('.auth-prompt-modal').remove()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="auth-prompt-body">
+                <p>${message}</p>
+                <div class="auth-prompt-benefits">
+                    <div class="benefit-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Free forever</span>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Join 1000+ developers</span>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Real-time collaboration</span>
+                    </div>
+                </div>
+            </div>
+            <div class="auth-prompt-footer">
+                <button class="btn-primary" onclick="showRegisterModal(); this.closest('.auth-prompt-modal').remove();">
+                    <i class="fas fa-rocket"></i>
+                    Join OpenRockets
+                </button>
+                <button class="btn-secondary" onclick="showLoginModal(); this.closest('.auth-prompt-modal').remove();">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Sign In
+                </button>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(authPromptModal);
+    
+    // Remove after 5 seconds if user doesn't interact
+    setTimeout(() => {
+        if (authPromptModal.parentNode) {
+            authPromptModal.remove();
+        }
+    }, 8000);
+}
+
+function showSampleData() {
+    // Update online count with sample data
+    const onlineCount = document.getElementById('onlineCount');
+    if (onlineCount) {
+        onlineCount.textContent = '150+ online';
+    }
+    
+    // Add sample chat messages if empty
+    const chatMessages = document.getElementById('chatMessages');
+    if (chatMessages && chatMessages.children.length <= 1) {
+        const sampleMessages = [
+            { user: 'Sarah', message: 'Welcome to OpenRockets! 🚀 Great to have you here!', time: '2 min ago' },
+            { user: 'Mike', message: 'Just finished the React tutorial - amazing content!', time: '5 min ago' },
+            { user: 'Emma', message: 'Anyone working on the JavaScript challenge?', time: '8 min ago' }
+        ];
+        
+        sampleMessages.forEach(msg => {
+            const messageEl = document.createElement('div');
+            messageEl.className = 'chat-message sample-message';
+            messageEl.innerHTML = `
+                <div class="message-avatar">${msg.user[0]}</div>
+                <div class="message-content">
+                    <div class="message-author">${msg.user}</div>
+                    <div class="message-text">${msg.message}</div>
+                    <div class="message-time">${msg.time}</div>
+                </div>
+            `;
+            chatMessages.appendChild(messageEl);
+        });
+    }
+}
+
+function showOfflineMessage() {
+    const postsContainer = document.querySelector('.posts-feed');
+    if (postsContainer) {
+        postsContainer.innerHTML = `
+            <div class="offline-message">
+                <div class="offline-icon">
+                    <i class="fas fa-wifi-slash"></i>
+                </div>
+                <h3>Unable to connect to community server</h3>
+                <p>Don't worry! You can still browse the community and see sample content. 
+                   Some features may be limited until the server connection is restored.</p>
+                <button class="btn-primary" onclick="window.location.reload()">
+                    <i class="fas fa-sync-alt"></i>
+                    Try Again
+                </button>
+            </div>
+        `;
+    }
+}
 
 async function loadCommunityData() {
     try {

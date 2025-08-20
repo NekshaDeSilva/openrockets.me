@@ -1931,3 +1931,303 @@ textarea.form-control {
         gap: 4px;
     }
 }
+
+/* Message Form and Auth Prompt Styles */
+.message-form {
+    display: flex;
+    gap: 0.5rem;
+    padding: 1rem;
+    border-top: 1px solid var(--border-color);
+    background: rgba(17, 24, 39, 0.3);
+}
+
+.message-form input {
+    flex: 1;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: rgba(31, 41, 55, 0.5);
+    color: var(--text-color);
+    font-size: 0.9rem;
+}
+
+.message-form input:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background: rgba(31, 41, 55, 0.3);
+}
+
+.message-form input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.message-form .btn-primary {
+    padding: 0.75rem 1.5rem;
+    white-space: nowrap;
+}
+
+.message-form .btn-primary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Auth Prompt Styles */
+.auth-prompt {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(147, 51, 234, 0.1) 100%);
+    border: 2px solid rgba(59, 130, 246, 0.2);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.auth-prompt-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.auth-prompt-icon {
+    width: 3rem;
+    height: 3rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+    margin-bottom: 0.5rem;
+}
+
+.auth-prompt h3 {
+    margin: 0;
+    color: var(--text-color);
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.auth-prompt p {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.auth-prompt-buttons {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+}
+
+.auth-prompt-buttons .btn-primary,
+.auth-prompt-buttons .btn-secondary {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.85rem;
+    border-radius: 8px;
+}
+
+.auth-prompt-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.feature-item i {
+    color: var(--primary-color);
+    font-size: 0.9rem;
+}
+
+/* Auth Prompt Modal */
+.auth-prompt-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    padding: 1rem;
+    animation: fadeIn 0.3s ease;
+}
+
+.auth-prompt-modal-content {
+    background: linear-gradient(135deg, rgba(17, 24, 39, 0.95) 0%, rgba(31, 41, 55, 0.95) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 0;
+    max-width: 400px;
+    width: 100%;
+    overflow: hidden;
+    animation: slideUp 0.3s ease;
+}
+
+.auth-prompt-header {
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    padding: 1.5rem;
+    text-align: center;
+    position: relative;
+}
+
+.auth-prompt-header .auth-prompt-icon {
+    width: 3rem;
+    height: 3rem;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+    margin-bottom: 0.75rem;
+}
+
+.auth-prompt-header h3 {
+    margin: 0;
+    color: white;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.close-auth-prompt {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: white;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background 0.2s;
+}
+
+.close-auth-prompt:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.auth-prompt-body {
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.auth-prompt-body p {
+    margin: 0 0 1rem 0;
+    color: var(--text-color);
+    line-height: 1.5;
+}
+
+.auth-prompt-benefits {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 1rem 0;
+}
+
+.benefit-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.benefit-item i {
+    color: #10b981;
+    font-size: 1rem;
+}
+
+.auth-prompt-footer {
+    padding: 1.5rem;
+    background: rgba(17, 24, 39, 0.5);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    gap: 0.75rem;
+}
+
+.auth-prompt-footer .btn-primary,
+.auth-prompt-footer .btn-secondary {
+    flex: 1;
+    padding: 0.75rem;
+    font-size: 0.9rem;
+    text-align: center;
+    border-radius: 8px;
+}
+
+/* Sample message styling */
+.sample-message {
+    opacity: 0.8;
+}
+
+.sample-message::after {
+    content: ' (sample)';
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    margin-left: 0.5rem;
+}
+
+/* Offline message */
+.offline-message {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: rgba(17, 24, 39, 0.3);
+    border-radius: 12px;
+    border: 1px dashed var(--border-color);
+}
+
+.offline-icon {
+    font-size: 3rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+}
+
+.offline-message h3 {
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+}
+
+.offline-message p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(2rem);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
