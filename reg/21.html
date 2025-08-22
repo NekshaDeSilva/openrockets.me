@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POML Hands-on by OpenRockets | OpenRockets </title>
+    <link rel="icon" type="image/png" href="../i/assets/static/openthread_logo_bash-trans-removebg-preview (1).png">
+    <link rel="stylesheet" href="../form/css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .microsoft-header {
+            background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%);
+            color: rgb(0, 0, 0);
+            border: 1.5px solid black;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: left;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .session-info {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .session-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .detail-icon {
+            width: 20px;
+            height: 20px;
+            background: #0078d4;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 10px;
+        }
+        
+        .registered-users {
+            margin-top: 3rem;
+            padding: 2rem;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border: 2px solid #e9ecef;
+        }
+        
+        .users-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .user-card {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid #dee2e6;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #0078d4, #106ebe);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .user-info {
+            flex: 1;
+        }
+        
+        .user-github {
+            font-weight: 600;
+            color: #0078d4;
+            text-decoration: none;
+        }
+        
+        .user-github:hover {
+            text-decoration: underline;
+        }
+        
+        .user-contact {
+            font-size: 0.9em;
+            color: #666;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            color: #666;
+        }
+        
+        .error-message {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid #f5c6cb;
+            margin: 1rem 0;
+        }
+        
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid #c3e6cb;
+            margin: 1rem 0;
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 1rem;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #0078d4;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Social Media Button Styles */
+        .social-follow-section {
+            text-align: center;
+            padding: 1rem 0;
+        }
+
+        .social-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin: 1rem 0;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            border: 2px solid transparent;
+        }
+
+        .twitter-btn {
+            background: linear-gradient(135deg, #1DA1F2, #0d8bd9);
+            color: white;
+        }
+
+        .twitter-btn:hover {
+            background: linear-gradient(135deg, #0d8bd9, #0a7bc4);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(29, 161, 242, 0.3);
+        }
+
+        .github-btn {
+            background: linear-gradient(135deg, #24292e, #1a1e22);
+            color: white;
+        }
+
+        .github-btn:hover {
+            background: linear-gradient(135deg, #1a1e22, #0f1419);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(36, 41, 46, 0.3);
+        }
+
+        .instagram-btn {
+            background: linear-gradient(135deg, #E4405F, #C13584, #833AB4);
+            color: white;
+        }
+
+        .instagram-btn:hover {
+            background: linear-gradient(135deg, #C13584, #833AB4, #5B51D8);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(228, 64, 95, 0.3);
+        }
+
+        /* Responsive adjustments */
+        @media (min-width: 480px) {
+            .social-buttons {
+                flex-direction: row;
+                justify-content: center;
+            }
+            
+            .social-btn {
+                flex: 1;
+                max-width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Microsoft POML Header -->
+        <div class="microsoft-header">
+            <img src="../v/openrockets-w.png" alt="OpenRockets Logo" width="200px" style="margin-bottom: 1rem;">
+            <h1>POML Hands-on by OpenRockets</h1>
+            <p style="font-size: 1.2rem; margin-top: 0.5rem;">Prompt like a Pro. Get into the latest cutting edge research by <a href="https://www.microsoft.com">Microsoft</a></p>
+            <p style="opacity: 0.9; margin-top: 1rem;">Join us on Microsoft Teams, LIVE from Colombo, Sri Lanka.</p>
+        </div>
+
+        <!-- Session Information -->
+        <div class="session-info">
+            <h2 style="margin-bottom: 1rem; color: #000000;">📅 Session Details</h2>
+            <div class="session-details">
+                <div class="detail-item">
+                    <div class="detail-icon">📅</div>
+                    <span><strong>Date:</strong> September 5th, 2025</span>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-icon">🕒</div>
+                    <span><strong>Time:</strong> 2:00 PM - 5:00 PM GMT+5:30</span>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-icon">🌐</div>
+                    <span><strong>Mode:</strong> Online (Teams)</span>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-icon">💰</div>
+                    <span><strong>Fee:</strong> Free for everyone.</span>
+                </div>
+            </div>
+            <p style="margin-top: 1rem; color: #666;">
+                The joining link will be sent to your WhatsApp and email.
+            </p>
+        </div>
+
+        <!-- Registration Form -->
+        <main class="form-container">
+            <h2 style="text-align: center; margin-bottom: 2rem; color: #333;">Register for Microsoft POML Session</h2>
+            
+            <div id="message-container"></div>
+            
+            <form id="poml-registration-form" class="application-form">
+                <!-- Email Field -->
+                <div class="form-group">
+                    <label for="email" class="form-label">Email Address *</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        class="form-input" 
+                        required 
+                        placeholder="your.email@example.com"
+                    >
+                    <div class="error-message" id="email-error"></div>
+                </div>
+
+                <!-- Phone Number Field -->
+                <div class="form-group">
+                    <label for="phone" class="form-label">Phone Number *</label>
+                    <input 
+                        type="tel" 
+                        id="phone" 
+                        name="phone" 
+                        class="form-input" 
+                        required 
+                        placeholder="+94 71 234 5678"
+                        pattern="[\+]?[0-9\s\-\(\)]+"
+                    >
+                    <div class="error-message" id="phone-error"></div>
+                </div>
+
+                <!-- GitHub Username Field -->
+                <div class="form-group">
+                    <label for="githubUsername" class="form-label">GitHub Username *</label>
+                    <input 
+                        type="text" 
+                        id="githubUsername" 
+                        name="githubUsername" 
+                        class="form-input" 
+                        required 
+                        placeholder="yourusername"
+                        pattern="[a-zA-Z0-9\-]+"
+                    >
+                    <small style="color: #666; font-size: 0.9rem;">Enter your GitHub username (without @)</small>
+                    <div class="error-message" id="github-error"></div>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="submit-btn" id="submit-btn">
+                    <span class="btn-text">Register for POML Session</span>
+                    <div class="loading-spinner" id="loading-spinner"></div>
+                </button>
+            </form>
+        </main>
+
+        <!-- Success Message -->
+        <div class="success-overlay" id="success-overlay" style="display: none;">
+            <div class="success-modal">
+                <div class="success-icon">🎉</div>
+                <h2 class="success-title">You Have Registered!</h2>
+                <p class="success-message">
+                    Thanks for your interest! Stay connected with OpenRockets and never miss our amazing updates, events, and opportunities.
+                </p>
+                <div class="social-follow-section">
+                    <h3 style="color: #0078d4; margin: 1.5rem 0 1rem 0;">Follow Us On Social Media</h3>
+                    <div class="social-buttons">
+                        <a href="https://x.com/OpenRockets" target="_blank" class="social-btn twitter-btn">
+                            <svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor">
+                                <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/>
+                            </svg>
+                            <span>Follow on X (Twitter)</span>
+                        </a>
+                        <a href="https://github.com/OpenRockets" target="_blank" class="social-btn github-btn">
+                            <svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor">
+                                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                            </svg>
+                            <span>Star on GitHub</span>
+                        </a>
+                        <a href="https://instagram.com/openrockets" target="_blank" class="social-btn instagram-btn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                            <span>Follow on Instagram</span>
+                        </a>
+                    </div>
+                    <p style="font-size: 0.9rem; color: #666; margin-top: 1rem; text-align: center;">
+                        Stay updated with our latest projects, tutorials, and community events!
+                    </p>
+                </div>
+                <button type="button" class="secondary-btn" id="close-success">Continue Browsing</button>
+            </div>
+        </div>
+
+        <!-- Registered Users Section -->
+
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <p>&copy; 2025 OpenRockets Open-source Software Foundation. Headquartered in Sri Lanka. <br>All rghts reserved.</p>
+                <div class="footer-links">
+                    <a href="https://nekshadesilva.github.io/openthread/" target="_blank" class="footer-link">
+                        <img src="https://nekshadesilva.github.io/openthread/assets/openthread_logo_bash-trans.png" alt="OpenThreads" class="footer-logo">
+                        <span>OpenThreads</span>
+                    </a>
+                    <a href="https://github.com/OpenRockets" target="_blank" class="footer-link">
+                        <svg class="footer-logo github-logo" viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                        </svg>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="https://x.com/OpenRockets" target="_blank" class="footer-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter-x" viewBox="0 0 16 16">
+  <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/>
+</svg>
+                        <span>Tweets</span>
+                    </a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Fake Registration Script -->
+    <script>
+        class FakePOMLRegistration {
+            constructor() {
+                this.form = document.getElementById('poml-registration-form');
+                this.messageContainer = document.getElementById('message-container');
+                this.usersContainer = document.getElementById('users-container');
+                this.usersLoading = document.getElementById('users-loading');
+                this.totalRegistrations = document.getElementById('total-registrations');
+                
+                this.init();
+            }
+
+            init() {
+                this.form.addEventListener('submit', (e) => this.handleSubmit(e));
+                this.loadFakeUsers();
+                
+                // Close success modal
+                document.getElementById('close-success').addEventListener('click', () => {
+                    document.getElementById('success-overlay').style.display = 'none';
+                });
+            }
+
+            async handleSubmit(e) {
+                e.preventDefault();
+                
+                const submitBtn = document.getElementById('submit-btn');
+                const btnText = submitBtn.querySelector('.btn-text');
+                const spinner = submitBtn.querySelector('.loading-spinner');
+                
+                // Show loading state for realism
+                submitBtn.disabled = true;
+                btnText.textContent = 'Registering...';
+                spinner.style.display = 'inline-block';
+                
+                // Fake loading delay
+                setTimeout(() => {
+                    // Show success message
+                    this.showSuccess();
+                    this.form.reset();
+                    
+                    // Reset button state
+                    submitBtn.disabled = false;
+                    btnText.textContent = 'Register for POML Session';
+                    spinner.style.display = 'none';
+                    
+                    // Increment the fake counter
+                    this.incrementFakeCounter();
+                }, 1500);
+            }
+
+            incrementFakeCounter() {
+                const currentCount = parseInt(this.totalRegistrations.textContent);
+                const newCount = currentCount + 1;
+                this.totalRegistrations.textContent = newCount;
+                
+                const available = Math.max(0, 50 - newCount);
+                document.getElementById('available-spots').textContent = available;
+            }
+
+            loadFakeUsers() {
+                this.usersLoading.style.display = 'none';
+                this.usersContainer.style.display = 'grid';
+                
+                const fakeUsers = [
+                    { githubUsername: 'alex-developer', email: 'alex@devmail.com', phone: '+94771234567' },
+                    { githubUsername: 'priya-coder', email: 'priya@techmail.com', phone: '+94772345678' },
+                    { githubUsername: 'david-ml', email: 'david@aimail.com', phone: '+94773456789' },
+                    { githubUsername: 'sara-tech', email: 'sara@devops.com', phone: '+94774567890' },
+                    { githubUsername: 'mike-frontend', email: 'mike@webdev.com', phone: '+94775678901' },
+                    { githubUsername: 'lisa-backend', email: 'lisa@serverside.com', phone: '+94776789012' },
+                    { githubUsername: 'john-fullstack', email: 'john@fulldev.com', phone: '+94777890123' },
+                    { githubUsername: 'emma-data', email: 'emma@datasci.com', phone: '+94778901234' },
+                    { githubUsername: 'ryan-mobile', email: 'ryan@mobiledev.com', phone: '+94779012345' },
+                    { githubUsername: 'zoe-cloud', email: 'zoe@cloudtech.com', phone: '+94770123456' },
+                    { githubUsername: 'carlos-security', email: 'carlos@cybersec.com', phone: '+94771234560' },
+                    { githubUsername: 'nina-ui', email: 'nina@uxdesign.com', phone: '+94772345601' },
+                    { githubUsername: 'tom-devops', email: 'tom@infrastructure.com', phone: '+94773456012' },
+                    { githubUsername: 'maya-ai', email: 'maya@machinelearn.com', phone: '+94774567023' },
+                    { githubUsername: 'lucas-game', email: 'lucas@gamedev.com', phone: '+94775678034' }
+                ];
+                
+                this.usersContainer.innerHTML = fakeUsers.map(user => `
+                    <div class="user-card">
+                        <div class="user-avatar">
+                            ${user.githubUsername.charAt(0).toUpperCase()}
+                        </div>
+                        <div class="user-info">
+                            <a href="https://github.com/${user.githubUsername}" target="_blank" class="user-github">
+                                @${user.githubUsername}
+                            </a>
+                            <div class="user-contact">
+                                📧 ${this.maskEmail(user.email)}
+                                <br>📱 ${this.maskPhone(user.phone)}
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+                
+                this.updateStats(fakeUsers.length);
+            }
+
+            updateStats(count) {
+                this.totalRegistrations.textContent = count;
+                const available = Math.max(0, 50 - count);
+                document.getElementById('available-spots').textContent = available;
+            }
+
+            maskEmail(email) {
+                const [local, domain] = email.split('@');
+                const maskedLocal = local.charAt(0) + '*'.repeat(Math.max(0, local.length - 2)) + local.slice(-1);
+                return `${maskedLocal}@${domain}`;
+            }
+
+            maskPhone(phone) {
+                if (phone.length <= 4) return phone;
+                return phone.substring(0, 3) + '*'.repeat(phone.length - 6) + phone.slice(-3);
+            }
+
+            showSuccess() {
+                document.getElementById('success-overlay').style.display = 'flex';
+            }
+        }
+
+        // Initialize the fake registration system when the DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            new FakePOMLRegistration();
+        });
+    </script>
+</body>
+</html>
