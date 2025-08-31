@@ -16,7 +16,8 @@
     "express": "^4.21.2",
     "jsonwebtoken": "^9.0.2",
     "multer": "^1.4.5-lts.1",
-    "socket.io": "^4.8.1"
+    "socket.io": "^4.8.1",
+    "uuid": "^11.1.0"
   },
   "devDependencies": {
     "nodemon": "^3.0.2"
@@ -29,5 +30,13 @@
     "programming"
   ],
   "author": "OpenRockets Team",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NekshaDeSilva/openrockets.me.git"
+  },
+  "bugs": {
+    "url": "https://github.com/NekshaDeSilva/openrockets.me/issues"
+  },
+  "homepage": "https://github.com/NekshaDeSilva/openrockets.me#readme"
 }

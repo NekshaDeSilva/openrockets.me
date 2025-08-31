@@ -1136,7 +1136,20 @@ print(type(squares))  # <class 'generator'></code></pre>
     <script src="scripts/dashboard.js"></script>
     <script src="scripts/api.js"></script>
     <script src="scripts/auth.js"></script>
-    <script src="scripts/community.js"></script>
+    <script src="scripts/community-new.js"></script>
     <script src="scripts/community-integration.js"></script>
+    
+    <!-- Initialize Community System -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Community Manager
+            const communityManager = new CommunityManager();
+            
+            // Make it globally available for debugging
+            window.communityManager = communityManager;
+            
+            console.log('✅ Community system initialized');
+        });
+    </script>
 </body>
 </html>

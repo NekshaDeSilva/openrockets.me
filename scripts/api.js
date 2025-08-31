@@ -247,6 +247,46 @@ class OpenRocketsAPI {
         return await this.request(`/api/search?${params}`);
     }
 
+    // Community API Methods
+    async getPosts(filters = {}) {
+        const params = new URLSearchParams(filters);
+        return await this.request(`/api/community/posts?${params}`);
+    }
+
+    async createPost(postData, imageFiles = []) {
+        const formData = new FormData();
+        formData.append('data', JSON.stringify(postData));
+        
+        imageFiles.forEach((file, index) => {
+            formData.append(`image_${index}`, file);
+        });
+
+        return await this.request('/api/community/posts', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Authorization': this.token ? `Bearer ${this.token}` : ''
+            }
+        });
+    }
+
+    async likePost(postId) {
+        return await this.request(`/api/community/posts/${postId}/like`, {
+            method: 'POST'
+        });
+    }
+
+    async getComments(postId) {
+        return await this.request(`/api/community/posts/${postId}/comments`);
+    }
+
+    async addComment(postId, content) {
+        return await this.request(`/api/community/posts/${postId}/comments`, {
+            method: 'POST',
+            body: JSON.stringify({ content })
+        });
+    }
+
     // Utility methods
     isAuthenticated() {
         return !!this.token && !!this.currentUser;
@@ -296,6 +336,97 @@ class OpenRocketsAPI {
     validateEmail(email) {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(email);
+    }
+
+    showNotification(message, type = 'info') {
+        console.log(`[${type.toUpperCase()}] ${message}`);
+        
+        // Create notification element
+        const notification = document.createElement('div');
+        notification.className = `notification notification-${type}`;
+        notification.innerHTML = `
+            <div class="notification-content">
+                <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'}"></i>
+                <span>${message}</span>
+            </div>
+            <button class="notification-close" onclick="this.parentElement.remove()">
+                <i class="fas fa-times"></i>
+            </button>
+        `;
+        
+        // Style the notification
+        Object.assign(notification.style, {
+            position: 'fixed',
+            top: '20px',
+            right: '20px',
+            padding: '12px 16px',
+            backgroundColor: this.getNotificationColor(type),
+            color: 'white',
+            borderRadius: '8px',
+            boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+            zIndex: '10000',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '12px',
+            maxWidth: '400px',
+            animation: 'slideInRight 0.3s ease',
+            fontFamily: 'Inter, sans-serif'
+        });
+        
+        document.body.appendChild(notification);
+        
+        // Auto-remove after 4 seconds
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.style.animation = 'slideOutRight 0.3s ease';
+                setTimeout(() => notification.remove(), 300);
+            }
+        }, 4000);
+    }
+
+    getNotificationColor(type) {
+        switch (type) {
+            case 'success': return '#10b981';
+            case 'error': return '#ef4444';
+            case 'warning': return '#f59e0b';
+            default: return '#3b82f6';
+        }
+    }
+
+    showLoadingSpinner(element, show = true) {
+        if (!element) return;
+        
+        if (show) {
+            element.style.position = 'relative';
+            element.style.opacity = '0.6';
+            
+            const spinner = document.createElement('div');
+            spinner.className = 'loading-spinner-overlay';
+            spinner.innerHTML = `
+                <div class="loading-spinner">
+                    <i class="fas fa-spinner fa-spin"></i>
+                </div>
+            `;
+            
+            Object.assign(spinner.style, {
+                position: 'absolute',
+                top: '0',
+                left: '0',
+                right: '0',
+                bottom: '0',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor: 'rgba(255,255,255,0.8)',
+                zIndex: '100'
+            });
+            
+            element.appendChild(spinner);
+        } else {
+            element.style.opacity = '';
+            const spinner = element.querySelector('.loading-spinner-overlay');
+            if (spinner) spinner.remove();
+        }
     }
 
     validatePassword(password) {

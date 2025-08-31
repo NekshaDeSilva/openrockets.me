@@ -29,7 +29,7 @@ class CommunityManager {
     }
 
     initializeSocket() {
-        this.socket = io('ws://localhost:3001', {
+        this.socket = io('ws://localhost:3000', {
             autoConnect: true,
             reconnection: true,
             reconnectionAttempts: 5,
@@ -40,15 +40,42 @@ class CommunityManager {
             console.log('🔌 Connected to community server');
             
             // Join as current user
+            const user = api.currentUser || { id: 'guest', username: 'Guest User' };
             this.socket.emit('join-user', {
-                userId: 'current-user', // Get from auth
-                username: 'John Doe'    // Get from auth
+                userId: user.id,
+                username: user.fullName || user.username || 'Guest User'
             });
         });
 
         this.socket.on('disconnect', () => {
             console.log('🔌 Disconnected from community server');
         });
+
+        this.socket.on('new-message', (message) => {
+            this.addChatMessage(message);
+        });
+
+        this.socket.on('new-post', (post) => {
+            this.addNewPost(post);
+        });
+
+        this.socket.on('user-joined', (user) => {
+            console.log('User joined:', user.username);
+        });
+
+        this.socket.on('user-left', (user) => {
+            console.log('User left:', user.username);
+        });
+
+        this.socket.on('typing', (data) => {
+            this.showTypingIndicator(data);
+        });
+
+        this.socket.on('stop-typing', (data) => {
+            this.hideTypingIndicator(data);
+        });
+    }
+    }
 
         // Real-time message handlers
         this.socket.on('new-message', (message) => {

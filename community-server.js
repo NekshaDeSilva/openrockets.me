@@ -32,25 +32,7 @@ const chatMessages = new Map();
 const studyGroups = new Map();
 const activeUsers = new Map();
 
-// JWT middleware
-const authenticateToken = (req, res, next) => {
-    const authHeader = req.headers['authorization'];
-    const token = authHeader && authHeader.split(' ')[1];
-
-    if (!token) {
-        return res.status(401).json({ error: 'Access token required' });
-    }
-
-    jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
-        if (err) {
-            return res.status(403).json({ error: 'Invalid token' });
-        }
-        req.user = user;
-        next();
-    });
-};
-
-// File upload configuration
+// Configure multer for file uploads
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, 'uploads/');
@@ -60,112 +42,292 @@ const storage = multer.diskStorage({
         cb(null, file.fieldname + '-' + uniqueSuffix + path.extname(file.originalname));
     }
 });
-
 const upload = multer({ 
     storage: storage,
-    limits: { fileSize: 5 * 1024 * 1024 }, // 5MB limit
+    limits: { fileSize: 10 * 1024 * 1024 }, // 10MB limit
     fileFilter: (req, file, cb) => {
         if (file.mimetype.startsWith('image/')) {
             cb(null, true);
         } else {
-            cb(new Error('Only image files are allowed'), false);
+            cb(new Error('Only image files are allowed!'), false);
         }
     }
 });
 
 // Initialize sample data
 const initializeSampleData = () => {
-    // Sample users
-    users.set('user1', {
-        id: 'user1',
-        fullName: 'Dr. Sarah Chen',
-        email: 'sarah@openrockets.me',
-        profileImage: null,
-        verified: true,
-        joinedAt: new Date('2024-01-01'),
-        role: 'instructor',
-        status: 'online'
-    });
-
-    users.set('user2', {
-        id: 'user2',
-        fullName: 'Mike Johnson',
-        email: 'mike@openrockets.me',
-        profileImage: null,
-        verified: false,
-        joinedAt: new Date('2024-02-15'),
-        role: 'student',
-        status: 'online'
-    });
-
-    // Sample posts
-    const samplePost = {
-        id: uuidv4(),
-        authorId: 'user1',
-        title: '🚀 New JavaScript ES2024 Features You Should Know',
-        content: `I've just finished putting together a comprehensive guide on the latest JavaScript features that landed in ES2024. Some really exciting additions that will change how we write modern JavaScript!
-
-## Key Features:
-- Array.prototype.with() method
-- Temporal API improvements  
-- RegExp v flag
-
-\`\`\`javascript
-// New Array.with() method
-const arr = [1, 2, 3, 4, 5];
-const newArr = arr.with(2, 'updated');
-console.log(newArr); // [1, 2, 'updated', 4, 5]
-\`\`\`
-
-What's your favorite new feature?`,
-        category: 'javascript',
-        tags: ['javascript', 'es2024', 'tutorial', 'features'],
-        images: [],
-        likes: 127,
-        shares: 15,
-        visibility: 'public',
-        createdAt: new Date(),
-        updatedAt: new Date()
-    };
-
-    posts.set(samplePost.id, samplePost);
-
-    // Sample study groups
-    studyGroups.set('js-masters', {
-        id: 'js-masters',
-        name: 'JavaScript Masters',
-        description: 'Advanced JavaScript concepts and best practices',
-        category: 'javascript',
-        members: ['user1', 'user2'],
-        createdBy: 'user1',
-        isPublic: true,
-        createdAt: new Date(),
-        memberCount: 24
-    });
-
-    // Sample chat messages
-    const chatChannels = new Map();
-    chatChannels.set('general', [
+    // Add sample posts
+    const samplePosts = [
         {
-            id: uuidv4(),
-            userId: 'user1',
-            username: 'Sarah Chen',
-            message: 'Just pushed a new React tutorial! Check it out 💻',
-            timestamp: new Date(Date.now() - 2 * 60 * 1000),
-            channel: 'general'
+            id: '1',
+            title: 'Getting Started with React Hooks',
+            content: 'Just finished learning about useState and useEffect. The way React handles state management is amazing! Here\'s what I learned...',
+            author: {
+                id: 'user1',
+                fullName: 'Sarah Chen',
+                profileImage: null,
+                verified: true
+            },
+            category: 'React',
+            tags: ['React', 'JavaScript', 'Frontend'],
+            createdAt: new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString(),
+            likes: 24,
+            shares: 5,
+            images: []
         },
         {
-            id: uuidv4(),
-            userId: 'user2',
-            username: 'Mike Johnson',
-            message: 'Anyone working on the JavaScript challenge today?',
-            timestamp: new Date(Date.now() - 5 * 60 * 1000),
-            channel: 'general'
+            id: '2',
+            title: '',
+            content: 'Anyone else excited about the new Python 3.12 features? The performance improvements are incredible! 🚀\n\nJust migrated our backend and saw 15% speed improvement.',
+            author: {
+                id: 'user2',
+                fullName: 'Mike Johnson',
+                profileImage: null,
+                verified: false
+            },
+            category: 'Python',
+            tags: ['Python', 'Backend', 'Performance'],
+            createdAt: new Date(Date.now() - 4 * 60 * 60 * 1000).toISOString(),
+            likes: 18,
+            shares: 3,
+            images: []
+        },
+        {
+            id: '3',
+            title: 'My First Machine Learning Project',
+            content: 'Built a sentiment analysis model using TensorFlow! It can classify movie reviews as positive or negative with 89% accuracy. Super proud of this milestone 💪',
+            author: {
+                id: 'user3',
+                fullName: 'Emma Davis',
+                profileImage: null,
+                verified: false
+            },
+            category: 'Machine Learning',
+            tags: ['ML', 'TensorFlow', 'Python', 'NLP'],
+            createdAt: new Date(Date.now() - 6 * 60 * 60 * 1000).toISOString(),
+            likes: 42,
+            shares: 12,
+            images: []
         }
-    ]);
+    ];
 
-    chatMessages.set('channels', chatChannels);
+    samplePosts.forEach(post => {
+        posts.set(post.id, post);
+    });
+
+    // Add sample users
+    const sampleUsers = [
+        { id: 'user1', fullName: 'Sarah Chen', status: 'online' },
+        { id: 'user2', fullName: 'Mike Johnson', status: 'coding' },
+        { id: 'user3', fullName: 'Emma Davis', status: 'studying' },
+        { id: 'guest', fullName: 'Guest User', status: 'browsing' }
+    ];
+
+    sampleUsers.forEach(user => {
+        users.set(user.id, user);
+    });
+
+    console.log('✅ Sample data initialized');
 };
+
+// JWT middleware
+const authenticateToken = (req, res, next) => {
+    const authHeader = req.headers['authorization'];
+    const token = authHeader && authHeader.split(' ')[1];
+
+    if (!token) {
+        // Allow guest access for community features
+        req.user = { userId: 'guest', fullName: 'Guest User', role: 'guest' };
+        return next();
+    }
+
+    jwt.verify(token, process.env.JWT_SECRET || 'fallback-secret-key', (err, user) => {
+        if (err) {
+            req.user = { userId: 'guest', fullName: 'Guest User', role: 'guest' };
+        } else {
+            req.user = user;
+        }
+        next();
+    });
+};
+
+// Community API Routes
+app.get('/api/community/posts', async (req, res) => {
+    try {
+        const { category, tag, author } = req.query;
+        let filteredPosts = Array.from(posts.values());
+        
+        // Apply filters
+        if (category && category !== 'all') {
+            filteredPosts = filteredPosts.filter(post => 
+                post.category.toLowerCase() === category.toLowerCase()
+            );
+        }
+        
+        if (tag) {
+            filteredPosts = filteredPosts.filter(post => 
+                post.tags.some(t => t.toLowerCase().includes(tag.toLowerCase()))
+            );
+        }
+        
+        if (author) {
+            filteredPosts = filteredPosts.filter(post => 
+                post.author.fullName.toLowerCase().includes(author.toLowerCase())
+            );
+        }
+        
+        // Sort by creation date (newest first)
+        filteredPosts.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        
+        res.json({ 
+            posts: filteredPosts,
+            total: filteredPosts.length
+        });
+    } catch (error) {
+        console.error('Error fetching posts:', error);
+        res.status(500).json({ error: 'Failed to fetch posts' });
+    }
+});
+
+app.post('/api/posts', authenticateToken, upload.array('images', 5), async (req, res) => {
+    try {
+        const postData = JSON.parse(req.body.data || '{}');
+        const imageFiles = req.files || [];
+        
+        // Generate unique ID
+        const postId = uuidv4();
+        
+        // Process uploaded images
+        const imageUrls = imageFiles.map(file => `/uploads/${file.filename}`);
+        
+        // Create post object
+        const newPost = {
+            id: postId,
+            title: postData.title || '',
+            content: postData.content,
+            category: postData.category || 'general',
+            tags: postData.tags || [],
+            author: {
+                id: req.user?.userId || 'guest',
+                fullName: postData.author?.fullName || 'Anonymous',
+                profileImage: postData.author?.profileImage || null,
+                verified: false
+            },
+            images: imageUrls,
+            createdAt: new Date().toISOString(),
+            likes: 0,
+            shares: 0
+        };
+        
+        // Store post
+        posts.set(postId, newPost);
+        
+        // Broadcast to all connected clients
+        io.emit('new-post', newPost);
+        
+        res.status(201).json({ 
+            success: true,
+            post: newPost
+        });
+        
+        console.log(`📝 New post created: ${postId}`);
+        
+    } catch (error) {
+        console.error('Error creating post:', error);
+        res.status(500).json({ error: 'Failed to create post' });
+    }
+});
+
+app.post('/api/community/posts/:postId/like', async (req, res) => {
+    try {
+        const { postId } = req.params;
+        const post = posts.get(postId);
+        
+        if (!post) {
+            return res.status(404).json({ error: 'Post not found' });
+        }
+        
+        // In a real implementation, you'd track which users liked which posts
+        post.likes = (post.likes || 0) + 1;
+        posts.set(postId, post);
+        
+        // Broadcast like update
+        io.emit('post-liked', { postId, likes: post.likes });
+        
+        res.json({ 
+            success: true,
+            likes: post.likes
+        });
+        
+    } catch (error) {
+        console.error('Error liking post:', error);
+        res.status(500).json({ error: 'Failed to like post' });
+    }
+});
+
+app.get('/api/community/posts/:postId/comments', async (req, res) => {
+    try {
+        const { postId } = req.params;
+        const postComments = comments.get(postId) || [];
+        
+        res.json({ 
+            comments: postComments,
+            total: postComments.length
+        });
+        
+    } catch (error) {
+        console.error('Error fetching comments:', error);
+        res.status(500).json({ error: 'Failed to fetch comments' });
+    }
+});
+
+app.post('/api/community/posts/:postId/comments', async (req, res) => {
+    try {
+        const { postId } = req.params;
+        const { content } = req.body;
+        
+        if (!content || !content.trim()) {
+            return res.status(400).json({ error: 'Comment content is required' });
+        }
+        
+        const post = posts.get(postId);
+        if (!post) {
+            return res.status(404).json({ error: 'Post not found' });
+        }
+        
+        const commentId = uuidv4();
+        const newComment = {
+            id: commentId,
+            content: content.trim(),
+            author: {
+                id: req.user?.userId || 'guest',
+                fullName: req.user?.fullName || 'Anonymous',
+                profileImage: req.user?.profileImage || null
+            },
+            createdAt: new Date().toISOString(),
+            likes: 0
+        };
+        
+        // Add comment to post
+        const postComments = comments.get(postId) || [];
+        postComments.push(newComment);
+        comments.set(postId, postComments);
+        
+        // Broadcast new comment
+        io.emit('new-comment', { postId, comment: newComment });
+        
+        res.status(201).json({ 
+            success: true,
+            comment: newComment
+        });
+        
+        console.log(`💬 New comment on post ${postId}: ${commentId}`);
+        
+    } catch (error) {
+        console.error('Error adding comment:', error);
+        res.status(500).json({ error: 'Failed to add comment' });
+    }
+});
 
 // Socket.io connection handling
 io.on('connection', (socket) => {
@@ -315,7 +477,7 @@ app.post('/api/auth/login', async (req, res) => {
 });
 
 // Posts
-app.get('/api/posts', authenticateToken, async (req, res) => {
+app.get('/api/posts', async (req, res) => {
     try {
         const { category, limit = 20, offset = 0 } = req.query;
         
