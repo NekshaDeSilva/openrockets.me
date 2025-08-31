@@ -1,0 +1,10 @@
+<!-- Placeholder image for profiles - this is just a reference file -->
+<!-- Actual images will be created as needed -->
+Placeholder images for:
+- mihitha.png
+- thulana.png  
+- senul.png
+- tharusha.png
+- thisitha.png
+- viruna.png
+- navindu.png (use https://github.com/njnavindu.png)
