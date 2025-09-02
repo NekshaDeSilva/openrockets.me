@@ -14,8 +14,7 @@
         statusApiUrl: 'https://status.opennetworked.org/api/status', // Placeholder API
         animationDuration: 15000, // 15 seconds for marquee
         checkInterval: 300000, // 5 minutes status check
-        position: 'top', // 'top' or 'bottom'
-        insertMode: 'static' // 'static' (top of page) or 'fixed' (floating)
+        position: 'bottom' // 'top' or 'bottom'
     };
     
     // Global state
@@ -160,41 +159,33 @@
     const createBannerStyles = () => {
         const style = document.createElement('style');
         style.id = 'opennetwork-banner-styles';
-        
-        const isStatic = CONFIG.insertMode === 'static';
-        
         style.textContent = `
             .opennetwork-banner {
-                ${isStatic ? 'position: relative; width: 100%;' : `position: fixed; ${CONFIG.position}: 0; left: 0; right: 0;`}
+                position: fixed;
+                ${CONFIG.position}: 0;
+                left: 0;
+                right: 0;
                 background: linear-gradient(135deg, #000000ff 0%, #000000ff 100%);
                 color: white;
                 font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
                 font-size: 13px;
                 line-height: 1.4;
-                ${isStatic ? '' : 'z-index: 999999;'}
-                box-shadow: ${isStatic ? '0 2px 8px rgba(0,0,0,0.1)' : CONFIG.position === 'bottom' ? '0 -2px 12px rgba(0,0,0,0.15)' : '0 2px 12px rgba(0,0,0,0.15)'};
-                ${isStatic ? '' : `border-${CONFIG.position === 'bottom' ? 'top' : 'bottom'}: 1px solid rgba(255,255,255,0.1);`}
+                z-index: 999999;
+                box-shadow: ${CONFIG.position === 'bottom' ? '0 -2px 12px rgba(0,0,0,0.15)' : '0 2px 12px rgba(0,0,0,0.15)'};
+                border-${CONFIG.position === 'bottom' ? 'top' : 'bottom'}: 1px solid rgba(255,255,255,0.1);
                 backdrop-filter: blur(10px);
                 -webkit-backdrop-filter: blur(10px);
                 transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-                padding: 10px 16px;
-                min-height: 44px;
+                padding: 8px 16px;
+                min-height: 40px;
                 display: flex;
                 align-items: center;
-                ${isStatic ? 'margin: 0; border-bottom: 1px solid rgba(255,255,255,0.1);' : ''}
             }
             
             .opennetwork-banner:hover {
-                background: linear-gradient(135deg, #1a1a1aff 0%, #1a1a1aff 100%);
-                ${isStatic ? 'box-shadow: 0 4px 12px rgba(0,0,0,0.15);' : `transform: translateY(${CONFIG.position === 'bottom' ? '-1px' : '1px'});`}
+                background: linear-gradient(135deg, #000000ff 0%, #000000ff 100%);
+                transform: translateY(${CONFIG.position === 'bottom' ? '-1px' : '1px'});
             }
-            
-            ${isStatic ? `
-            body.opennetwork-banner-active {
-                margin-top: 0 !important;
-                padding-top: 0 !important;
-            }
-            ` : ''}
             
             .on-banner-content {
                 display: flex;
@@ -215,8 +206,8 @@
             }
             
             .on-flag-logo {
-                width: 22px;
-                height: 22px;
+                width: 20px;
+                height: 20px;
                 margin-right: 12px;
                 border-radius: 3px;
                 box-shadow: 0 2px 4px rgba(0,0,0,0.2);
@@ -259,7 +250,7 @@
                 display: flex;
                 align-items: center;
                 background: rgba(255,255,255,0.1);
-                padding: 6px 10px;
+                padding: 4px 8px;
                 border-radius: 20px;
                 font-size: 12px;
                 font-weight: 500;
@@ -298,21 +289,10 @@
                 50% { opacity: 0.7; }
             }
             
-            @keyframes slideInTop {
+            @keyframes slideIn {
                 from {
                     opacity: 0;
-                    transform: translateY(-100%);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
-            
-            @keyframes slideInBottom {
-                from {
-                    opacity: 0;
-                    transform: translateY(100%);
+                    transform: translateY(${CONFIG.position === 'bottom' ? '100%' : '-100%'});
                 }
                 to {
                     opacity: 1;
@@ -321,26 +301,26 @@
             }
             
             .opennetwork-banner.on-animate-in {
-                animation: ${isStatic ? 'slideInTop' : CONFIG.position === 'bottom' ? 'slideInBottom' : 'slideInTop'} 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+                animation: slideIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
             }
             
             /* Responsive design */
             @media (max-width: 768px) {
                 .opennetwork-banner {
                     font-size: 12px;
-                    padding: 8px 12px;
-                    min-height: 40px;
+                    padding: 6px 12px;
+                    min-height: 36px;
                 }
                 
                 .on-flag-logo {
-                    width: 18px;
-                    height: 18px;
+                    width: 16px;
+                    height: 16px;
                     margin-right: 8px;
                 }
                 
                 .on-status {
                     font-size: 11px;
-                    padding: 4px 8px;
+                    padding: 3px 6px;
                 }
                 
                 .on-left-section {
@@ -351,8 +331,7 @@
             @media (max-width: 480px) {
                 .opennetwork-banner {
                     font-size: 11px;
-                    padding: 6px 8px;
-                    min-height: 36px;
+                    padding: 5px 8px;
                 }
                 
                 .on-status-text {
@@ -360,8 +339,8 @@
                 }
                 
                 .on-status {
-                    width: 24px;
-                    height: 24px;
+                    width: 20px;
+                    height: 20px;
                     justify-content: center;
                     padding: 0;
                     border-radius: 50%;
@@ -392,20 +371,8 @@
         const styles = createBannerStyles();
         document.head.appendChild(styles);
         
-        // Insert banner based on mode
-        if (CONFIG.insertMode === 'static') {
-            // Insert at the very top of the page
-            if (document.body.firstChild) {
-                document.body.insertBefore(banner, document.body.firstChild);
-            } else {
-                document.body.appendChild(banner);
-            }
-            // Add body class for any additional styling needs
-            document.body.classList.add('opennetwork-banner-active');
-        } else {
-            // Add as floating banner (original behavior)
-            document.body.appendChild(banner);
-        }
+        // Add banner to body
+        document.body.appendChild(banner);
         
         // Setup event listeners
         window.addEventListener('resize', checkTextOverflow);
@@ -422,7 +389,7 @@
             updateStatusIndicator(newStatus.status, newStatus.message);
         }, CONFIG.checkInterval);
         
-        console.log('OpenNetwork Banner initialized for:', domain, `(${CONFIG.insertMode} mode)`);
+        console.log('OpenNetwork Banner initialized for:', domain);
     };
     
     const destroyBanner = () => {
@@ -430,9 +397,6 @@
             banner.remove();
             banner = null;
         }
-        
-        // Remove body class if it was added
-        document.body.classList.remove('opennetwork-banner-active');
         
         if (statusCheck) {
             clearInterval(statusCheck);
