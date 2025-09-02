@@ -9,7 +9,7 @@
     
     // Configuration
     const CONFIG = {
-        flagLogoUrl: 'https://openrockets.me/assets/i/static-v3/logo_flag.png',
+        flagLogoUrl: 'https://openrockets.me/assets/press/opennetwork.png',
         affiliateUrl: 'https://opennetworked.org/en/privacy/affiliates',
         statusApiUrl: 'https://status.opennetworked.org/api/status', // Placeholder API
         animationDuration: 15000, // 15 seconds for marquee
@@ -165,7 +165,7 @@
                 ${CONFIG.position}: 0;
                 left: 0;
                 right: 0;
-                background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 100%);
+                background: linear-gradient(135deg, #000000ff 0%, #000000ff 100%);
                 color: white;
                 font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
                 font-size: 13px;
@@ -183,7 +183,7 @@
             }
             
             .opennetwork-banner:hover {
-                background: linear-gradient(135deg, #1e40af 0%, #4338ca 100%);
+                background: linear-gradient(135deg, #000000ff 0%, #000000ff 100%);
                 transform: translateY(${CONFIG.position === 'bottom' ? '-1px' : '1px'});
             }
             
