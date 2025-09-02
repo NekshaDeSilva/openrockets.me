@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenNetwork Banner Demo</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 60px 20px 80px;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            min-height: 100vh;
+        }
+        
+        .demo-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #1e293b;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .demo-content {
+            line-height: 1.6;
+            color: #475569;
+            margin-bottom: 30px;
+        }
+        
+        .code-block {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Monaco', 'Consolas', monospace;
+            font-size: 14px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .feature-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .feature-list li:before {
+            content: '✓';
+            color: #10b981;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .controls {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+        
+        .btn {
+            background: #3730a3;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+        
+        .btn:hover {
+            background: #4338ca;
+            transform: translateY(-1px);
+        }
+        
+        .btn.danger {
+            background: #dc2626;
+        }
+        
+        .btn.danger:hover {
+            background: #ef4444;
+        }
+        
+        .btn.warning {
+            background: #d97706;
+        }
+        
+        .btn.warning:hover {
+            background: #f59e0b;
+        }
+        
+        .status-indicator {
+            text-align: center;
+            margin: 20px 0;
+            padding: 15px;
+            background: #f1f5f9;
+            border-radius: 8px;
+            border-left: 4px solid #10b981;
+        }
+        
+        @media (max-width: 768px) {
+            .demo-container {
+                padding: 20px;
+                margin: 20px;
+            }
+            
+            .controls {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1>🚀 OpenNetwork Banner Demo</h1>
+        
+        <div class="demo-content">
+            <p><strong>Welcome to the OpenNetwork Collective Banner demonstration!</strong></p>
+            
+            <p>This advanced JavaScript banner automatically displays at the bottom of any website that includes it, showing registration information and system status.</p>
+            
+            <h3>Features:</h3>
+            <ul class="feature-list">
+                <li>Auto-detects the website domain name</li>
+                <li>Displays USA flag logo from assets</li>
+                <li>Links to OpenNetwork Collective affiliate page</li>
+                <li>Real-time system status indicator</li>
+                <li>Intelligent marquee scrolling for text overflow</li>
+                <li>Responsive design for all screen sizes</li>
+                <li>Smooth animations and hover effects</li>
+                <li>Backdrop blur and modern glassmorphism design</li>
+                <li>Auto-initialization on page load</li>
+                <li>Public API for programmatic control</li>
+            </ul>
+            
+            <h3>How to use:</h3>
+            <p>Simply include the script in any website:</p>
+            
+            <div class="code-block">
+&lt;script src="https://openrockets.me/scripts/opennetwork-banner.js"&gt;&lt;/script&gt;
+            </div>
+            
+            <p>The banner will automatically appear and detect the current domain. It's that simple!</p>
+            
+            <h3>Demo Controls:</h3>
+            <div class="controls">
+                <button class="btn" onclick="toggleBanner()">Toggle Banner</button>
+                <button class="btn" onclick="simulateStatus('operational')">Set Operational</button>
+                <button class="btn warning" onclick="simulateStatus('warning')">Set Warning</button>
+                <button class="btn danger" onclick="simulateStatus('error')">Set Error</button>
+                <button class="btn" onclick="testOverflow()">Test Text Overflow</button>
+            </div>
+            
+            <div class="status-indicator">
+                <strong>Current Status:</strong> <span id="current-status">All Systems Operational</span>
+            </div>
+            
+            <h3>Advanced Configuration:</h3>
+            <div class="code-block">
+// Access the banner API
+window.OpenNetworkBanner.config.position = 'top'; // or 'bottom'
+window.OpenNetworkBanner.config.animationDuration = 10000; // milliseconds
+window.OpenNetworkBanner.updateStatus('operational', 'Custom Status Message');
+            </div>
+            
+            <p><em>The banner below is live and functional! Try resizing your window to see the responsive behavior and text overflow handling.</em></p>
+        </div>
+    </div>
+
+    <!-- Include the OpenNetwork Banner -->
+    <script src="opennetwork-banner.js"></script>
+    
+    <script>
+        let bannerVisible = true;
+        
+        function toggleBanner() {
+            if (bannerVisible) {
+                window.OpenNetworkBanner.destroy();
+                bannerVisible = false;
+            } else {
+                window.OpenNetworkBanner.init();
+                bannerVisible = true;
+            }
+        }
+        
+        function simulateStatus(status) {
+            const messages = {
+                'operational': 'All Systems Operational',
+                'warning': 'Minor Service Disruption',
+                'error': 'Service Temporarily Unavailable'
+            };
+            
+            window.OpenNetworkBanner.updateStatus(status, messages[status]);
+            document.getElementById('current-status').textContent = messages[status];
+        }
+        
+        function testOverflow() {
+            // Temporarily modify the banner text to test overflow
+            const banner = document.querySelector('.opennetwork-banner');
+            if (banner) {
+                const textContent = banner.querySelector('.on-text-content');
+                if (textContent) {
+                    const originalText = textContent.innerHTML;
+                    textContent.innerHTML = textContent.innerHTML + ' This is a very long additional text that should definitely cause an overflow and trigger the marquee scrolling animation feature of the banner system.';
+                    
+                    // Restore after 10 seconds
+                    setTimeout(() => {
+                        textContent.innerHTML = originalText;
+                    }, 10000);
+                }
+            }
+        }
+        
+        // Demo initialization message
+        console.log('OpenNetwork Banner Demo loaded! Check the footer for the live banner.');
+    </script>
+</body>
+</html>

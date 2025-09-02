@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Integration Test - OpenNetwork Banner</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 40px;
+            background: #f5f5f5;
+            min-height: 100vh;
+        }
+        .content {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        p {
+            line-height: 1.6;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>🚀 Simple Integration Test</h1>
+        <p>This page demonstrates the most basic integration of the OpenNetwork Banner.</p>
+        <p>Just include the script and the banner automatically appears!</p>
+        <p>Domain detected: <strong id="domain-display">Loading...</strong></p>
+        <p>The banner should appear at the bottom of this page with:</p>
+        <ul>
+            <li>Current domain name highlighted in yellow</li>
+            <li>OpenNetwork flag logo</li>
+            <li>Link to OpenNetwork Collective</li>
+            <li>Green status indicator showing "All Systems Operational"</li>
+        </ul>
+        <p><em>Look at the bottom of the page!</em></p>
+    </div>
+
+    <!-- This is all you need - just one line! -->
+    <script src="scripts/opennetwork-banner.min.js"></script>
+    
+    <script>
+        // Display the detected domain for demonstration
+        document.getElementById('domain-display').textContent = window.location.hostname.replace('www.', '');
+    </script>
+</body>
+</html>
